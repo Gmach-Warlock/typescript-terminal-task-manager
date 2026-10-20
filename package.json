@@ -2,14 +2,16 @@
   "name": "taskmanagertypescript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "node dist/app.js",
+    "test": "node --test \"**/__tests__/**/*.test.ts\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@types/node": "^26.6.5",
     "typescript": "^7.0.2"
