@@ -18,3 +18,30 @@ export async function getAnswer(question: string): Promise<Answer> {
   const answer = await askQuestion(question);
   return answer;
 }
+
+export async function getNumericInput(
+  question: string,
+  numOfOptions: number = 10,
+) {
+  let hasAnswer: boolean = false;
+  let answer;
+
+  while (!hasAnswer) {
+    answer = await getAnswer(question);
+    if (answer === "") {
+      console.log("Please enter a value in the field: ");
+      return;
+    }
+    if (Number(answer) < 1 || Number(answer) > numOfOptions) {
+      console.log("Please enter a valid option number: ");
+      return;
+    }
+    if (Number.isNaN(Number(answer))) {
+      console.log("Please enter a number not a string here: ");
+      return;
+    }
+    if (Number(answer) >= 1 && Number(answer) <= numOfOptions) hasAnswer = true;
+  }
+  if (answer) console.log(answer);
+  return answer;
+}

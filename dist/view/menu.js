@@ -1,4 +1,5 @@
-import { getAnswer } from "../controller/terminal/terminal.js";
+import { getAnswer, getNumericInput } from "../controller/terminal/terminal.js";
+import { Task } from "../model/Task.js";
 export function logMainMenu() {
     console.log(`
 Welcome to the Task Manager
@@ -19,8 +20,10 @@ What would you like to do?
         `);
 }
 export async function mainMenu() {
+    const newTask = new Task("Task 1", "Desc 1", "low");
+    console.log(newTask);
     logMainMenu();
-    const answer = await getAnswer("Please choose an option numb er: ");
+    const answer = await getNumericInput("Please choose an option: ", 10);
     if (answer)
         console.log(answer);
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"TasksCompleted.d.ts","sourceRoot":"","sources":["../../src/model/TasksCompleted.ts"],"names":[],"mappings":"AAAA,qBAAa,cAAc;;IAIzB,cAGC;IAGD,IAAI,QAAQ,IAAI,MAAM,CAErB;IACD,IAAI,UAAU,IAAI,MAAM,CAEvB;IAGD,IAAI,QAAQ,CAAC,WAAW,EAAE,MAAM,EAE/B;IACD,IAAI,UAAU,CAAC,aAAa,EAAE,MAAM,EAEnC;CACF"}
