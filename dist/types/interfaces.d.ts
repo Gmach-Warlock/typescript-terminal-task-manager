@@ -1,4 +1,4 @@
-import type { Priority } from "./types.js";
+import type { Priority, PropToModify } from "./types.js";
 export interface TaskObj {
     id: string;
     title: string;
@@ -13,5 +13,9 @@ export interface TasksSizeObj {
 }
 export interface TasksStoreObj {
     tasks: TaskObj[];
+}
+export interface EditInfo {
+    propToEdit: PropToModify;
+    newValue: string;
 }
 //# sourceMappingURL=interfaces.d.ts.map

@@ -1,12 +1,13 @@
 import { tStore } from "../../model/TasksStore.js";
 import { Task } from "../../model/Task.js";
-import { getAddInfo } from "../terminal/infoPrompts.js";
+import { getAddInfo, getEditInfo } from "../terminal/infoPrompts.js";
 import {
   addElementToArray,
   editItemInArray,
   getInfoQuestion,
+  returnObjInArray,
 } from "./taskHelpers1.js";
-import { getStringInput } from "../terminal/terminal.js";
+import { getNumericInput, getStringInput } from "../terminal/terminal.js";
 import { mainMenu } from "../../view/menu.js";
 
 export async function addTask() {
@@ -22,12 +23,9 @@ export async function addTask() {
 }
 
 export async function markTask(completed: boolean = true) {
-  const key = completed ? "Complete" : "Incomplete";
-  const titleLookup = {
-    Complete: () => getStringInput(getInfoQuestion("complete", "title")),
-    Incomplete: () => getStringInput(getInfoQuestion("incomplete", "title")),
-  };
-  const title = await titleLookup[key]();
+  const title = completed
+    ? await getStringInput(getInfoQuestion("complete", "title"))
+    : await getStringInput(getInfoQuestion("incomplete", "title"));
   const arr = tStore.tasks;
   const newValue = completed ? true : false;
   const newArray = editItemInArray(arr, "title", title, "completed", newValue);
@@ -35,6 +33,33 @@ export async function markTask(completed: boolean = true) {
     console.log(
       "An item with that title doesn't exist. Returning to main menu. ",
     );
+    mainMenu();
+    return;
+  }
+  tStore.setTasks(newArray);
+}
+
+export async function editTask() {
+  const arr: Task[] = tStore.tasks;
+  const title: string = await getStringInput(getInfoQuestion("edit", "title"));
+
+  const taskToEdit: Task | undefined = returnObjInArray(arr, "title", title);
+  if (!taskToEdit) {
+    console.log("No task with that title found. Returning to main menu. ");
+    mainMenu();
+    return;
+  }
+  const infoObj = await getEditInfo();
+  if (!infoObj?.propToEdit) return;
+  const newArray = editItemInArray(
+    arr,
+    "title",
+    title,
+    infoObj.propToEdit as keyof Task,
+    infoObj?.newValue as string,
+  );
+  if (!newArray) {
+    console.log("editItem failed in editTask");
     mainMenu();
     return;
   }

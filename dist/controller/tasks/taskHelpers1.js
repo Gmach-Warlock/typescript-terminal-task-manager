@@ -1,6 +1,14 @@
 export function addElementToArray(arr, element) {
     return [...arr, element];
 }
+export function returnObjInArray(arr, prop, value) {
+    const copy = [...arr];
+    const foundItem = copy.find((item) => item[prop] === value);
+    if (!foundItem) {
+        return undefined;
+    }
+    return foundItem;
+}
 export function editItemInArray(arr, propToFind, findVal, propToEdit, newVal) {
     const copy = [...arr];
     const foundItem = returnObjInArray(copy, propToFind, findVal);
@@ -23,12 +31,13 @@ export function getInfoQuestion(purpose, prop) {
     const question = lookup[purpose];
     return question;
 }
-export function returnObjInArray(arr, prop, value) {
-    const copy = [...arr];
-    const foundItem = copy.find((item) => item[prop] === value);
+export function removeItemInArray(arr, propToFind, findVal) {
+    const foundItem = returnObjInArray(arr, propToFind, findVal);
     if (!foundItem) {
-        return undefined;
+        console.log("Item not found: removeItemInArray");
+        return;
     }
-    return foundItem;
+    const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);
+    return edittedCopy;
 }
 //# sourceMappingURL=taskHelpers1.js.map

@@ -1,7 +1,7 @@
 import { mainMenu } from "../../view/menu.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import { closeApp } from "../terminal/terminal.js";
-import { addTask, markTask } from "./CRUDHelpers.js";
+import { addTask, editTask, markTask } from "./CRUDHelpers.js";
 function addTaskActions() {
     addTask();
 }
@@ -19,9 +19,8 @@ function markTaskComplete() {
 function markTaskIncomplete() {
     markTask(false);
 }
-function editTask() {
-    console.log("Coming Soon");
-    mainMenu();
+function editTaskActions() {
+    editTask();
 }
 function deleteTask() {
     console.log("Coming Soon");
@@ -45,7 +44,7 @@ export function returnAction(val) {
         2: () => viewAllTasks(),
         3: () => markTaskComplete(),
         4: () => markTaskIncomplete(),
-        5: () => editTask(),
+        5: () => editTaskActions(),
         6: () => deleteTask(),
         7: () => searchTasks(),
         8: () => sortTasks(),

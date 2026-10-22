@@ -12,7 +12,6 @@ Priority: ${task.priority};
 Completed: ${task.completed};
 Created At: ${task.createdAt};
 
------------------------------------------
-    `));
+-----------------------------------------`));
 }
 //# sourceMappingURL=taskPrompts.js.map

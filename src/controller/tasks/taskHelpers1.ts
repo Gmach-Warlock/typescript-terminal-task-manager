@@ -4,6 +4,19 @@ export function addElementToArray<T>(arr: T[], element: T) {
   return [...arr, element];
 }
 
+export function returnObjInArray<Type extends object, Key extends keyof Type>(
+  arr: Type[],
+  prop: Key,
+  value: string,
+) {
+  const copy = [...arr];
+  const foundItem = copy.find((item) => item[prop] === value);
+  if (!foundItem) {
+    return undefined;
+  }
+  return foundItem;
+}
+
 export function editItemInArray<
   Type extends object,
   FindKey extends keyof Type,
@@ -39,15 +52,16 @@ export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
   return question;
 }
 
-export function returnObjInArray<Type extends object, Key extends keyof Type>(
+export function removeItemInArray<Type extends object, Key extends keyof Type>(
   arr: Type[],
-  prop: Key,
-  value: string,
+  propToFind: Key,
+  findVal: string,
 ) {
-  const copy = [...arr];
-  const foundItem = copy.find((item) => item[prop] === value);
+  const foundItem = returnObjInArray(arr, propToFind, findVal);
   if (!foundItem) {
-    return undefined;
+    console.log("Item not found: removeItemInArray");
+    return;
   }
-  return foundItem;
+  const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);
+  return edittedCopy;
 }
