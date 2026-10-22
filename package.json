@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/app.js",
-    "test": "node --test \"**/__tests__/**/*.test.ts\""
+    "test": "node --test \"dist/__tests__/**/*.test.js\""
   },
   "keywords": [],
   "author": "",

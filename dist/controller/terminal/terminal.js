@@ -27,11 +27,22 @@ export async function getNumericInput(question, numOfOptions = 10) {
             console.log("Please enter a valid option number: ");
             return;
         }
+        if (Number.isNaN(Number(answer))) {
+            console.log("Please enter a number not a string here: ");
+            return;
+        }
         if (Number(answer) >= 1 && Number(answer) <= numOfOptions)
             hasAnswer = true;
     }
     if (answer)
         console.log(answer);
     return answer;
+}
+export function closeApp() {
+    console.log(`
+Thank you for using the task app.
+Goodbye.
+    `);
+    rl.close();
 }
 //# sourceMappingURL=terminal.js.map

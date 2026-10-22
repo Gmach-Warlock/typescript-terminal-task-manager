@@ -43,5 +43,13 @@ export async function getNumericInput(
     if (Number(answer) >= 1 && Number(answer) <= numOfOptions) hasAnswer = true;
   }
   if (answer) console.log(answer);
-  return answer;
+  return answer as number;
+}
+
+export function closeApp() {
+  console.log(`
+Thank you for using the task app.
+Goodbye.
+    `);
+  rl.close();
 }

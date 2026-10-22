@@ -1,3 +1,4 @@
+import { returnAction } from "../controller/tasks/taskActions.js";
 import { getAnswer, getNumericInput } from "../controller/terminal/terminal.js";
 import { Task } from "../model/Task.js";
 export function logMainMenu() {
@@ -20,11 +21,10 @@ What would you like to do?
         `);
 }
 export async function mainMenu() {
-    const newTask = new Task("Task 1", "Desc 1", "low");
-    console.log(newTask);
     logMainMenu();
     const answer = await getNumericInput("Please choose an option: ", 10);
-    if (answer)
-        console.log(answer);
+    if (answer === undefined)
+        return;
+    returnAction(answer);
 }
 //# sourceMappingURL=menu.js.map
