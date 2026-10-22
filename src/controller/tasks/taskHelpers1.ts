@@ -1,11 +1,19 @@
-import type { SimpleType } from "../../types/types.js";
+import type { Purpose, PropToModify } from "../../types/types.js";
 
 export function addElementToArray<T>(arr: T[], element: T) {
   return [...arr, element];
 }
 
-const arr: SimpleType[] = [1, 2, 3, 4, "five"];
-const element = false;
+export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
+  const lookup: Record<Purpose, string> = {
+    add: `Please give the new task a ${prop}: `,
+    edit: `What is the ${prop} of the task to edit? `,
+    delete: `What is the ${prop} of the task to delete? `,
+    complete: `What is the ${prop} of the task to mark complete? `,
+    incomplete: `What is the ${prop} of the task to mark incomplete? `,
+    replace: `What is the new ${prop} of the task? `,
+  };
+  const question: string = lookup[purpose];
 
-const newArray = addElementToArray(arr, element);
-console.log(newArray);
+  return question;
+}

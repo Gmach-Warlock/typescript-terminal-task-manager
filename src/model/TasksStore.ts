@@ -1,6 +1,7 @@
 import type { Listener } from "../types/types.js";
 import type { TasksStoreObj } from "../types/interfaces.js";
 import type { Task } from "./Task.js";
+import { myListener } from "../controller/listeners/listener.js";
 
 export class TasksStore {
   #tasks: Task[];
@@ -27,6 +28,11 @@ export class TasksStore {
     this.#listeners = newListerners;
   }
 
+  setTasks(newTasks: Task[]) {
+    this.#tasks = newTasks;
+    this.notify();
+  }
+
   subscribe(listener: Listener) {
     this.#listeners.push(listener);
   }
@@ -36,4 +42,5 @@ export class TasksStore {
   }
 }
 
-export const tStore: TasksStoreObj = new TasksStore();
+export const tStore = new TasksStore();
+tStore.subscribe(myListener);

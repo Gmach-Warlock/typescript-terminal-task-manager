@@ -1,6 +1,8 @@
 export type Answer = string | number;
-export type Priority = "low" | "medium" | "high";
-export type Completed = "complete" | "incomplete" | "all";
+export type Completed = "Complete" | "Incomplete" | "All";
 export type Listener = () => void;
+export type Priority = "Low" | "Medium" | "High";
+export type PropToModify = "title" | "description" | "priority" | "completed";
 export type SimpleType = string | boolean | number;
+export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace";
 //# sourceMappingURL=types.d.ts.map

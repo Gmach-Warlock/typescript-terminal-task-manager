@@ -21,21 +21,36 @@ export async function getNumericInput(question, numOfOptions = 10) {
         answer = await getAnswer(question);
         if (answer === "") {
             console.log("Please enter a value in the field: ");
-            return;
+            continue;
         }
         if (Number(answer) < 1 || Number(answer) > numOfOptions) {
-            console.log("Please enter a valid option number: ");
-            return;
+            console.log("Please enter a number in range: ");
+            continue;
         }
         if (Number.isNaN(Number(answer))) {
             console.log("Please enter a number not a string here: ");
-            return;
+            continue;
         }
         if (Number(answer) >= 1 && Number(answer) <= numOfOptions)
             hasAnswer = true;
     }
-    if (answer)
-        console.log(answer);
+    return answer;
+}
+export async function getStringInput(question) {
+    let hasAnswer = false;
+    let answer;
+    while (!hasAnswer) {
+        answer = await getAnswer(question);
+        if (answer === "") {
+            console.log("Please enter a value in the field: ");
+            continue;
+        }
+        if (/^\d+$/.test(answer)) {
+            console.log("Please enter a string not a number here: ");
+            continue;
+        }
+        hasAnswer = true;
+    }
     return answer;
 }
 export function closeApp() {

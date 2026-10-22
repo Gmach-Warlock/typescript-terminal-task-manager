@@ -1,6 +1,5 @@
 import { returnAction } from "../controller/tasks/taskActions.js";
-import { getAnswer, getNumericInput } from "../controller/terminal/terminal.js";
-import { Task } from "../model/Task.js";
+import { getNumericInput } from "../controller/terminal/terminal.js";
 export function logMainMenu() {
     console.log(`
 Welcome to the Task Manager

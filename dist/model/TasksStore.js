@@ -1,3 +1,4 @@
+import { myListener } from "../controller/listeners/listener.js";
 export class TasksStore {
     #tasks;
     #listeners;
@@ -19,6 +20,10 @@ export class TasksStore {
     set listeners(newListerners) {
         this.#listeners = newListerners;
     }
+    setTasks(newTasks) {
+        this.#tasks = newTasks;
+        this.notify();
+    }
     subscribe(listener) {
         this.#listeners.push(listener);
     }
@@ -27,4 +32,5 @@ export class TasksStore {
     }
 }
 export const tStore = new TasksStore();
+tStore.subscribe(myListener);
 //# sourceMappingURL=TasksStore.js.map
