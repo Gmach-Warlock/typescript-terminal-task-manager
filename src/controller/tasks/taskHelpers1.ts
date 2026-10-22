@@ -4,6 +4,27 @@ export function addElementToArray<T>(arr: T[], element: T) {
   return [...arr, element];
 }
 
+export function editItemInArray<
+  Type extends object,
+  FindKey extends keyof Type,
+  EditKey extends keyof Type,
+>(
+  arr: Type[],
+  propToFind: FindKey,
+  findVal: string,
+  propToEdit: EditKey,
+  newVal: Type[EditKey],
+) {
+  const copy = [...arr];
+  const foundItem = returnObjInArray(copy, propToFind, findVal);
+  if (!foundItem) {
+    console.log("Item not found: editItem in Array");
+    return;
+  }
+  foundItem[propToEdit] = newVal;
+  return copy;
+}
+
 export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
   const lookup: Record<Purpose, string> = {
     add: `Please give the new task a ${prop}: `,
@@ -16,4 +37,17 @@ export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
   const question: string = lookup[purpose];
 
   return question;
+}
+
+export function returnObjInArray<Type extends object, Key extends keyof Type>(
+  arr: Type[],
+  prop: Key,
+  value: string,
+) {
+  const copy = [...arr];
+  const foundItem = copy.find((item) => item[prop] === value);
+  if (!foundItem) {
+    return undefined;
+  }
+  return foundItem;
 }

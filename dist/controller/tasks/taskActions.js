@@ -1,7 +1,7 @@
 import { mainMenu } from "../../view/menu.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import { closeApp } from "../terminal/terminal.js";
-import { addTask } from "./actionHelpers.js";
+import { addTask, markTask } from "./CRUDHelpers.js";
 function addTaskActions() {
     addTask();
 }
@@ -14,12 +14,10 @@ function viewAllTasks() {
     }, 300);
 }
 function markTaskComplete() {
-    console.log("Coming Soon");
-    mainMenu();
+    markTask();
 }
 function markTaskIncomplete() {
-    console.log("Coming Soon");
-    mainMenu();
+    markTask(false);
 }
 function editTask() {
     console.log("Coming Soon");

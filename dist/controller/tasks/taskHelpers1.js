@@ -1,6 +1,16 @@
 export function addElementToArray(arr, element) {
     return [...arr, element];
 }
+export function editItemInArray(arr, propToFind, findVal, propToEdit, newVal) {
+    const copy = [...arr];
+    const foundItem = returnObjInArray(copy, propToFind, findVal);
+    if (!foundItem) {
+        console.log("Item not found: editItem in Array");
+        return;
+    }
+    foundItem[propToEdit] = newVal;
+    return copy;
+}
 export function getInfoQuestion(purpose, prop) {
     const lookup = {
         add: `Please give the new task a ${prop}: `,
@@ -12,5 +22,13 @@ export function getInfoQuestion(purpose, prop) {
     };
     const question = lookup[purpose];
     return question;
+}
+export function returnObjInArray(arr, prop, value) {
+    const copy = [...arr];
+    const foundItem = copy.find((item) => item[prop] === value);
+    if (!foundItem) {
+        return undefined;
+    }
+    return foundItem;
 }
 //# sourceMappingURL=taskHelpers1.js.map
