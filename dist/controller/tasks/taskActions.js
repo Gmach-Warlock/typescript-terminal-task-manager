@@ -1,12 +1,8 @@
 import { mainMenu } from "../../view/menu.js";
 import { closeApp } from "../terminal/terminal.js";
 import { addTask, editTask, markTask, viewTasks, deleteTask, } from "./CRUDHelpers.js";
-import { searchTasks } from "./SSFHelpers.js";
+import { searchTasks, filterTasks } from "./SSFHelpers.js";
 function sortTasks() {
-    console.log("Coming Soon");
-    mainMenu();
-}
-function filterTasks() {
     console.log("Coming Soon");
     mainMenu();
 }

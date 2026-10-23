@@ -1,5 +1,4 @@
 import type { Task } from "../../model/Task.js";
-import { tStore } from "../../model/TasksStore.js";
 
 export function logTasks(tasks: Task[]) {
   console.log(`Here are all of your tasks

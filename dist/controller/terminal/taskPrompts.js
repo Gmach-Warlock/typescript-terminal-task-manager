@@ -1,4 +1,3 @@
-import { tStore } from "../../model/TasksStore.js";
 export function logTasks(tasks) {
     console.log(`Here are all of your tasks
 
