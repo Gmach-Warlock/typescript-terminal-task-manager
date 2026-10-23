@@ -3,6 +3,7 @@ export type Completed = "Complete" | "Incomplete" | "All";
 export type Listener = () => void;
 export type Priority = "Low" | "Medium" | "High";
 export type PropToModify = "title" | "description" | "priority" | "completed";
+export type SearchProp = "title" | "description";
 export type SimpleType = string | boolean | number;
 export type BasicTypes = string | boolean | number | object;
 export type Purpose =

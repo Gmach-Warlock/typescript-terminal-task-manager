@@ -16,7 +16,7 @@ ${getInfoQuestion("add", "priority")}
 3. High
 
 Please choose the appropriate value: 
-    `,
+`,
     3,
   );
   const priorityLookup: Record<number, Priority> = {
@@ -39,7 +39,9 @@ Which property do you want to modify?
 1. Title
 2. Description
 3. Priority
-    `,
+
+Please choose the appropriate value: 
+`,
     3,
   );
   const lookup: Record<number, Partial<PropToModify>> = {
@@ -62,13 +64,13 @@ Which property do you want to modify?
 export async function getPriority(adding: boolean = true) {
   const key = await getNumericInput(
     `
-  What is the ${!adding ? "new " : ""}priority of the ${adding ? "new " : ""}task? 
+What is the ${!adding ? "new " : ""}priority of the ${adding ? "new " : ""}task? 
 
-  1. Low
-  2. Medium 
-  3. High
+1. Low
+2. Medium 
+3. High
 
-  Please enter the appropriate value: 
+Please enter the appropriate value: 
     `,
     3,
   );

@@ -1,10 +1,10 @@
+import type { Task } from "../../model/Task.js";
 import { tStore } from "../../model/TasksStore.js";
 
-export function logTasks() {
+export function logTasks(tasks: Task[]) {
   console.log(`Here are all of your tasks
 
 -----------------------------------------`);
-  const tasks = tStore.tasks;
   tasks.forEach((task) =>
     console.log(`
 Id: ${task.id},

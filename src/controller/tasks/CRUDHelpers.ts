@@ -1,13 +1,15 @@
 import { tStore } from "../../model/TasksStore.js";
 import { Task } from "../../model/Task.js";
 import { getAddInfo, getEditInfo } from "../terminal/infoPrompts.js";
+import { logTasks } from "../terminal/taskPrompts.js";
 import {
   addElementToArray,
   editItemInArray,
   getInfoQuestion,
+  removeItemInArray,
   returnObjInArray,
 } from "./taskHelpers1.js";
-import { getNumericInput, getStringInput } from "../terminal/terminal.js";
+import { getStringInput } from "../terminal/terminal.js";
 import { mainMenu } from "../../view/menu.js";
 
 export async function addTask() {
@@ -64,4 +66,27 @@ export async function editTask() {
     return;
   }
   tStore.setTasks(newArray);
+}
+
+export async function deleteTask() {
+  const arr: Task[] = tStore.tasks;
+  const title: string = await getStringInput(
+    getInfoQuestion("delete", "title"),
+  );
+  const newArray = removeItemInArray(arr, "title", title);
+  if (!newArray) {
+    console.log("No task with that title found. Returning to main menu. ");
+    mainMenu();
+    return;
+  }
+  tStore.setTasks(newArray);
+}
+
+export async function viewTasks(tasks: Task[] = tStore.tasks) {
+  setTimeout(() => {
+    console.clear();
+    console.log("View All Tasks");
+    logTasks(tasks);
+    mainMenu();
+  }, 300);
 }

@@ -3,12 +3,35 @@ import assert from "node:assert";
 import {
   addElementToArray,
   removeItemInArray,
+  returnObjInArray,
 } from "../../../controller/tasks/taskHelpers1.js";
-import type {
-  BasicTypes,
-  PropToModify,
-  SimpleType,
-} from "../../../types/types.js";
+import type { SimpleType } from "../../../types/types.js";
+
+describe("existsInArray", () => {
+  it("should return undefined if an item with the prop value provided does not exist", () => {
+    // arrange
+    const arr = [{ title: "Good One" }];
+    const prop = "title";
+    const value = "Bad one";
+    // act
+    const answer = returnObjInArray(arr, prop, value);
+    const expected = undefined;
+    // assert
+    assert.strictEqual(answer, expected);
+  });
+  it("should return true if an item exists with the prop and value provided and it should NOT mutate the original array", () => {
+    // arrange
+    const arr = [{ title: "Good One" }];
+    const prop = "title";
+    const value = "Good One";
+    // act
+    const answer = returnObjInArray(arr, prop, value);
+    const expected = { title: "Good One" };
+    // assert
+    assert.deepStrictEqual(answer, expected);
+    assert.deepStrictEqual(arr, [{ title: "Good One" }]);
+  });
+});
 
 describe("addElementToArray", () => {
   it("return a new array with the item added to the end of it regardless of types", () => {

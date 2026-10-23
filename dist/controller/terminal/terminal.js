@@ -36,7 +36,7 @@ export async function getNumericInput(question, numOfOptions = 10) {
     }
     return answer;
 }
-export async function getStringInput(question) {
+export async function getStringInput(question, numguard = true) {
     let hasAnswer = false;
     let answer;
     while (!hasAnswer) {
@@ -45,10 +45,11 @@ export async function getStringInput(question) {
             console.log("Please enter a value in the field: ");
             continue;
         }
-        if (/^\d+$/.test(answer)) {
-            console.log("Please enter a string not a number here: ");
-            continue;
-        }
+        if (numguard)
+            if (/^\d+$/.test(answer)) {
+                console.log("Please enter a string not a number here: ");
+                continue;
+            }
         hasAnswer = true;
     }
     return answer;

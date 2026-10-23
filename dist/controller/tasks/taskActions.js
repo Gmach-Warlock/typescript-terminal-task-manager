@@ -1,35 +1,7 @@
 import { mainMenu } from "../../view/menu.js";
-import { logTasks } from "../terminal/taskPrompts.js";
 import { closeApp } from "../terminal/terminal.js";
-import { addTask, editTask, markTask } from "./CRUDHelpers.js";
-function addTaskActions() {
-    addTask();
-}
-function viewAllTasks() {
-    setTimeout(() => {
-        console.clear();
-        console.log("View All Tasks");
-        logTasks();
-        mainMenu();
-    }, 300);
-}
-function markTaskComplete() {
-    markTask();
-}
-function markTaskIncomplete() {
-    markTask(false);
-}
-function editTaskActions() {
-    editTask();
-}
-function deleteTask() {
-    console.log("Coming Soon");
-    mainMenu();
-}
-function searchTasks() {
-    console.log("Coming Soon");
-    mainMenu();
-}
+import { addTask, editTask, markTask, viewTasks, deleteTask, } from "./CRUDHelpers.js";
+import { searchTasks } from "./SSFHelpers.js";
 function sortTasks() {
     console.log("Coming Soon");
     mainMenu();
@@ -40,11 +12,11 @@ function filterTasks() {
 }
 export function returnAction(val) {
     const lookup = {
-        1: () => addTaskActions(),
-        2: () => viewAllTasks(),
-        3: () => markTaskComplete(),
-        4: () => markTaskIncomplete(),
-        5: () => editTaskActions(),
+        1: () => addTask(),
+        2: () => viewTasks(),
+        3: () => markTask(),
+        4: () => markTask(false),
+        5: () => editTask(),
         6: () => deleteTask(),
         7: () => searchTasks(),
         8: () => sortTasks(),

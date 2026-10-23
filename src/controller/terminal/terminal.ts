@@ -45,7 +45,10 @@ export async function getNumericInput(
   return answer as number;
 }
 
-export async function getStringInput(question: string) {
+export async function getStringInput(
+  question: string,
+  numguard: boolean = true,
+) {
   let hasAnswer: boolean = false;
   let answer;
 
@@ -55,10 +58,11 @@ export async function getStringInput(question: string) {
       console.log("Please enter a value in the field: ");
       continue;
     }
-    if (/^\d+$/.test(answer as string)) {
-      console.log("Please enter a string not a number here: ");
-      continue;
-    }
+    if (numguard)
+      if (/^\d+$/.test(answer as string)) {
+        console.log("Please enter a string not a number here: ");
+        continue;
+      }
     hasAnswer = true;
   }
   return answer as string;
