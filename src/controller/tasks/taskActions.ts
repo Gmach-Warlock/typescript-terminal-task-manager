@@ -1,4 +1,3 @@
-import { mainMenu } from "../../view/menu.js";
 import { closeApp } from "../terminal/terminal.js";
 import {
   addTask,
@@ -7,12 +6,7 @@ import {
   viewTasks,
   deleteTask,
 } from "./CRUDHelpers.js";
-import { searchTasks, filterTasks } from "./SSFHelpers.js";
-
-function sortTasks() {
-  console.log("Coming Soon");
-  mainMenu();
-}
+import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
 
 export function returnAction(val: number): void {
   const lookup: Record<number, () => void> = {

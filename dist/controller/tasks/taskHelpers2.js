@@ -18,4 +18,28 @@ export function returnFilterArray(arr, filterType) {
     };
     return lookup[filterType]();
 }
+export function returnSortedArray(arr, sortType) {
+    const priorityRank = {
+        Low: 1,
+        Medium: 2,
+        High: 3,
+    };
+    const lookup = {
+        Newest: () => [...arr].sort((a, b) => {
+            return (new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        }),
+        Oldest: () => [...arr].sort((a, b) => {
+            return (new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+        }),
+        Low: () => [...arr].sort((a, b) => {
+            return ((priorityRank[a.priority] ?? 0) - (priorityRank[b.priority] ?? 0));
+        }),
+        High: () => [...arr].sort((a, b) => {
+            console.log(priorityRank[a.priority], priorityRank[b.priority]);
+            return ((priorityRank[b.priority] ?? 0) - (priorityRank[a.priority] ?? 0));
+        }),
+    };
+    const sortedArray = lookup[sortType]();
+    return sortedArray;
+}
 //# sourceMappingURL=taskHelpers2.js.map

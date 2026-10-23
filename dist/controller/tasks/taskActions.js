@@ -1,11 +1,6 @@
-import { mainMenu } from "../../view/menu.js";
 import { closeApp } from "../terminal/terminal.js";
 import { addTask, editTask, markTask, viewTasks, deleteTask, } from "./CRUDHelpers.js";
-import { searchTasks, filterTasks } from "./SSFHelpers.js";
-function sortTasks() {
-    console.log("Coming Soon");
-    mainMenu();
-}
+import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
 export function returnAction(val) {
     const lookup = {
         1: () => addTask(),

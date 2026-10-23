@@ -84,7 +84,7 @@ export async function deleteTask() {
 
 export async function viewTasks(tasks: Task[] = tStore.tasks) {
   setTimeout(() => {
-    console.clear();
+    // console.clear();
     console.log("View All Tasks");
     logTasks(tasks);
     mainMenu();

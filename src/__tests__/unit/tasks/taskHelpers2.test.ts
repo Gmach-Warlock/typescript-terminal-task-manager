@@ -1,10 +1,13 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
+import { Task } from "../../../model/Task.js";
 import type { TaskInfo } from "../../../types/interfaces.js";
 import {
   returnFilterArray,
   returnSearchArray,
+  returnSortedArray,
 } from "../../../controller/tasks/taskHelpers2.js";
+import type { SortType } from "../../../types/types.js";
 
 describe("returnSearchArray", () => {
   it("should return an empty array if there is not an item with the value provided in the array provided", () => {
@@ -88,5 +91,36 @@ describe("returnFilterArray", () => {
     assert.deepStrictEqual(result4, expected4);
     assert.deepStrictEqual(result5, expected5);
     assert.deepStrictEqual(result6, expected6);
+  });
+});
+
+describe("returnSortedArray", () => {
+  it("should return a properly sorted array based on the criteria", () => {
+    // arrange
+    const testItem1 = new Task("Task 1", "Desc 1", "Low");
+    const testItem2 = new Task("Task 2", "Desc 2", "Low");
+    const testItem3 = new Task("Task 3", "Desc 3", "Low");
+    const testArr1: Task[] = [testItem1, testItem2, testItem3];
+    const testArr2: Task[] = [testItem1, testItem2, testItem3];
+    const testArr3: Task[] = [testItem1, testItem2, testItem3];
+    const testArr4: Task[] = [testItem1, testItem2, testItem3];
+    const sortType1: SortType = "Newest";
+    const sortType2: SortType = "Oldest";
+    const sortType3: SortType = "Low";
+    const sortType4: SortType = "High";
+    // act
+    const result1 = returnSortedArray(testArr1, sortType1);
+    const result2 = returnSortedArray(testArr2, sortType2);
+    const result3 = returnSortedArray(testArr3, sortType3);
+    const result4 = returnSortedArray(testArr4, sortType4);
+    const expected1 = [testItem3, testItem2, testItem1];
+    const expected2 = [testItem1, testItem2, testItem3];
+    const expected3 = [testItem1, testItem2, testItem3];
+    const expected4 = [testItem3, testItem2, testItem1];
+    // assert
+    assert.deepStrictEqual(result1, expected1);
+    assert.deepStrictEqual(result2, expected2);
+    assert.deepStrictEqual(result3, expected3);
+    assert.deepStrictEqual(result4, expected4);
   });
 });

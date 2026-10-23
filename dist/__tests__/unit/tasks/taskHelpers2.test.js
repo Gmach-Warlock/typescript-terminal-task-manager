@@ -1,6 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { returnFilterArray, returnSearchArray, } from "../../../controller/tasks/taskHelpers2.js";
+import { Task } from "../../../model/Task.js";
+import { returnFilterArray, returnSearchArray, returnSortedArray, } from "../../../controller/tasks/taskHelpers2.js";
 describe("returnSearchArray", () => {
     it("should return an empty array if there is not an item with the value provided in the array provided", () => {
         // arrange
@@ -82,6 +83,36 @@ describe("returnFilterArray", () => {
         assert.deepStrictEqual(result4, expected4);
         assert.deepStrictEqual(result5, expected5);
         assert.deepStrictEqual(result6, expected6);
+    });
+});
+describe("returnSortedArray", () => {
+    it("should return a properly sorted array based on the criteria", () => {
+        // arrange
+        const testItem1 = new Task("Task 1", "Desc 1", "Low");
+        const testItem2 = new Task("Task 2", "Desc 2", "Low");
+        const testItem3 = new Task("Task 3", "Desc 3", "Low");
+        const testArr1 = [testItem1, testItem2, testItem3];
+        const testArr2 = [testItem1, testItem2, testItem3];
+        const testArr3 = [testItem1, testItem2, testItem3];
+        const testArr4 = [testItem1, testItem2, testItem3];
+        const sortType1 = "Newest";
+        const sortType2 = "Oldest";
+        const sortType3 = "Low";
+        const sortType4 = "High";
+        // act
+        const result1 = returnSortedArray(testArr1, sortType1);
+        const result2 = returnSortedArray(testArr2, sortType2);
+        const result3 = returnSortedArray(testArr3, sortType3);
+        const result4 = returnSortedArray(testArr4, sortType4);
+        const expected1 = [testItem3, testItem2, testItem1];
+        const expected2 = [testItem1, testItem2, testItem3];
+        const expected3 = [testItem1, testItem2, testItem3];
+        const expected4 = [testItem3, testItem2, testItem1];
+        // assert
+        assert.deepStrictEqual(result1, expected1);
+        assert.deepStrictEqual(result2, expected2);
+        assert.deepStrictEqual(result3, expected3);
+        assert.deepStrictEqual(result4, expected4);
     });
 });
 //# sourceMappingURL=taskHelpers2.test.js.map

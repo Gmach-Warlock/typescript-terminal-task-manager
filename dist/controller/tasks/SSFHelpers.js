@@ -2,7 +2,21 @@ import { tStore } from "../../model/TasksStore.js";
 import { getFilterTypePrompt } from "../terminal/ssfPrompts.js";
 import { getNumericInput, getStringInput } from "../terminal/terminal.js";
 import { viewTasks } from "./CRUDHelpers.js";
-import { returnFilterArray, returnSearchArray } from "./taskHelpers2.js";
+import { returnFilterArray, returnSearchArray, returnSortedArray, } from "./taskHelpers2.js";
+export async function filterTasks() {
+    const arr = tStore.tasks;
+    const filterType = await getFilterTypePrompt();
+    if (!filterType) {
+        console.log("Something went wrong in filterTasks.");
+        return;
+    }
+    const filterArray = returnFilterArray(arr, filterType);
+    if (!filterArray) {
+        console.log("Something went wrong in guard 2 of filterTasks");
+        return;
+    }
+    viewTasks(filterArray);
+}
 export async function searchTasks() {
     const arr = tStore.tasks;
     const searchTerm = await getStringInput(`What is the term to search for? `, false);
@@ -31,18 +45,34 @@ Please choose the appropriate value:
     }
     viewTasks(searchArray);
 }
-export async function filterTasks() {
+export async function sortTasks() {
     const arr = tStore.tasks;
-    const filterType = await getFilterTypePrompt();
-    if (!filterType) {
-        console.log("Something went wrong in filterTasks.");
+    const key = await getNumericInput(`
+What is the sort criteria? 
+
+1. Newest
+2. Oldest
+3. Low Priority
+4. High Priority
+
+Please enter the appropriate value: `, 4);
+    const lookup = {
+        1: "Newest",
+        2: "Oldest",
+        3: "Low",
+        4: "High",
+    };
+    const sortType = lookup[key];
+    if (!sortType) {
+        console.log("Something went wrong in SortTasks");
         return;
     }
-    const filterArray = returnFilterArray(arr, filterType);
-    if (!filterArray) {
-        console.log("Something went wrong in guard 2 of filterTasks");
+    console.log(`Sort type: ${sortType}`);
+    const sortedArray = returnSortedArray(arr, sortType);
+    if (!sortedArray) {
+        console.log("!sorted array in sortTasks");
         return;
     }
-    viewTasks(filterArray);
+    tStore.setTasks(sortedArray);
 }
 //# sourceMappingURL=SSFHelpers.js.map

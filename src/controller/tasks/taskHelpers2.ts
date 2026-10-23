@@ -1,5 +1,11 @@
+import type { Task } from "../../model/Task.js";
 import type { TaskInfo } from "../../types/interfaces.js";
-import type { filterReturnType, FilterType } from "../../types/types.js";
+import type {
+  FilterFunction,
+  FilterType,
+  SortFunction,
+  SortType,
+} from "../../types/types.js";
 
 export function returnSearchArray<Type extends object, Key extends keyof Type>(
   arr: Type[],
@@ -21,7 +27,7 @@ export function returnFilterArray<Task extends TaskInfo>(
   arr: Task[],
   filterType: FilterType,
 ) {
-  const lookup: Record<FilterType, filterReturnType> = {
+  const lookup: Record<FilterType, FilterFunction> = {
     Complete: () => arr.filter((item) => item.completed === true),
     Incomplete: () => arr.filter((item) => item.completed === false),
     Low: () => arr.filter((item) => item.priority === "Low"),
@@ -30,4 +36,41 @@ export function returnFilterArray<Task extends TaskInfo>(
     All: () => arr,
   };
   return lookup[filterType]();
+}
+
+export function returnSortedArray(arr: Task[], sortType: SortType) {
+  const priorityRank: Record<string, number> = {
+    Low: 1,
+    Medium: 2,
+    High: 3,
+  };
+  const lookup: Record<SortType, SortFunction> = {
+    Newest: () =>
+      [...arr].sort((a, b) => {
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      }),
+    Oldest: () =>
+      [...arr].sort((a, b) => {
+        return (
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+      }),
+    Low: () =>
+      [...arr].sort((a, b) => {
+        return (
+          (priorityRank[a.priority] ?? 0) - (priorityRank[b.priority] ?? 0)
+        );
+      }),
+    High: () =>
+      [...arr].sort((a, b) => {
+        console.log(priorityRank[a.priority], priorityRank[b.priority]);
+        return (
+          (priorityRank[b.priority] ?? 0) - (priorityRank[a.priority] ?? 0)
+        );
+      }),
+  };
+  const sortedArray = lookup[sortType]();
+  return sortedArray;
 }

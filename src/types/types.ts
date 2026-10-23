@@ -17,4 +17,5 @@ export type Purpose =
   | "complete"
   | "incomplete"
   | "replace";
-export type filterReturnType = (() => Task[]) | (() => void);
+export type FilterFunction = (() => Task[]) | (() => void);
+export type SortFunction = (() => Task[]) | (() => void);
