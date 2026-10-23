@@ -1,4 +1,5 @@
 import type { Task } from "../../model/Task.js";
+import { tTotals } from "../../model/TasksTotals.js";
 
 export function logTasks(tasks: Task[]) {
   console.log(`Here are all of your tasks
@@ -15,4 +16,10 @@ Created At: ${task.createdAt};
 
 -----------------------------------------`),
   );
+}
+
+export function logStats() {
+  tTotals.logTotals();
+  console.log(`
+----------------------------------------`);
 }

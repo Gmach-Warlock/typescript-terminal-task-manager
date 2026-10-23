@@ -1,3 +1,4 @@
+import { tTotals } from "../../model/TasksTotals.js";
 export function logTasks(tasks) {
     console.log(`Here are all of your tasks
 
@@ -11,5 +12,10 @@ Completed: ${task.completed};
 Created At: ${task.createdAt};
 
 -----------------------------------------`));
+}
+export function logStats() {
+    tTotals.logTotals();
+    console.log(`
+----------------------------------------`);
 }
 //# sourceMappingURL=taskPrompts.js.map

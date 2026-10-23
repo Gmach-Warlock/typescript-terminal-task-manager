@@ -19,6 +19,14 @@ What would you like to do?
 
         `);
 }
+export function logNotFound() {
+    setTimeout(() => {
+        console.clear();
+        console.log("An item with that title doesn't exist. Returning to main menu. ");
+        mainMenu();
+    }, 300);
+    return;
+}
 export async function mainMenu() {
     logMainMenu();
     const answer = await getNumericInput("Please choose an option: ", 10);

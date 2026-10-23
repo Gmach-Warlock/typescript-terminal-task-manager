@@ -35,7 +35,6 @@ export function returnSortedArray(arr, sortType) {
             return ((priorityRank[a.priority] ?? 0) - (priorityRank[b.priority] ?? 0));
         }),
         High: () => [...arr].sort((a, b) => {
-            console.log(priorityRank[a.priority], priorityRank[b.priority]);
             return ((priorityRank[b.priority] ?? 0) - (priorityRank[a.priority] ?? 0));
         }),
     };

@@ -34,7 +34,6 @@ export function editItemInArray(arr, propToFind, findVal, propToEdit, newVal) {
 export function removeItemInArray(arr, propToFind, findVal) {
     const foundItem = returnObjInArray(arr, propToFind, findVal);
     if (!foundItem) {
-        console.log("Item not found: removeItemInArray");
         return;
     }
     const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);

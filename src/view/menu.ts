@@ -1,6 +1,5 @@
 import { returnAction } from "../controller/tasks/taskActions.js";
 import { getNumericInput } from "../controller/terminal/terminal.js";
-
 export function logMainMenu() {
   console.log(`
 Welcome to the Task Manager
@@ -19,6 +18,17 @@ What would you like to do?
 10. Exit
 
         `);
+}
+
+export function logNotFound() {
+  setTimeout(() => {
+    console.clear();
+    console.log(
+      "An item with that title doesn't exist. Returning to main menu. ",
+    );
+    mainMenu();
+  }, 300);
+  return;
 }
 
 export async function mainMenu() {

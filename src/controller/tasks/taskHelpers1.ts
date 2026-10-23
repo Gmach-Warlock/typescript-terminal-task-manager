@@ -58,7 +58,6 @@ export function removeItemInArray<Type extends object, Key extends keyof Type>(
 ) {
   const foundItem = returnObjInArray(arr, propToFind, findVal);
   if (!foundItem) {
-    console.log("Item not found: removeItemInArray");
     return;
   }
   const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);

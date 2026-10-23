@@ -1,5 +1,5 @@
 import { mainMenu } from "../../view/menu.js";
-import { logTasks } from "../terminal/taskPrompts.js";
+import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { tStore } from "../../model/TasksStore.js";
 
 export function myListener() {
@@ -7,6 +7,7 @@ export function myListener() {
     console.clear();
     console.log(`Tasks have been updated`);
     logTasks(tStore.tasks);
+    logStats();
     mainMenu();
   }, 500);
 }

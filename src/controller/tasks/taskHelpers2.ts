@@ -65,7 +65,6 @@ export function returnSortedArray(arr: Task[], sortType: SortType) {
       }),
     High: () =>
       [...arr].sort((a, b) => {
-        console.log(priorityRank[a.priority], priorityRank[b.priority]);
         return (
           (priorityRank[b.priority] ?? 0) - (priorityRank[a.priority] ?? 0)
         );
