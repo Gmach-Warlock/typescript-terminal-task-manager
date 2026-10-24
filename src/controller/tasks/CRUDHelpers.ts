@@ -11,7 +11,12 @@ import {
 } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
-import { addTStats, markTStats, removeTStats } from "./statHelpers.js";
+import {
+  addTStats,
+  editTStats,
+  markTStats,
+  removeTStats,
+} from "./statHelpers.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();
@@ -26,7 +31,7 @@ export async function addTask() {
     console.log("New array not made properly in addTask");
     return;
   }
-  addTStats();
+  addTStats(newTask);
   tStore.setTasks(newArray);
   // tStore.saveTasks();
 }
@@ -58,7 +63,8 @@ export async function editTask() {
     return;
   }
   const infoObj = await getEditInfo();
-  if (!infoObj?.propToEdit) return;
+  if (!infoObj || !infoObj.propToEdit || infoObj.newValue === undefined) return;
+  editTStats(taskToEdit, infoObj.propToEdit as keyof Task, infoObj.newValue);
   const newArray = editItemInArray(
     arr,
     taskToEdit,

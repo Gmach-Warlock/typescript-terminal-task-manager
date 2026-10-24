@@ -1,3 +1,4 @@
+import { tHighPriority } from "../../model/TaskHighPriority.js";
 import { tCompletes } from "../../model/TasksCompletes.js";
 import { tTotals } from "../../model/TasksTotals.js";
 export function logTasks(tasks) {
@@ -17,6 +18,7 @@ Created At: ${task.createdAt};
 export function logStats() {
     tTotals.logTotals();
     tCompletes.logCompletes();
+    tHighPriority.logHighPriority();
     console.log(`
 ----------------------------------------`);
 }

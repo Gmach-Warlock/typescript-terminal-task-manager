@@ -5,7 +5,7 @@ import { logTasks } from "../terminal/taskPrompts.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, removeItemInArray, returnObjInArray, } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
-import { addTStats, markTStats, removeTStats } from "./statHelpers.js";
+import { addTStats, editTStats, markTStats, removeTStats, } from "./statHelpers.js";
 export async function addTask() {
     const addLookup = await getAddInfo();
     const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority);
@@ -15,9 +15,9 @@ export async function addTask() {
         console.log("New array not made properly in addTask");
         return;
     }
-    addTStats();
+    addTStats(newTask);
     tStore.setTasks(newArray);
-    tStore.saveTasks();
+    // tStore.saveTasks();
 }
 export async function markTask(completed = true) {
     const title = completed
@@ -45,8 +45,9 @@ export async function editTask() {
         return;
     }
     const infoObj = await getEditInfo();
-    if (!infoObj?.propToEdit)
+    if (!infoObj || !infoObj.propToEdit || infoObj.newValue === undefined)
         return;
+    editTStats(taskToEdit, infoObj.propToEdit, infoObj.newValue);
     const newArray = editItemInArray(arr, taskToEdit, "title", infoObj.propToEdit, infoObj?.newValue);
     if (!newArray) {
         logNotFound();
