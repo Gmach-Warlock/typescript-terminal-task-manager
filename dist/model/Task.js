@@ -46,7 +46,7 @@ export class Task {
         this.#completed = newCompleted;
     }
     // return the options
-    makeTaskInfoObject() {
+    toObject() {
         return {
             id: this.id,
             title: this.title,

@@ -53,7 +53,7 @@ export class Task {
   }
 
   // return the options
-  makeTaskInfoObject(): TaskObj {
+  toObject(): TaskObj {
     return {
       id: this.id,
       title: this.title,

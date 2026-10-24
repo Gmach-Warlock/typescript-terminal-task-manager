@@ -36,13 +36,13 @@ export function editItemInArray<
   EditKey extends keyof Type,
 >(
   arr: Type[],
-  propToFind: FindKey,
-  findVal: string,
+  obj: Type,
+  findKey: FindKey,
   propToEdit: EditKey,
   newVal: Type[EditKey],
 ) {
   const copy = [...arr];
-  const foundItem = returnObjInArray(copy, propToFind, findVal);
+  const foundItem = copy.find((item) => item[findKey] === obj[findKey]);
   if (!foundItem) {
     console.log("Item not found: editItem in Array");
     return;
@@ -53,13 +53,11 @@ export function editItemInArray<
 
 export function removeItemInArray<Type extends object, Key extends keyof Type>(
   arr: Type[],
-  propToFind: Key,
-  findVal: string,
+  obj: Type,
+  key: Key,
 ) {
-  const foundItem = returnObjInArray(arr, propToFind, findVal);
-  if (!foundItem) {
-    return;
-  }
-  const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);
+  const existing = arr.some((item) => item[key] === obj[key]);
+  if (!existing) return;
+  const edittedCopy = arr.filter((item) => item[key] !== obj[key]);
   return edittedCopy;
 }

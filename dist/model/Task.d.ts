@@ -13,6 +13,6 @@ export declare class Task {
     set description(newDescription: string);
     set priority(newPriority: Priority);
     set completed(newCompleted: boolean);
-    makeTaskInfoObject(): TaskObj;
+    toObject(): TaskObj;
 }
 //# sourceMappingURL=Task.d.ts.map

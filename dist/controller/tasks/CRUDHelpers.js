@@ -5,7 +5,7 @@ import { logTasks } from "../terminal/taskPrompts.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, removeItemInArray, returnObjInArray, } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
-import { addTStats, removeTStats } from "./statHelpers.js";
+import { addTStats, markTStats, removeTStats } from "./statHelpers.js";
 export async function addTask() {
     const addLookup = await getAddInfo();
     const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority);
@@ -17,6 +17,7 @@ export async function addTask() {
     }
     addTStats();
     tStore.setTasks(newArray);
+    tStore.saveTasks();
 }
 export async function markTask(completed = true) {
     const title = completed
@@ -24,11 +25,15 @@ export async function markTask(completed = true) {
         : await getStringInput(getInfoQuestion("incomplete", "title"));
     const arr = tStore.tasks;
     const newValue = completed ? true : false;
-    const newArray = editItemInArray(arr, "title", title, "completed", newValue);
+    const foundItem = returnObjInArray(arr, "title", title);
+    if (!foundItem)
+        return;
+    const newArray = editItemInArray(arr, foundItem, "id", "completed", newValue);
     if (!newArray) {
         logNotFound();
         return;
     }
+    completed ? markTStats() : markTStats(false);
     tStore.setTasks(newArray);
 }
 export async function editTask() {
@@ -42,7 +47,7 @@ export async function editTask() {
     const infoObj = await getEditInfo();
     if (!infoObj?.propToEdit)
         return;
-    const newArray = editItemInArray(arr, "title", title, infoObj.propToEdit, infoObj?.newValue);
+    const newArray = editItemInArray(arr, taskToEdit, "title", infoObj.propToEdit, infoObj?.newValue);
     if (!newArray) {
         logNotFound();
         return;
@@ -52,12 +57,15 @@ export async function editTask() {
 export async function deleteTask() {
     const arr = tStore.tasks;
     const title = await getStringInput(getInfoQuestion("delete", "title"));
-    const newArray = removeItemInArray(arr, "title", title);
+    const itemToRemove = returnObjInArray(arr, "title", title);
+    if (!itemToRemove)
+        return;
+    const newArray = removeItemInArray(arr, itemToRemove, "id");
     if (!newArray) {
         logNotFound();
         return;
     }
-    removeTStats();
+    removeTStats(itemToRemove);
     tStore.setTasks(newArray);
 }
 export async function viewTasks(tasks = tStore.tasks) {

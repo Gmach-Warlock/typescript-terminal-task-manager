@@ -40,12 +40,11 @@ describe("addElementToArray", () => {
 });
 describe("removeItemInArray", () => {
     it("should return undefined if an item with the prop and value provided does not exist in the array provided", () => {
+        const testItem = { title: "Task 1" };
         const testItem2 = { title: "Task 2" };
         const testArray = [testItem2];
-        const testProp = "title";
-        const findVal = "Task 1";
         // act
-        const found = removeItemInArray(testArray, testProp, findVal);
+        const found = removeItemInArray(testArray, testItem, "title");
         const expected = undefined;
         // assert
         assert.deepStrictEqual(found, expected);
@@ -55,10 +54,8 @@ describe("removeItemInArray", () => {
         const testItem = { title: "Task 1" };
         const testItem2 = { title: "Task 2" };
         const testArray = [testItem, testItem2];
-        const testProp = "title";
-        const findVal = "Task 1";
         // act
-        const newArray = removeItemInArray(testArray, testProp, findVal);
+        const newArray = removeItemInArray(testArray, testItem, "title");
         const expectedArray = [testItem2];
         // assert
         assert.deepStrictEqual(newArray, expectedArray);

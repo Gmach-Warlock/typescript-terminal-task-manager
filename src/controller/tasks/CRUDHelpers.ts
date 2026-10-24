@@ -11,7 +11,7 @@ import {
 } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
-import { addTStats, removeTStats } from "./statHelpers.js";
+import { addTStats, markTStats, removeTStats } from "./statHelpers.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();
@@ -28,6 +28,7 @@ export async function addTask() {
   }
   addTStats();
   tStore.setTasks(newArray);
+  // tStore.saveTasks();
 }
 
 export async function markTask(completed: boolean = true) {
@@ -36,11 +37,14 @@ export async function markTask(completed: boolean = true) {
     : await getStringInput(getInfoQuestion("incomplete", "title"));
   const arr = tStore.tasks;
   const newValue = completed ? true : false;
-  const newArray = editItemInArray(arr, "title", title, "completed", newValue);
+  const foundItem = returnObjInArray(arr, "title", title);
+  if (!foundItem) return;
+  const newArray = editItemInArray(arr, foundItem, "id", "completed", newValue);
   if (!newArray) {
     logNotFound();
     return;
   }
+  completed ? markTStats() : markTStats(false);
   tStore.setTasks(newArray);
 }
 
@@ -57,8 +61,8 @@ export async function editTask() {
   if (!infoObj?.propToEdit) return;
   const newArray = editItemInArray(
     arr,
+    taskToEdit,
     "title",
-    title,
     infoObj.propToEdit as keyof Task,
     infoObj?.newValue as string,
   );
@@ -74,12 +78,14 @@ export async function deleteTask() {
   const title: string = await getStringInput(
     getInfoQuestion("delete", "title"),
   );
-  const newArray = removeItemInArray(arr, "title", title);
+  const itemToRemove: Task | undefined = returnObjInArray(arr, "title", title);
+  if (!itemToRemove) return;
+  const newArray = removeItemInArray(arr, itemToRemove, "id");
   if (!newArray) {
     logNotFound();
     return;
   }
-  removeTStats();
+  removeTStats(itemToRemove);
   tStore.setTasks(newArray);
 }
 

@@ -1,3 +1,4 @@
+import { tCompletes } from "../../model/TasksCompletes.js";
 import { tTotals } from "../../model/TasksTotals.js";
 export function logTasks(tasks) {
     console.log(`Here are all of your tasks
@@ -15,6 +16,7 @@ Created At: ${task.createdAt};
 }
 export function logStats() {
     tTotals.logTotals();
+    tCompletes.logCompletes();
     console.log(`
 ----------------------------------------`);
 }

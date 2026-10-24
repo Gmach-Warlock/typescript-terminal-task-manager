@@ -21,9 +21,9 @@ export function returnObjInArray(arr, prop, value) {
     }
     return foundItem;
 }
-export function editItemInArray(arr, propToFind, findVal, propToEdit, newVal) {
+export function editItemInArray(arr, obj, findKey, propToEdit, newVal) {
     const copy = [...arr];
-    const foundItem = returnObjInArray(copy, propToFind, findVal);
+    const foundItem = copy.find((item) => item[findKey] === obj[findKey]);
     if (!foundItem) {
         console.log("Item not found: editItem in Array");
         return;
@@ -31,12 +31,11 @@ export function editItemInArray(arr, propToFind, findVal, propToEdit, newVal) {
     foundItem[propToEdit] = newVal;
     return copy;
 }
-export function removeItemInArray(arr, propToFind, findVal) {
-    const foundItem = returnObjInArray(arr, propToFind, findVal);
-    if (!foundItem) {
+export function removeItemInArray(arr, obj, key) {
+    const existing = arr.some((item) => item[key] === obj[key]);
+    if (!existing)
         return;
-    }
-    const edittedCopy = arr.filter((item) => item[propToFind] !== findVal);
+    const edittedCopy = arr.filter((item) => item[key] !== obj[key]);
     return edittedCopy;
 }
 //# sourceMappingURL=taskHelpers1.js.map

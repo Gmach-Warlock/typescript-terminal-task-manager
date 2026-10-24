@@ -3,7 +3,7 @@ import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { tStore } from "../../model/TasksStore.js";
 export function myListener() {
     setTimeout(() => {
-        console.clear();
+        // console.clear();
         console.log(`Tasks have been updated`);
         logTasks(tStore.tasks);
         logStats();
