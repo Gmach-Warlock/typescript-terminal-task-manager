@@ -8,6 +8,8 @@ export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
     complete: `What is the ${prop} of the task to mark complete? `,
     incomplete: `What is the ${prop} of the task to mark incomplete? `,
     replace: `What is the new ${prop} of the task? `,
+    subtask: `What is the ${prop} of the task to add the subtask? `,
+    tag: `What is the ${prop} of the task to add the tag to? `,
   };
   const question: string = lookup[purpose];
 

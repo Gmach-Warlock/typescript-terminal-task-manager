@@ -1,11 +1,13 @@
 import fs from "node:fs";
 import { myListener } from "../controller/listeners/listener.js";
+export const listenersArray = [myListener];
 export class TasksStore {
     #tasks;
     #listeners;
     constructor() {
         this.#tasks = [];
         this.#listeners = [];
+        listenersArray.forEach((listener) => this.subscribe(listener));
     }
     // getters
     get tasks() {
@@ -51,17 +53,16 @@ export class TasksStore {
             console.error(error);
         }
     }
-    setTasks(newTasks) {
+    setTasks(newTasks, purpose) {
         this.#tasks = newTasks;
-        this.notify();
+        this.notify(purpose);
     }
     subscribe(listener) {
         this.#listeners.push(listener);
     }
-    notify() {
-        this.#listeners.forEach((listener) => listener());
+    notify(purpose) {
+        this.#listeners.forEach((listener) => listener(purpose));
     }
 }
 export const tStore = new TasksStore();
-tStore.subscribe(myListener);
 //# sourceMappingURL=TasksStore.js.map

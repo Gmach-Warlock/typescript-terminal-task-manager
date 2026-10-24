@@ -91,5 +91,5 @@ Please enter the appropriate value: `,
     console.log("!sorted array in sortTasks");
     return;
   }
-  tStore.setTasks(sortedArray);
+  tStore.setTasks(sortedArray, "replace");
 }

@@ -73,6 +73,6 @@ Please enter the appropriate value: `, 4);
         console.log("!sorted array in sortTasks");
         return;
     }
-    tStore.setTasks(sortedArray);
+    tStore.setTasks(sortedArray, "replace");
 }
 //# sourceMappingURL=SSFHelpers.js.map

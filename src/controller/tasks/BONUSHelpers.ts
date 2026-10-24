@@ -1,18 +1,10 @@
-import { tHighPriority } from "../../model/TaskHighPriority.js";
-import { tCompletes } from "../../model/TasksCompletes.js";
 import { tStore } from "../../model/TasksStore.js";
-import { tTotals } from "../../model/TasksTotals.js";
 import { mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { getDueDateInfo } from "../terminal/datePrompts.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
-import {
-  addElementToArray,
-  editItemInArray,
-  getInfoQuestion,
-  returnObjInArray,
-} from "./taskHelpers1.js";
+import { getInfoQuestion, returnObjInArray } from "./taskHelpers1.js";
 import { returnFilterArray } from "./taskHelpers2.js";
 
 export async function makeDueDate() {
@@ -54,13 +46,13 @@ export async function clearCompleted() {
   }
   const numDeleted = arr.length - notCompletedArray.length;
   clearTCStats(numDeleted, highPiorityCount);
-  tStore.setTasks(notCompletedArray);
+  tStore.setTasks(notCompletedArray, "replace");
   mainMenu();
 }
 
 export async function addTag() {
   const arr = tStore.tasks;
-  const title = await getStringInput(getInfoQuestion("edit", "title"));
+  const title = await getStringInput(getInfoQuestion("tag", "title"));
   const itemToEdit = returnObjInArray(arr, "title", title);
   if (!itemToEdit) {
     console.log("An item with that title could not be found. ");
@@ -80,6 +72,16 @@ export async function addTag() {
 }
 
 export async function addSubtask() {
-  console.log("It's coming :)");
+  const arr = tStore.tasks;
+  const title = await getStringInput(getInfoQuestion("subtask", "title"));
+  const itemToEdit = returnObjInArray(arr, "title", title);
+  if (!itemToEdit) {
+    console.log("An item with that title could not be found. ");
+    logTasks(tStore.tasks);
+    mainMenu();
+  }
+  const subtask = await getStringInput(`What is the subtask? `);
+  itemToEdit?.addSubtaskToTask(subtask);
+  logTasks(tStore.tasks);
   mainMenu();
 }

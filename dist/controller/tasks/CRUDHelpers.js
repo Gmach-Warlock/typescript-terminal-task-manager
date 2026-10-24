@@ -16,7 +16,7 @@ export async function addTask() {
         return;
     }
     addTStats(newTask);
-    tStore.setTasks(newArray);
+    tStore.setTasks(newArray, "add");
     // tStore.saveTasks();
 }
 export async function markTask(completed = true) {
@@ -34,7 +34,8 @@ export async function markTask(completed = true) {
         return;
     }
     completed ? markTStats() : markTStats(false);
-    tStore.setTasks(newArray);
+    const purpose = completed ? "complete" : "incomplete";
+    tStore.setTasks(newArray, purpose);
 }
 export async function editTask() {
     const arr = tStore.tasks;
@@ -53,7 +54,7 @@ export async function editTask() {
         logNotFound();
         return;
     }
-    tStore.setTasks(newArray);
+    tStore.setTasks(newArray, "edit");
 }
 export async function deleteTask() {
     const arr = tStore.tasks;
@@ -67,7 +68,7 @@ export async function deleteTask() {
         return;
     }
     removeTStats(itemToRemove);
-    tStore.setTasks(newArray);
+    tStore.setTasks(newArray, "delete");
 }
 export async function viewTasks(tasks = tStore.tasks) {
     setTimeout(() => {

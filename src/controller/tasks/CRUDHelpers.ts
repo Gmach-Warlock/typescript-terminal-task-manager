@@ -17,6 +17,7 @@ import {
   markTStats,
   removeTStats,
 } from "../stats/statHelpers.js";
+import type { Purpose } from "../../types/types.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();
@@ -33,7 +34,7 @@ export async function addTask() {
     return;
   }
   addTStats(newTask);
-  tStore.setTasks(newArray);
+  tStore.setTasks(newArray, "add");
   // tStore.saveTasks();
 }
 
@@ -51,7 +52,8 @@ export async function markTask(completed: boolean = true) {
     return;
   }
   completed ? markTStats() : markTStats(false);
-  tStore.setTasks(newArray);
+  const purpose: Partial<Purpose> = completed ? "complete" : "incomplete";
+  tStore.setTasks(newArray, purpose);
 }
 
 export async function editTask() {
@@ -77,7 +79,7 @@ export async function editTask() {
     logNotFound();
     return;
   }
-  tStore.setTasks(newArray);
+  tStore.setTasks(newArray, "edit");
 }
 
 export async function deleteTask() {
@@ -93,7 +95,7 @@ export async function deleteTask() {
     return;
   }
   removeTStats(itemToRemove);
-  tStore.setTasks(newArray);
+  tStore.setTasks(newArray, "delete");
 }
 
 export async function viewTasks(tasks: Task[] = tStore.tasks) {

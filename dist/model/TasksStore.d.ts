@@ -1,5 +1,6 @@
-import type { Listener } from "../types/types.js";
+import type { Listener, Purpose } from "../types/types.js";
 import type { Task } from "./Task.js";
+export declare const listenersArray: Listener[];
 export declare class TasksStore {
     #private;
     constructor();
@@ -10,9 +11,9 @@ export declare class TasksStore {
     getTaskObjects(): import("../types/interfaces.js").TaskObj[];
     loadTasks(): any;
     saveTasks(): void;
-    setTasks(newTasks: Task[]): void;
+    setTasks(newTasks: Task[], purpose: Partial<Purpose>): void;
     subscribe(listener: Listener): void;
-    notify(): void;
+    notify(purpose: Partial<Purpose>): void;
 }
 export declare const tStore: TasksStore;
 //# sourceMappingURL=TasksStore.d.ts.map

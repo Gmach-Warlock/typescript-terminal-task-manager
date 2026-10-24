@@ -3,7 +3,7 @@ import { Task } from "../model/Task.js";
 export type Answer = string | number;
 export type TCategory = "Work" | "Home" | "Health" | "Personal" | "Other";
 export type Completed = "Complete" | "Incomplete" | "All";
-export type Listener = () => void;
+export type Listener = (purpose: Partial<Purpose>) => void;
 export type Priority = "Low" | "Medium" | "High";
 export type PropToModify = "title" | "description" | "priority" | "completed";
 export type SearchProp = "title" | "description";
@@ -17,7 +17,9 @@ export type Purpose =
   | "edit"
   | "complete"
   | "incomplete"
-  | "replace";
+  | "replace"
+  | "subtask"
+  | "tag";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
 

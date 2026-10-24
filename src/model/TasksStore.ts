@@ -1,8 +1,9 @@
 import fs from "node:fs";
-import type { Listener } from "../types/types.js";
+import type { Listener, Purpose } from "../types/types.js";
 import type { Task } from "./Task.js";
 import { myListener } from "../controller/listeners/listener.js";
 
+export const listenersArray: Listener[] = [myListener as Listener];
 export class TasksStore {
   #tasks: Task[];
   #listeners: Listener[];
@@ -10,6 +11,7 @@ export class TasksStore {
   constructor() {
     this.#tasks = [];
     this.#listeners = [];
+    listenersArray.forEach((listener) => this.subscribe(listener));
   }
 
   // getters
@@ -58,19 +60,18 @@ export class TasksStore {
     }
   }
 
-  setTasks(newTasks: Task[]) {
+  setTasks(newTasks: Task[], purpose: Partial<Purpose>) {
     this.#tasks = newTasks;
-    this.notify();
+    this.notify(purpose);
   }
 
   subscribe(listener: Listener) {
     this.#listeners.push(listener);
   }
 
-  notify() {
-    this.#listeners.forEach((listener) => listener());
+  notify(purpose: Partial<Purpose>) {
+    this.#listeners.forEach((listener) => listener(purpose));
   }
 }
 
 export const tStore = new TasksStore();
-tStore.subscribe(myListener);
