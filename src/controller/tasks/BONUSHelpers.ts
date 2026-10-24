@@ -1,17 +1,10 @@
 import { tStore } from "../../model/TasksStore.js";
-import { mainMenu } from "../../view/menu.js";
+import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
-import { getDueDateInfo } from "../terminal/datePrompts.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { getInfoQuestion, returnObjInArray } from "./taskHelpers1.js";
 import { returnFilterArray } from "./taskHelpers2.js";
-
-export async function makeDueDate() {
-  const dateObj = await getDueDateInfo();
-  console.log("Did we get the object?");
-  mainMenu();
-}
 
 export async function viewStats() {
   setTimeout(() => {
@@ -53,11 +46,11 @@ export async function clearCompleted() {
 export async function addTag() {
   const arr = tStore.tasks;
   const title = await getStringInput(getInfoQuestion("tag", "title"));
+
   const itemToEdit = returnObjInArray(arr, "title", title);
   if (!itemToEdit) {
-    console.log("An item with that title could not be found. ");
-    logTasks(tStore.tasks);
-    mainMenu();
+    logNotFound();
+    return;
   }
   const newTag: string = await getStringInput(
     `What is the tag to add to this task? `,
@@ -76,9 +69,8 @@ export async function addSubtask() {
   const title = await getStringInput(getInfoQuestion("subtask", "title"));
   const itemToEdit = returnObjInArray(arr, "title", title);
   if (!itemToEdit) {
-    console.log("An item with that title could not be found. ");
-    logTasks(tStore.tasks);
-    mainMenu();
+    logNotFound();
+    return;
   }
   const subtask = await getStringInput(`What is the subtask? `);
   itemToEdit?.addSubtaskToTask(subtask);

@@ -1,3 +1,16 @@
+export function timeStamp() {
+    const newDate = new Date();
+    const formatted = new Intl.DateTimeFormat("en-us", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+    }).format(newDate);
+    return formatted;
+}
 export class Task {
     #id;
     #title;
@@ -6,6 +19,7 @@ export class Task {
     #completed;
     #createdAt;
     #category;
+    #dueDate;
     #subtasks;
     #tags;
     constructor(title, description, priority, category) {
@@ -15,7 +29,8 @@ export class Task {
         this.#priority = priority;
         this.#completed = false;
         this.#category = category;
-        this.#createdAt = new Date().toISOString();
+        this.#createdAt = timeStamp();
+        this.#dueDate = "none";
         this.#subtasks = [];
         this.#tags = [];
     }
@@ -45,7 +60,10 @@ export class Task {
         return this.#tags;
     }
     get subtasks() {
-        return this.subtasks;
+        return this.#subtasks;
+    }
+    get dueDate() {
+        return this.#dueDate;
     }
     // setters
     set title(newTitle) {
@@ -69,7 +87,11 @@ export class Task {
     set subTasks(newSubtasks) {
         this.#subtasks = newSubtasks;
     }
+    set dueDate(newDueDate) {
+        this.#dueDate = newDueDate;
+    }
     addSubtaskToTask(subtask) {
+        console.log("subtask ", subtask);
         this.#subtasks.push(subtask);
     }
     addTagToTask(tag) {

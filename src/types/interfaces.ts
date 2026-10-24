@@ -31,9 +31,9 @@ export interface EditInfo {
 }
 
 export interface DueDate {
-  month: Month;
-  year: number;
   day: number;
+  month: number;
+  year: number;
 }
 
 export interface SubTask {

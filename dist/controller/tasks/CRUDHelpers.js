@@ -26,8 +26,10 @@ export async function markTask(completed = true) {
     const arr = tStore.tasks;
     const newValue = completed ? true : false;
     const foundItem = returnObjInArray(arr, "title", title);
-    if (!foundItem)
+    if (!foundItem) {
+        logNotFound();
         return;
+    }
     const newArray = editItemInArray(arr, foundItem, "id", "completed", newValue);
     if (!newArray) {
         logNotFound();
@@ -60,8 +62,10 @@ export async function deleteTask() {
     const arr = tStore.tasks;
     const title = await getStringInput(getInfoQuestion("delete", "title"));
     const itemToRemove = returnObjInArray(arr, "title", title);
-    if (!itemToRemove)
+    if (!itemToRemove) {
+        logNotFound();
         return;
+    }
     const newArray = removeItemInArray(arr, itemToRemove, "id");
     if (!newArray) {
         logNotFound();

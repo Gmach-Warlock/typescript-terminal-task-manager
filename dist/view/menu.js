@@ -34,12 +34,13 @@ What would you like to do?
 7. Search tasks
 8. Sort tasks
 9. Filter tasks
-10. Add Tag to Task
-11. Add Subtask to Task
-12. Clear Completed Tasks
-13: Show High Priority
-14: View Stats
-15: Exit    
+10. Add tag to task
+11. Add subtask to task
+12. Add due date to task
+13: Clear completed tasks
+14: Show high priority
+15: View stats    
+16: Exit    
     `);
 }
 export function logNotFound() {

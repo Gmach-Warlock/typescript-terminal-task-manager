@@ -10,7 +10,7 @@ export type SimpleType = string | boolean | number;
 export type BasicTypes = string | boolean | number | object;
 export type FilterType = Completed | Priority;
 export type SortType = "Newest" | "Oldest" | "Low" | "High";
-export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace" | "subtask" | "tag";
+export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace" | "subtask" | "tag" | "dueDate";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
 export type Month = "January" | "February" | "March" | "April" | "May" | "June" | "July" | "August" | "September" | "October" | "November" | "December";

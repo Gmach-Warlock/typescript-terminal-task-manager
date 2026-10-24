@@ -1,4 +1,3 @@
-export declare function makeDueDate(): Promise<void>;
 export declare function viewStats(): Promise<void>;
 export declare function showHighPriority(): Promise<void>;
 export declare function clearCompleted(): Promise<void>;

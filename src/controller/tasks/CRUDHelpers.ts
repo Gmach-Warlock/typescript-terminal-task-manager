@@ -45,7 +45,10 @@ export async function markTask(completed: boolean = true) {
   const arr = tStore.tasks;
   const newValue = completed ? true : false;
   const foundItem = returnObjInArray(arr, "title", title);
-  if (!foundItem) return;
+  if (!foundItem) {
+    logNotFound();
+    return;
+  }
   const newArray = editItemInArray(arr, foundItem, "id", "completed", newValue);
   if (!newArray) {
     logNotFound();
@@ -88,7 +91,10 @@ export async function deleteTask() {
     getInfoQuestion("delete", "title"),
   );
   const itemToRemove: Task | undefined = returnObjInArray(arr, "title", title);
-  if (!itemToRemove) return;
+  if (!itemToRemove) {
+    logNotFound();
+    return;
+  }
   const newArray = removeItemInArray(arr, itemToRemove, "id");
   if (!newArray) {
     logNotFound();

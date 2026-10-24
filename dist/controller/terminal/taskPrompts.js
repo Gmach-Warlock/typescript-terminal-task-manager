@@ -12,9 +12,10 @@ Description: ${task.description},
 Category: ${task.category}, 
 Priority: ${task.priority},
 Completed: ${task.completed},
-Created At: ${task.createdAt},
+Created: ${task.createdAt},
+Due: ${task.dueDate},
 Tags: ${task.tags}
-Subtasks:  
+Subtasks: ${task.subtasks}  
 -----------------------------------------`));
 }
 export function logStats() {

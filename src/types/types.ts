@@ -19,7 +19,8 @@ export type Purpose =
   | "incomplete"
   | "replace"
   | "subtask"
-  | "tag";
+  | "tag"
+  | "dueDate";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
 

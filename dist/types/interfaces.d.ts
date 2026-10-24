@@ -1,4 +1,4 @@
-import type { Month, Priority, PropToModify, TCategory } from "./types.js";
+import type { Priority, PropToModify, TCategory } from "./types.js";
 export interface TaskObj extends TaskInfo {
     id: string;
     title: string;
@@ -26,9 +26,9 @@ export interface EditInfo {
     newValue: string;
 }
 export interface DueDate {
-    month: Month;
-    year: number;
     day: number;
+    month: number;
+    year: number;
 }
 export interface SubTask {
     id: string;

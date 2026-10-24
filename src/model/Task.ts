@@ -1,6 +1,19 @@
 import type { Priority, TCategory } from "../types/types.js";
-import type { TaskObj } from "../types/interfaces.js";
+import type { DueDate, TaskObj } from "../types/interfaces.js";
 
+export function timeStamp() {
+  const newDate = new Date();
+  const formatted = new Intl.DateTimeFormat("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  }).format(newDate);
+  return formatted;
+}
 export class Task {
   #id: string;
   #title: string;
@@ -9,6 +22,7 @@ export class Task {
   #completed: boolean;
   #createdAt: string;
   #category: TCategory;
+  #dueDate: string;
   #subtasks: string[];
   #tags: string[];
 
@@ -24,7 +38,8 @@ export class Task {
     this.#priority = priority;
     this.#completed = false;
     this.#category = category;
-    this.#createdAt = new Date().toISOString();
+    this.#createdAt = timeStamp();
+    this.#dueDate = "none";
     this.#subtasks = [];
     this.#tags = [];
   }
@@ -55,7 +70,10 @@ export class Task {
     return this.#tags;
   }
   get subtasks(): string[] {
-    return this.subtasks;
+    return this.#subtasks;
+  }
+  get dueDate(): string {
+    return this.#dueDate;
   }
 
   // setters
@@ -80,8 +98,12 @@ export class Task {
   set subTasks(newSubtasks: string[]) {
     this.#subtasks = newSubtasks;
   }
+  set dueDate(newDueDate: string) {
+    this.#dueDate = newDueDate;
+  }
 
   addSubtaskToTask(subtask: string) {
+    console.log("subtask ", subtask);
     this.#subtasks.push(subtask);
   }
 

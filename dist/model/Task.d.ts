@@ -1,5 +1,6 @@
 import type { Priority, TCategory } from "../types/types.js";
 import type { TaskObj } from "../types/interfaces.js";
+export declare function timeStamp(): string;
 export declare class Task {
     #private;
     constructor(title: string, description: string, priority: Priority, category: TCategory);
@@ -12,6 +13,7 @@ export declare class Task {
     get category(): TCategory;
     get tags(): string[];
     get subtasks(): string[];
+    get dueDate(): string;
     set title(newTitle: string);
     set description(newDescription: string);
     set priority(newPriority: Priority);
@@ -19,6 +21,7 @@ export declare class Task {
     set category(newCategory: TCategory);
     set tags(newTags: string[]);
     set subTasks(newSubtasks: string[]);
+    set dueDate(newDueDate: string);
     addSubtaskToTask(subtask: string): void;
     addTagToTask(tag: string): void;
     logTags(): void;

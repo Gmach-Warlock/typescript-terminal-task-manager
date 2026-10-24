@@ -8,6 +8,7 @@ export function getInfoQuestion(purpose, prop) {
         replace: `What is the new ${prop} of the task? `,
         subtask: `What is the ${prop} of the task to add the subtask? `,
         tag: `What is the ${prop} of the task to add the tag to? `,
+        dueDate: `What is the ${prop} of the task to add a due date to? `,
     };
     const question = lookup[purpose];
     return question;

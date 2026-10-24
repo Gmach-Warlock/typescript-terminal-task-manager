@@ -14,7 +14,7 @@ import {
   deleteTask,
 } from "./CRUDHelpers.js";
 import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
-
+import { addDueDate } from "./dateHelpers.js";
 export function returnAction(val: number): void {
   const lookup: Record<number, () => void> = {
     1: () => addTask(),
@@ -28,10 +28,11 @@ export function returnAction(val: number): void {
     9: () => filterTasks(),
     10: () => addTag(),
     11: () => addSubtask(),
-    12: () => clearCompleted(),
-    13: () => showHighPriority(),
-    14: () => viewStats(),
-    15: () => closeApp(),
+    12: () => addDueDate(),
+    13: () => clearCompleted(),
+    14: () => showHighPriority(),
+    15: () => viewStats(),
+    16: () => closeApp(),
   };
   lookup[val]?.();
 }
