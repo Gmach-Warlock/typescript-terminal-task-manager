@@ -1,4 +1,4 @@
-import type { Priority } from "../types/types.js";
+import type { Priority, TCategory } from "../types/types.js";
 import type { TaskObj } from "../types/interfaces.js";
 
 export class Task {
@@ -8,14 +8,25 @@ export class Task {
   #priority: Priority;
   #completed: boolean;
   #createdAt: string;
+  #category: TCategory;
+  #subtasks: string[];
+  #tags: string[];
 
-  constructor(title: string, description: string, priority: Priority) {
+  constructor(
+    title: string,
+    description: string,
+    priority: Priority,
+    category: TCategory,
+  ) {
     this.#id = crypto.randomUUID();
     this.#title = title;
     this.#description = description;
     this.#priority = priority;
     this.#completed = false;
+    this.#category = category;
     this.#createdAt = new Date().toISOString();
+    this.#subtasks = [];
+    this.#tags = [];
   }
 
   // getters
@@ -37,6 +48,15 @@ export class Task {
   get createdAt(): string {
     return this.#createdAt;
   }
+  get category(): TCategory {
+    return this.#category;
+  }
+  get tags(): string[] {
+    return this.#tags;
+  }
+  get subtasks(): string[] {
+    return this.subtasks;
+  }
 
   // setters
   set title(newTitle: string) {
@@ -51,13 +71,33 @@ export class Task {
   set completed(newCompleted: boolean) {
     this.#completed = newCompleted;
   }
+  set category(newCategory: TCategory) {
+    this.#category = newCategory;
+  }
+  set tags(newTags: string[]) {
+    this.#tags = newTags;
+  }
+  set subTasks(newSubtasks: string[]) {
+    this.#subtasks = newSubtasks;
+  }
 
+  addSubtaskToTask(subtask: string) {
+    this.#subtasks.push(subtask);
+  }
+
+  addTagToTask(tag: string) {
+    this.#tags.push(tag);
+  }
+  logTags() {
+    this.#tags.forEach((tag) => console.log(`Tag: ${tag}`));
+  }
   // return the options
   toObject(): TaskObj {
     return {
       id: this.id,
       title: this.title,
       description: this.description,
+      category: this.category,
       priority: this.priority,
       completed: this.completed,
       createdAt: this.createdAt,

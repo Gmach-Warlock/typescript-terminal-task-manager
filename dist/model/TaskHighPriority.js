@@ -3,6 +3,12 @@ export class TaskHighPriority {
     constructor() {
         this.#highPriority = 0;
     }
+    get highPriority() {
+        return this.#highPriority;
+    }
+    set highPriority(newHighPriority) {
+        this.#highPriority = newHighPriority;
+    }
     incHighPriority() {
         this.#highPriority++;
     }

@@ -1,4 +1,5 @@
 import { closeApp } from "../terminal/terminal.js";
+import { addTag, addSubtask, clearCompleted, showHighPriority, viewStats, } from "./BONUSHelpers.js";
 import { addTask, editTask, markTask, viewTasks, deleteTask, } from "./CRUDHelpers.js";
 import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
 export function returnAction(val) {
@@ -12,7 +13,12 @@ export function returnAction(val) {
         7: () => searchTasks(),
         8: () => sortTasks(),
         9: () => filterTasks(),
-        10: () => closeApp(),
+        10: () => addTag(),
+        11: () => addSubtask(),
+        12: () => clearCompleted(),
+        13: () => showHighPriority(),
+        14: () => viewStats(),
+        15: () => closeApp(),
     };
     lookup[val]?.();
 }

@@ -56,3 +56,10 @@ export function editTStats(
     return;
   }
 }
+
+export function clearTCStats(numDeleted: number, highPriorityAmount: number) {
+  tTotals.size -= numDeleted;
+  tCompletes.complete = 0;
+  tCompletes.completed += numDeleted;
+  tHighPriority.highPriority -= highPriorityAmount;
+}

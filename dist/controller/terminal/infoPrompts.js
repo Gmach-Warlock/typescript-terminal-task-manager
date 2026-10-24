@@ -3,25 +3,15 @@ import { getInfoQuestion } from "../tasks/taskHelpers1.js";
 export async function getAddInfo() {
     const title = await getStringInput(getInfoQuestion("add", "title"));
     const description = await getStringInput(getInfoQuestion("add", "description"));
-    const priorityNum = await getNumericInput(`
-${getInfoQuestion("add", "priority")}
-
-1. Low
-2. Medium
-3. High
-
-Please choose the appropriate value: 
-`, 3);
-    const priorityLookup = {
-        1: "Low",
-        2: "Medium",
-        3: "High",
-    };
-    const priority = priorityLookup[priorityNum];
+    const priority = await getPriority();
     if (!priority) {
         throw new Error("Invalid priority value");
     }
-    return { title, description, priority };
+    const category = await getCategory();
+    if (!category) {
+        throw new Error("Invalid Category");
+    }
+    return { title, description, priority, category };
 }
 export async function getEditInfo() {
     const key = await getNumericInput(`
@@ -62,6 +52,24 @@ Please enter the appropriate value:
         1: "Low",
         2: "Medium",
         3: "High",
+    };
+    return lookup[key];
+}
+export async function getCategory(adding = true) {
+    const key = await getNumericInput(`
+What is the ${!adding ? "new" : ""} category of the ${adding ? "new" : ""} Task? 
+
+1. Work
+2. Home
+3. Health
+4. Personal
+5. Other `, 5);
+    const lookup = {
+        1: "Work",
+        2: "Home",
+        3: "Health",
+        4: "Personal",
+        5: "Other",
     };
     return lookup[key];
 }

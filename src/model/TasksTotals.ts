@@ -16,6 +16,13 @@ export class TasksTotals {
   get total(): number {
     return this.#total;
   }
+  // setters
+  set size(newSize: number) {
+    this.#size = newSize;
+  }
+  set total(newTotal: number) {
+    this.#total = newTotal;
+  }
 
   incSize() {
     this.#size++;

@@ -1,34 +1,21 @@
 import { getStringInput, getNumericInput } from "./terminal.js";
 import { getInfoQuestion } from "../tasks/taskHelpers1.js";
-import type { Priority, PropToModify } from "../../types/types.js";
+import type { Priority, PropToModify, TCategory } from "../../types/types.js";
 
 export async function getAddInfo() {
   const title: string = await getStringInput(getInfoQuestion("add", "title"));
   const description: string = await getStringInput(
     getInfoQuestion("add", "description"),
   );
-  const priorityNum: number = await getNumericInput(
-    `
-${getInfoQuestion("add", "priority")}
-
-1. Low
-2. Medium
-3. High
-
-Please choose the appropriate value: 
-`,
-    3,
-  );
-  const priorityLookup: Record<number, Priority> = {
-    1: "Low",
-    2: "Medium",
-    3: "High",
-  };
-  const priority = priorityLookup[priorityNum];
+  const priority = await getPriority();
   if (!priority) {
     throw new Error("Invalid priority value");
   }
-  return { title, description, priority };
+  const category = await getCategory();
+  if (!category) {
+    throw new Error("Invalid Category");
+  }
+  return { title, description, priority, category };
 }
 
 export async function getEditInfo() {
@@ -79,5 +66,29 @@ Please enter the appropriate value:
     2: "Medium",
     3: "High",
   };
+  return lookup[key];
+}
+
+export async function getCategory(adding: boolean = true) {
+  const key = await getNumericInput(
+    `
+What is the ${!adding ? "new" : ""} category of the ${adding ? "new" : ""} Task? 
+
+1. Work
+2. Home
+3. Health
+4. Personal
+5. Other `,
+    5,
+  );
+
+  const lookup: Record<number, TCategory> = {
+    1: "Work",
+    2: "Home",
+    3: "Health",
+    4: "Personal",
+    5: "Other",
+  };
+
   return lookup[key];
 }

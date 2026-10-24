@@ -3,6 +3,8 @@ export declare class TasksTotals {
     constructor();
     get size(): number;
     get total(): number;
+    set size(newSize: number);
+    set total(newTotal: number);
     incSize(): void;
     decSize(): void;
     incTotal(): void;

@@ -1,4 +1,4 @@
-import type { Priority, PropToModify } from "./types.js";
+import type { Month, Priority, PropToModify, TCategory } from "./types.js";
 export interface TaskObj extends TaskInfo {
     id: string;
     title: string;
@@ -12,6 +12,7 @@ export interface TaskInfo {
     description: string;
     priority: Priority;
     completed: boolean;
+    category: TCategory;
 }
 export interface TasksSizeObj {
     size: number;
@@ -23,5 +24,15 @@ export interface TasksStoreObj {
 export interface EditInfo {
     propToEdit: PropToModify;
     newValue: string;
+}
+export interface DueDate {
+    month: Month;
+    year: number;
+    day: number;
+}
+export interface SubTask {
+    id: string;
+    title: string;
+    createdAt: string;
 }
 //# sourceMappingURL=interfaces.d.ts.map

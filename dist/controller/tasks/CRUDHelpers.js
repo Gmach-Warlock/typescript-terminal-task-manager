@@ -5,10 +5,10 @@ import { logTasks } from "../terminal/taskPrompts.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, removeItemInArray, returnObjInArray, } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
-import { addTStats, editTStats, markTStats, removeTStats, } from "./statHelpers.js";
+import { addTStats, editTStats, markTStats, removeTStats, } from "../stats/statHelpers.js";
 export async function addTask() {
     const addLookup = await getAddInfo();
-    const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority);
+    const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority, addLookup.category);
     const arr = tStore.tasks;
     const newArray = addElementToArray(arr, newTask);
     if (!newArray) {

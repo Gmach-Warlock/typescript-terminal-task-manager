@@ -1,5 +1,6 @@
 import { Task } from "../model/Task.js";
 export type Answer = string | number;
+export type TCategory = "Work" | "Home" | "Health" | "Personal" | "Other";
 export type Completed = "Complete" | "Incomplete" | "All";
 export type Listener = () => void;
 export type Priority = "Low" | "Medium" | "High";
@@ -12,4 +13,5 @@ export type SortType = "Newest" | "Oldest" | "Low" | "High";
 export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
+export type Month = "January" | "February" | "March" | "April" | "May" | "June" | "July" | "August" | "September" | "October" | "November" | "December";
 //# sourceMappingURL=types.d.ts.map

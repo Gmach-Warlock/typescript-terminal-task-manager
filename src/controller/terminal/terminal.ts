@@ -21,7 +21,7 @@ export async function getAnswer(question: string): Promise<Answer> {
 
 export async function getNumericInput(
   question: string,
-  numOfOptions: number = 10,
+  numOfOptions: number = 15,
 ) {
   let hasAnswer: boolean = false;
   let answer;
@@ -48,6 +48,7 @@ export async function getNumericInput(
 export async function getStringInput(
   question: string,
   numguard: boolean = true,
+  numOnly?: boolean,
 ) {
   let hasAnswer: boolean = false;
   let answer;
@@ -61,6 +62,11 @@ export async function getStringInput(
     if (numguard)
       if (/^\d+$/.test(answer as string)) {
         console.log("Please enter a string not a number here: ");
+        continue;
+      }
+    if (numOnly)
+      if (!/^\d+$/.test(answer as string)) {
+        console.log("Please enter a number here. ");
         continue;
       }
     hasAnswer = true;

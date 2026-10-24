@@ -1,7 +1,17 @@
+import type { Priority } from "../types/types.js";
+
 export class TaskHighPriority {
   #highPriority: number;
   constructor() {
     this.#highPriority = 0;
+  }
+
+  get highPriority() {
+    return this.#highPriority;
+  }
+
+  set highPriority(newHighPriority: number) {
+    this.#highPriority = newHighPriority;
   }
 
   incHighPriority() {

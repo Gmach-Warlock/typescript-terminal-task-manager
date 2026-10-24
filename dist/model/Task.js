@@ -5,13 +5,19 @@ export class Task {
     #priority;
     #completed;
     #createdAt;
-    constructor(title, description, priority) {
+    #category;
+    #subtasks;
+    #tags;
+    constructor(title, description, priority, category) {
         this.#id = crypto.randomUUID();
         this.#title = title;
         this.#description = description;
         this.#priority = priority;
         this.#completed = false;
+        this.#category = category;
         this.#createdAt = new Date().toISOString();
+        this.#subtasks = [];
+        this.#tags = [];
     }
     // getters
     get id() {
@@ -32,6 +38,15 @@ export class Task {
     get createdAt() {
         return this.#createdAt;
     }
+    get category() {
+        return this.#category;
+    }
+    get tags() {
+        return this.#tags;
+    }
+    get subtasks() {
+        return this.subtasks;
+    }
     // setters
     set title(newTitle) {
         this.#title = newTitle;
@@ -45,12 +60,31 @@ export class Task {
     set completed(newCompleted) {
         this.#completed = newCompleted;
     }
+    set category(newCategory) {
+        this.#category = newCategory;
+    }
+    set tags(newTags) {
+        this.#tags = newTags;
+    }
+    set subTasks(newSubtasks) {
+        this.#subtasks = newSubtasks;
+    }
+    addSubtaskToTask(subtask) {
+        this.#subtasks.push(subtask);
+    }
+    addTagToTask(tag) {
+        this.#tags.push(tag);
+    }
+    logTags() {
+        this.#tags.forEach((tag) => console.log(`Tag: ${tag}`));
+    }
     // return the options
     toObject() {
         return {
             id: this.id,
             title: this.title,
             description: this.description,
+            category: this.category,
             priority: this.priority,
             completed: this.completed,
             createdAt: this.createdAt,

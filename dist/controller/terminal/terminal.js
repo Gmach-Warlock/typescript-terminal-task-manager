@@ -14,7 +14,7 @@ export async function getAnswer(question) {
     const answer = await askQuestion(question);
     return answer;
 }
-export async function getNumericInput(question, numOfOptions = 10) {
+export async function getNumericInput(question, numOfOptions = 15) {
     let hasAnswer = false;
     let answer;
     while (!hasAnswer) {
@@ -36,7 +36,7 @@ export async function getNumericInput(question, numOfOptions = 10) {
     }
     return answer;
 }
-export async function getStringInput(question, numguard = true) {
+export async function getStringInput(question, numguard = true, numOnly) {
     let hasAnswer = false;
     let answer;
     while (!hasAnswer) {
@@ -48,6 +48,11 @@ export async function getStringInput(question, numguard = true) {
         if (numguard)
             if (/^\d+$/.test(answer)) {
                 console.log("Please enter a string not a number here: ");
+                continue;
+            }
+        if (numOnly)
+            if (!/^\d+$/.test(answer)) {
+                console.log("Please enter a number here. ");
                 continue;
             }
         hasAnswer = true;

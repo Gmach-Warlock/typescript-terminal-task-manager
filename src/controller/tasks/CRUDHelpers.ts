@@ -16,7 +16,7 @@ import {
   editTStats,
   markTStats,
   removeTStats,
-} from "./statHelpers.js";
+} from "../stats/statHelpers.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();
@@ -24,6 +24,7 @@ export async function addTask() {
     addLookup.title,
     addLookup.description,
     addLookup.priority,
+    addLookup.category,
   );
   const arr = tStore.tasks;
   const newArray = addElementToArray(arr, newTask);

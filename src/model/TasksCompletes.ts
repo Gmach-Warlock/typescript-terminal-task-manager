@@ -1,10 +1,12 @@
 export class TasksCompletes {
   #complete: number;
   #incomplete: number;
+  #completed: number;
 
   constructor() {
     this.#complete = 0;
     this.#incomplete = 0;
+    this.#completed = 0;
   }
 
   // getters
@@ -13,6 +15,19 @@ export class TasksCompletes {
   }
   get incomplete(): number {
     return this.#incomplete;
+  }
+  get completed(): number {
+    return this.#completed;
+  }
+  // setters
+  set complete(newComplete: number) {
+    this.#complete = newComplete;
+  }
+  set incomplete(newIncomplete: number) {
+    this.#complete = newIncomplete;
+  }
+  set completed(newCompleted: number) {
+    this.#completed = newCompleted;
   }
 
   incComplete() {
@@ -30,7 +45,8 @@ export class TasksCompletes {
 
   logCompletes() {
     console.log(`Complete: ${this.#complete}
-Incomplete: ${this.incomplete}`);
+Incomplete: ${this.incomplete}
+Completed: ${this.#completed}`);
   }
 }
 

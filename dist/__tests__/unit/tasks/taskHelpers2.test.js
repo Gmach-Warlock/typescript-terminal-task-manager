@@ -43,18 +43,21 @@ describe("returnFilterArray", () => {
             description: "Desc 1",
             priority: "Low",
             completed: false,
+            category: "Health",
         };
         const testItem2 = {
             title: "Task 2",
             description: "Desc 2",
             priority: "Medium",
             completed: true,
+            category: "Other",
         };
         const testItem3 = {
             title: "Task 3",
             description: "Desc 3",
             priority: "High",
             completed: false,
+            category: "Work",
         };
         const testArr = [testItem1, testItem2, testItem3];
         const filterProp1 = "Complete";
@@ -88,9 +91,9 @@ describe("returnFilterArray", () => {
 describe("returnSortedArray", () => {
     it("should return a properly sorted array based on the criteria", () => {
         // arrange
-        const testItem1 = new Task("Task 1", "Desc 1", "Low");
-        const testItem2 = new Task("Task 2", "Desc 2", "Low");
-        const testItem3 = new Task("Task 3", "Desc 3", "Low");
+        const testItem1 = new Task("Task 1", "Desc 1", "Low", "Home");
+        const testItem2 = new Task("Task 2", "Desc 2", "Low", "Other");
+        const testItem3 = new Task("Task 3", "Desc 3", "Low", "Personal");
         const testArr1 = [testItem1, testItem2, testItem3];
         const testArr2 = [testItem1, testItem2, testItem3];
         const testArr3 = [testItem1, testItem2, testItem3];

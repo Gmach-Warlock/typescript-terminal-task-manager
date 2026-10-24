@@ -8,11 +8,13 @@ export function logTasks(tasks) {
     tasks.forEach((task) => console.log(`
 Id: ${task.id},
 Title: ${task.title},
-Description: ${task.description}, 
-Priority: ${task.priority};
-Completed: ${task.completed};
-Created At: ${task.createdAt};
-
+Description: ${task.description},
+Category: ${task.category}, 
+Priority: ${task.priority},
+Completed: ${task.completed},
+Created At: ${task.createdAt},
+Tags: ${task.tags}
+Subtasks:  
 -----------------------------------------`));
 }
 export function logStats() {
