@@ -103,7 +103,6 @@ export class Task {
   }
 
   addSubtaskToTask(subtask: string) {
-    console.log("subtask ", subtask);
     this.#subtasks.push(subtask);
   }
 
