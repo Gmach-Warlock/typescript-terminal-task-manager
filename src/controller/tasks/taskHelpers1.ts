@@ -11,8 +11,10 @@ export function getInfoQuestion(purpose: Purpose, prop: PropToModify) {
     subtask: `What is the ${prop} of the task to add the subtask? `,
     tag: `What is the ${prop} of the task to add the tag to? `,
     dueDate: `What is the ${prop} of the task to add a due date to? `,
-    redo: `Are you sure you want to redo what you just undid?`,
-    undo: "Are you sure you want to undo your last action?",
+    redo: `Are you sure you want to redo what you just undid? `,
+    undo: "Are you sure you want to undo your last action? ",
+    save: "Are you sure you want to save? ",
+    load: "Do you want to load the existing tasks? ",
   };
   const question: string = lookup[purpose];
 

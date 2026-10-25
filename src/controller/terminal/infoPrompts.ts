@@ -27,8 +27,7 @@ Which property do you want to modify?
 2. Description
 3. Priority
 
-Please choose the appropriate value: 
-`,
+Please choose the appropriate value: `,
     3,
   );
   const lookup: Record<number, Partial<PropToModify>> = {
@@ -57,8 +56,7 @@ What is the ${!adding ? "new " : ""}priority of the ${adding ? "new " : ""}task?
 2. Medium 
 3. High
 
-Please enter the appropriate value: 
-    `,
+Please enter the appropriate value: `,
     3,
   );
   const lookup: Record<number, Priority> = {
@@ -78,7 +76,9 @@ What is the ${!adding ? "new" : ""} category of the ${adding ? "new" : ""} Task?
 2. Home
 3. Health
 4. Personal
-5. Other `,
+5. Other 
+
+Please enter the appropriate value: `,
     5,
   );
 

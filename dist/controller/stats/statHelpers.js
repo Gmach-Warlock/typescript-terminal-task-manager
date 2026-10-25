@@ -32,7 +32,6 @@ export function markTStats(completed = true) {
     }
 }
 export function editTStats(task, propToModify, newVal) {
-    console.log(task);
     if (propToModify === "priority" && task[propToModify] === newVal) {
         console.log(`No need to change stats`);
         return;

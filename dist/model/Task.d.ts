@@ -1,5 +1,5 @@
 import type { Priority, TCategory } from "../types/types.js";
-import type { TaskObj } from "../types/interfaces.js";
+import type { TaskInfo } from "../types/interfaces.js";
 export declare function timeStamp(): string;
 export declare class Task {
     #private;
@@ -25,6 +25,6 @@ export declare class Task {
     addSubtaskToTask(subtask: string): void;
     addTagToTask(tag: string): void;
     logTags(): void;
-    toObject(): TaskObj;
+    toObject(): TaskInfo;
 }
 //# sourceMappingURL=Task.d.ts.map

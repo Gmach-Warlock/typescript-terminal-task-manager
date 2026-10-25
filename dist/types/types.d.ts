@@ -1,4 +1,5 @@
 import { Task } from "../model/Task.js";
+import type { TaskInfo } from "./interfaces.js";
 export type Answer = string | number;
 export type TCategory = "Work" | "Home" | "Health" | "Personal" | "Other";
 export type Completed = "Complete" | "Incomplete" | "All";
@@ -10,8 +11,9 @@ export type SimpleType = string | boolean | number;
 export type BasicTypes = string | boolean | number | object;
 export type FilterType = Completed | Priority;
 export type SortType = "Newest" | "Oldest" | "Low" | "High";
-export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace" | "subtask" | "tag" | "dueDate" | "redo" | "undo";
+export type Purpose = "add" | "delete" | "edit" | "complete" | "incomplete" | "replace" | "subtask" | "tag" | "dueDate" | "redo" | "undo" | "save" | "load";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
+export type TaskStoreObj = TaskInfo[];
 export type Month = "January" | "February" | "March" | "April" | "May" | "June" | "July" | "August" | "September" | "October" | "November" | "December";
 //# sourceMappingURL=types.d.ts.map

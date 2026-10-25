@@ -1,29 +1,22 @@
 import { Task } from "../model/Task.js";
 import type { Priority, PropToModify, Purpose, TCategory } from "./types.js";
 
-export interface TaskObj extends TaskInfo {
+export interface TaskInfo {
   id: string;
   title: string;
   description: string;
   priority: Priority;
   completed: boolean;
-  createdAt: string;
-}
-export interface TaskInfo {
-  title: string;
-  description: string;
-  priority: Priority;
-  completed: boolean;
   category: TCategory;
+  createdAt: string;
+  dueDate: string;
+  subtasks: string[];
+  tags: string[];
 }
 
 export interface TasksSizeObj {
   size: number;
   total: number;
-}
-
-export interface TasksStoreObj {
-  tasks: TaskObj[];
 }
 
 export interface EditInfo {

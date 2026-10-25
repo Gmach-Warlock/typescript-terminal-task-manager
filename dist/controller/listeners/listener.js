@@ -15,6 +15,8 @@ export function logListener(purpose) {
         dueDate: "A due date has been added to the task.",
         redo: "The last undo was just reversed.",
         undo: "The last action was just reversed",
+        save: "Your tasks have been saved successfully.",
+        load: "Your tasks have been successfully loaded.",
     };
     const response = lookup[purpose];
     setTimeout(() => {

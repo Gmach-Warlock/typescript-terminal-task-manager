@@ -63,6 +63,5 @@ export async function getDueDateInfo() {
   if (!year || !month || !day) return;
   if (!dayExists(year, month, Number(day))) return;
   const dateObj = { day, month, year };
-  console.log(dateObj);
   return dateObj;
 }

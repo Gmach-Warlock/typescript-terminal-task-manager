@@ -47,7 +47,6 @@ export class TasksStore {
     saveTasks() {
         try {
             const tasks = tStore.getTaskObjects();
-            console.log(tasks);
             const convertedData = JSON.stringify(tasks);
             const callBack = () => console.log("data", convertedData);
             fs.writeFile("../../../data/tasks.json", convertedData, callBack);

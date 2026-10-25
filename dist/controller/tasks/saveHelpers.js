@@ -1,6 +1,10 @@
+import { tStore } from "../../model/TasksStore.js";
 import { mainMenu } from "../../view/menu.js";
+import { saveToFile } from "../files/FileHelpers.js";
 export function saveApp() {
-    console.log("coming soon");
+    const arr = tStore.tasks;
+    console.log("Attempting to save app in saveApp");
+    saveToFile(arr);
     mainMenu();
 }
 export function undoState() {

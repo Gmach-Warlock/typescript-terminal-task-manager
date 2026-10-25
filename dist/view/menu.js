@@ -83,7 +83,7 @@ export function logNotFound() {
 // need to switch to 3 and get new options going
 export async function mainMenu() {
     logMainMenu3();
-    const answer = await getNumericInput("Please choose an option: ");
+    const answer = await getNumericInput(`Please choose an option: `);
     if (answer === undefined)
         return;
     returnAction2(answer);

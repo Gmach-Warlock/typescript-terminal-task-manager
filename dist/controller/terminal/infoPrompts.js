@@ -21,8 +21,7 @@ Which property do you want to modify?
 2. Description
 3. Priority
 
-Please choose the appropriate value: 
-`, 3);
+Please choose the appropriate value: `, 3);
     const lookup = {
         1: "title",
         2: "description",
@@ -46,8 +45,7 @@ What is the ${!adding ? "new " : ""}priority of the ${adding ? "new " : ""}task?
 2. Medium 
 3. High
 
-Please enter the appropriate value: 
-    `, 3);
+Please enter the appropriate value: `, 3);
     const lookup = {
         1: "Low",
         2: "Medium",
@@ -63,7 +61,9 @@ What is the ${!adding ? "new" : ""} category of the ${adding ? "new" : ""} Task?
 2. Home
 3. Health
 4. Personal
-5. Other `, 5);
+5. Other 
+
+Please enter the appropriate value: `, 5);
     const lookup = {
         1: "Work",
         2: "Home",

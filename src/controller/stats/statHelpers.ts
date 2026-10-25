@@ -41,7 +41,6 @@ export function editTStats(
   propToModify: keyof Task,
   newVal: string,
 ) {
-  console.log(task);
   if (propToModify === "priority" && task[propToModify] === newVal) {
     console.log(`No need to change stats`);
     return;

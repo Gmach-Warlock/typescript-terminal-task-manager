@@ -2,7 +2,6 @@ import { Task } from "../../model/Task.js";
 import { tStore } from "../../model/TasksStore.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { getDueDateInfo } from "../terminal/datePrompts.js";
-import { logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { editItemInArray, getInfoQuestion } from "./taskHelpers1.js";
 export async function addDueDate() {

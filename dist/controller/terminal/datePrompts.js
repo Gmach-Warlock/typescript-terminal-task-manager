@@ -53,7 +53,6 @@ export async function getDueDateInfo() {
     if (!dayExists(year, month, Number(day)))
         return;
     const dateObj = { day, month, year };
-    console.log(dateObj);
     return dateObj;
 }
 //# sourceMappingURL=datePrompts.js.map

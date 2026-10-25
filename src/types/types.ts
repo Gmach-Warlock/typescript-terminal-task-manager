@@ -1,4 +1,5 @@
 import { Task } from "../model/Task.js";
+import type { TaskInfo } from "./interfaces.js";
 
 export type Answer = string | number;
 export type TCategory = "Work" | "Home" | "Health" | "Personal" | "Other";
@@ -22,9 +23,12 @@ export type Purpose =
   | "tag"
   | "dueDate"
   | "redo"
-  | "undo";
+  | "undo"
+  | "save"
+  | "load";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
+export type TaskStoreObj = TaskInfo[];
 
 export type Month =
   | "January"

@@ -1,5 +1,5 @@
 import type { Priority, TCategory } from "../types/types.js";
-import type { DueDate, TaskObj } from "../types/interfaces.js";
+import type { DueDate, TaskInfo } from "../types/interfaces.js";
 
 export function timeStamp() {
   const newDate = new Date();
@@ -114,7 +114,7 @@ export class Task {
     this.#tags.forEach((tag) => console.log(`Tag: ${tag}`));
   }
   // return the options
-  toObject(): TaskObj {
+  toObject(): TaskInfo {
     return {
       id: this.id,
       title: this.title,
@@ -123,6 +123,9 @@ export class Task {
       priority: this.priority,
       completed: this.completed,
       createdAt: this.createdAt,
+      dueDate: this.dueDate,
+      subtasks: this.subtasks,
+      tags: this.tags,
     };
   }
 }

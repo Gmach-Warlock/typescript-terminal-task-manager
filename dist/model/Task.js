@@ -110,6 +110,9 @@ export class Task {
             priority: this.priority,
             completed: this.completed,
             createdAt: this.createdAt,
+            dueDate: this.dueDate,
+            subtasks: this.subtasks,
+            tags: this.tags,
         };
     }
 }

@@ -4,7 +4,6 @@ import type { DueDate } from "../../types/interfaces.js";
 import type { Month } from "../../types/types.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { getDueDateInfo } from "../terminal/datePrompts.js";
-import { logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { editItemInArray, getInfoQuestion } from "./taskHelpers1.js";
 
