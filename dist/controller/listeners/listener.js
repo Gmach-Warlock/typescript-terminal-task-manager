@@ -13,6 +13,8 @@ export function logListener(purpose) {
         subtask: "A subtask has been added to the task.",
         tag: "A tag has been added to the task.",
         dueDate: "A due date has been added to the task.",
+        redo: "The last undo was just reversed.",
+        undo: "The last action was just reversed",
     };
     const response = lookup[purpose];
     setTimeout(() => {

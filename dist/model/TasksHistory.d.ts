@@ -4,6 +4,8 @@ export declare class TasksHistory {
     constructor();
     addNewTasksState(state: StateObject): void;
     logStates(): void;
+    redo(): void;
+    undo(): void;
 }
 export declare const tHistory: TasksHistory;
 //# sourceMappingURL=TasksHistory.d.ts.map

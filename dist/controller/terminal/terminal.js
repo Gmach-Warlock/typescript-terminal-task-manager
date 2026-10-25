@@ -14,7 +14,7 @@ export async function getAnswer(question) {
     const answer = await askQuestion(question);
     return answer;
 }
-export async function getNumericInput(question, numOfOptions = 16) {
+export async function getNumericInput(question, numOfOptions = 20) {
     let hasAnswer = false;
     let answer;
     while (!hasAnswer) {

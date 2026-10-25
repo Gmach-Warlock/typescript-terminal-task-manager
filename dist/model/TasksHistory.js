@@ -2,6 +2,7 @@ import { StateNode } from "./StateNode.js";
 export class TasksHistory {
     #head;
     #tail;
+    #currentN;
     #numOfTStates;
     #stateMap;
     #createDummies() {
@@ -21,6 +22,7 @@ export class TasksHistory {
     constructor() {
         this.#head = null;
         this.#tail = null;
+        this.#currentN = null;
         this.#numOfTStates = 0;
         this.#stateMap = new Map();
         this.#createDummies();
@@ -37,6 +39,7 @@ export class TasksHistory {
             this.#tail.previous = newNode;
             this.#numOfTStates++;
             this.#stateMap.set(state.timeChanged, newNode);
+            this.#currentN = newNode;
             return;
         }
         const temp = this.#tail.previous;
@@ -58,6 +61,16 @@ export class TasksHistory {
             current = current.previous;
         }
         console.log(`-------------------------------------------`);
+    }
+    redo() {
+        if (this.#currentN?.next)
+            this.#currentN = this.#currentN.next;
+        // need to update tStore.setTasks(arr, "redo") connect these and save to file, and you're good :)
+    }
+    undo() {
+        if (this.#currentN?.previous)
+            this.#currentN = this.#currentN.previous;
+        // need to update tStore.setTasks(arr, "undo");
     }
 }
 export const tHistory = new TasksHistory();

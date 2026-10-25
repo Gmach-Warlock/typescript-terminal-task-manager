@@ -21,7 +21,7 @@ export async function getAnswer(question: string): Promise<Answer> {
 
 export async function getNumericInput(
   question: string,
-  numOfOptions: number = 16,
+  numOfOptions: number = 20,
 ) {
   let hasAnswer: boolean = false;
   let answer;

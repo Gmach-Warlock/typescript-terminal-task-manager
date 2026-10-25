@@ -20,7 +20,9 @@ export type Purpose =
   | "replace"
   | "subtask"
   | "tag"
-  | "dueDate";
+  | "dueDate"
+  | "redo"
+  | "undo";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
 
