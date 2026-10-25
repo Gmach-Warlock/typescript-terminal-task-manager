@@ -1,5 +1,6 @@
 import readline from "readline";
-import type { Answer } from "../../types/types.js";
+import type { Answer, Purpose } from "../../types/types.js";
+import { mainMenu } from "../../view/menu.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -74,7 +75,30 @@ export async function getStringInput(
   return answer as string;
 }
 
-export function closeApp() {
+export async function getConfirmation(purpose: Partial<Purpose>) {
+  const key = await getNumericInput(
+    `Are you sure you want to ${purpose}?
+    
+  1. Yes
+  2. No
+  
+  Please enter the appropriate value: `,
+    2,
+  );
+  const answerLookup: Record<number, boolean> = {
+    1: true,
+    2: false,
+  };
+  if (!answerLookup) return;
+  return answerLookup[key];
+}
+
+export async function closeApp() {
+  const confirmed = await getConfirmation("exit");
+  if (!confirmed) {
+    console.log("Permission denied. Returning to main menu. ");
+    mainMenu();
+  }
   console.log(`
 Thank you for using the task app.
 Goodbye.

@@ -28,7 +28,6 @@ export class TasksStore {
     }
     getTaskObjects() {
         const objArr = this.#tasks.map((task) => task.toObject());
-        console.log(objArr);
         return objArr;
     }
     loadTasks() {

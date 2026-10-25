@@ -31,17 +31,24 @@ export class Task {
     description: string,
     priority: Priority,
     category: TCategory,
+    // repopulation
+    id?: string,
+    completed?: boolean,
+    createdAt?: string,
+    dueDate?: string,
+    subtasks?: string[],
+    tags?: string[],
   ) {
-    this.#id = crypto.randomUUID();
+    this.#id = id ? id : crypto.randomUUID();
     this.#title = title;
     this.#description = description;
     this.#priority = priority;
-    this.#completed = false;
+    this.#completed = completed ? completed : false;
     this.#category = category;
-    this.#createdAt = timeStamp();
-    this.#dueDate = "none";
-    this.#subtasks = [];
-    this.#tags = [];
+    this.#createdAt = createdAt ? createdAt : timeStamp();
+    this.#dueDate = dueDate ? dueDate : "none";
+    this.#subtasks = subtasks ? subtasks : [];
+    this.#tags = tags ? tags : [];
   }
 
   // getters

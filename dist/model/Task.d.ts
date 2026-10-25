@@ -3,7 +3,7 @@ import type { TaskInfo } from "../types/interfaces.js";
 export declare function timeStamp(): string;
 export declare class Task {
     #private;
-    constructor(title: string, description: string, priority: Priority, category: TCategory);
+    constructor(title: string, description: string, priority: Priority, category: TCategory, id?: string, completed?: boolean, createdAt?: string, dueDate?: string, subtasks?: string[], tags?: string[]);
     get id(): string;
     get title(): string;
     get description(): string;

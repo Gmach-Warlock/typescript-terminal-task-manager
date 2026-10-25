@@ -29,4 +29,24 @@ export async function saveToFile(arr: Task[]) {
   }
 }
 
-export function loadToFile() {}
+export async function loadFile() {
+  const dataDir = path.join(__dirname, "../../../data");
+  const filePath = path.join(dataDir, "tasks.json");
+  try {
+    await fs.promises.access(filePath);
+  } catch (error) {
+    console.log("Could not load tasks. Re-initializing", error);
+    return;
+  }
+  const data = await fs.promises.readFile(filePath, "utf-8");
+  if (!data.trim()) {
+    console.log("Task file is empty");
+    return;
+  }
+  const parsed = JSON.parse(data);
+  if (!parsed) {
+    console.log("Error parsing in load file");
+    return;
+  }
+  return parsed;
+}

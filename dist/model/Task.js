@@ -22,17 +22,19 @@ export class Task {
     #dueDate;
     #subtasks;
     #tags;
-    constructor(title, description, priority, category) {
-        this.#id = crypto.randomUUID();
+    constructor(title, description, priority, category, 
+    // repopulation
+    id, completed, createdAt, dueDate, subtasks, tags) {
+        this.#id = id ? id : crypto.randomUUID();
         this.#title = title;
         this.#description = description;
         this.#priority = priority;
-        this.#completed = false;
+        this.#completed = completed ? completed : false;
         this.#category = category;
-        this.#createdAt = timeStamp();
-        this.#dueDate = "none";
-        this.#subtasks = [];
-        this.#tags = [];
+        this.#createdAt = createdAt ? createdAt : timeStamp();
+        this.#dueDate = dueDate ? dueDate : "none";
+        this.#subtasks = subtasks ? subtasks : [];
+        this.#tags = tags ? tags : [];
     }
     // getters
     get id() {
@@ -91,7 +93,6 @@ export class Task {
         this.#dueDate = newDueDate;
     }
     addSubtaskToTask(subtask) {
-        console.log("subtask ", subtask);
         this.#subtasks.push(subtask);
     }
     addTagToTask(tag) {

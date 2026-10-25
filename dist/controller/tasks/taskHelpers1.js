@@ -13,6 +13,7 @@ export function getInfoQuestion(purpose, prop) {
         undo: "Are you sure you want to undo your last action? ",
         save: "Are you sure you want to save? ",
         load: "Do you want to load the existing tasks? ",
+        exit: "Are you sure you want to quit?",
     };
     const question = lookup[purpose];
     return question;

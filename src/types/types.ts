@@ -25,7 +25,8 @@ export type Purpose =
   | "redo"
   | "undo"
   | "save"
-  | "load";
+  | "load"
+  | "exit";
 export type FilterFunction = (() => Task[]) | (() => void);
 export type SortFunction = (() => Task[]) | (() => void);
 export type TaskStoreObj = TaskInfo[];

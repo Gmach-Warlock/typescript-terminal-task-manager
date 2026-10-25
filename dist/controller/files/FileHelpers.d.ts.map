@@ -1,1 +1,1 @@
-{"version":3,"file":"FileHelpers.d.ts","sourceRoot":"","sources":["../../../src/controller/files/FileHelpers.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,qBAAqB,CAAC;AAQhD,wBAAsB,UAAU,CAAC,GAAG,EAAE,IAAI,EAAE,iBAiB3C;AAED,wBAAgB,UAAU,SAAK"}
+{"version":3,"file":"FileHelpers.d.ts","sourceRoot":"","sources":["../../../src/controller/files/FileHelpers.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,qBAAqB,CAAC;AAQhD,wBAAsB,UAAU,CAAC,GAAG,EAAE,IAAI,EAAE,iBAiB3C;AAED,wBAAsB,QAAQ,iBAoB7B"}

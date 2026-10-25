@@ -63,13 +63,13 @@ What would you like to do?
 10. Add tag to task
 11. Add subtask to task
 12. Add due date to task
-13. Remove Task extra
-14: Clear completed tasks
-15: Show high priority
-16: View stats    
-17: Undo
-18: Redo
-19: Save
+13. Clear completed tasks
+14: Show high priority
+15: View stats
+16: Undo    
+17: Redo
+18: Save 
+19: Load
 20: Exit    
     `);
 }
