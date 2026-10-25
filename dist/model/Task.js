@@ -84,7 +84,7 @@ export class Task {
     set tags(newTags) {
         this.#tags = newTags;
     }
-    set subTasks(newSubtasks) {
+    set subtasks(newSubtasks) {
         this.#subtasks = newSubtasks;
     }
     set dueDate(newDueDate) {

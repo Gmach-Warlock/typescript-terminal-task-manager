@@ -6,7 +6,7 @@ import { logNotFound, mainMenu } from "../../view/menu.js";
 import { getDueDateInfo } from "../terminal/datePrompts.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
-import { getInfoQuestion } from "./taskHelpers1.js";
+import { editItemInArray, getInfoQuestion } from "./taskHelpers1.js";
 
 export async function addDueDate() {
   const arr = tStore.tasks;
@@ -43,9 +43,19 @@ export async function addDueDate() {
     12: "December",
   };
   // need to add due date to task
-  const dateString: string = `${key[infoObj.month]} ${infoObj.month} ${infoObj.year}`;
-  itemToEdit.dueDate = dateString;
-  logTasks(arr);
+  const dateString: string = `${key[infoObj.month]} ${infoObj.day} ${infoObj.year}`;
+  const newArray = editItemInArray(
+    arr,
+    itemToEdit,
+    "id",
+    "dueDate",
+    dateString,
+  );
+  if (!newArray) {
+    console.log("edit item failed in getDueDateInfo");
+    return;
+  }
+  tStore.setTasks(newArray, "dueDate");
   mainMenu();
 }
 

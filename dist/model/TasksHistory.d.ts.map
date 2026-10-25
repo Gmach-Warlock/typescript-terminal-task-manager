@@ -1,1 +1,1 @@
-{"version":3,"file":"TasksHistory.d.ts","sourceRoot":"","sources":["../../src/model/TasksHistory.ts"],"names":[],"mappings":"AAAA,qBAAa,YAAY;CAAG"}
+{"version":3,"file":"TasksHistory.d.ts","sourceRoot":"","sources":["../../src/model/TasksHistory.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,wBAAwB,CAAC;AAE1D,qBAAa,YAAY;;IAmBvB,cAMC;IAED,gBAAgB,CAAC,KAAK,EAAE,WAAW,QAuBlC;IACD,SAAS,SAQR;CACF;AAED,eAAO,MAAM,QAAQ,cAAqB,CAAC"}

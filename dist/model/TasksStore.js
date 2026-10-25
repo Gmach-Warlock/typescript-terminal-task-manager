@@ -1,6 +1,9 @@
 import fs from "node:fs";
-import { myListener } from "../controller/listeners/listener.js";
-export const listenersArray = [myListener];
+import { historyListener, logListener, } from "../controller/listeners/listener.js";
+export const listenersArray = [
+    logListener,
+    historyListener,
+];
 export class TasksStore {
     #tasks;
     #listeners;

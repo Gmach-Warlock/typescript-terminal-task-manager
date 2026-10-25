@@ -1,4 +1,5 @@
-import type { Month, Priority, PropToModify, TCategory } from "./types.js";
+import { Task } from "../model/Task.js";
+import type { Priority, PropToModify, Purpose, TCategory } from "./types.js";
 
 export interface TaskObj extends TaskInfo {
   id: string;
@@ -40,4 +41,10 @@ export interface SubTask {
   id: string;
   title: string;
   createdAt: string;
+}
+
+export interface StateObject {
+  timeChanged: string;
+  newState: Task[];
+  typeOfLastChange: Purpose;
 }

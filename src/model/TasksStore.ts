@@ -1,9 +1,15 @@
 import fs from "node:fs";
 import type { Listener, Purpose } from "../types/types.js";
 import type { Task } from "./Task.js";
-import { myListener } from "../controller/listeners/listener.js";
+import {
+  historyListener,
+  logListener,
+} from "../controller/listeners/listener.js";
 
-export const listenersArray: Listener[] = [myListener as Listener];
+export const listenersArray: Listener[] = [
+  logListener as Listener,
+  historyListener,
+];
 export class TasksStore {
   #tasks: Task[];
   #listeners: Listener[];

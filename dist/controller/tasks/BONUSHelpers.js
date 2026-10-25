@@ -1,9 +1,10 @@
 import { tStore } from "../../model/TasksStore.js";
+import { Task } from "../../model/Task.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { getStringInput } from "../terminal/terminal.js";
-import { getInfoQuestion, returnObjInArray } from "./taskHelpers1.js";
+import { addElementToArray, editItemInArray, getInfoQuestion, returnObjInArray, } from "./taskHelpers1.js";
 import { returnFilterArray } from "./taskHelpers2.js";
 export async function viewStats() {
     setTimeout(() => {
@@ -53,8 +54,13 @@ export async function addTag() {
         console.log("Couldn't get tag");
         mainMenu();
     }
-    itemToEdit?.addTagToTask(newTag);
-    logTasks(tStore.tasks);
+    const newTagsArray = addElementToArray(itemToEdit.tags, newTag);
+    const newArray = editItemInArray(arr, itemToEdit, "id", "tags", newTagsArray);
+    if (!newArray) {
+        console.log("Array not obtained in addTagToTask");
+        return;
+    }
+    tStore.setTasks(newArray, "tag");
     mainMenu();
 }
 export async function addSubtask() {
@@ -66,8 +72,13 @@ export async function addSubtask() {
         return;
     }
     const subtask = await getStringInput(`What is the subtask? `);
-    itemToEdit?.addSubtaskToTask(subtask);
-    logTasks(tStore.tasks);
+    const newArray = addElementToArray(itemToEdit.subtasks, subtask);
+    const newTasks = editItemInArray(arr, itemToEdit, "id", "subtasks", newArray);
+    if (!newTasks) {
+        console.log("No new tasks in addSubtask");
+        return;
+    }
+    tStore.setTasks(newTasks, "subtask");
     mainMenu();
 }
 //# sourceMappingURL=BONUSHelpers.js.map

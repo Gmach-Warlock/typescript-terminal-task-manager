@@ -95,7 +95,7 @@ export class Task {
   set tags(newTags: string[]) {
     this.#tags = newTags;
   }
-  set subTasks(newSubtasks: string[]) {
+  set subtasks(newSubtasks: string[]) {
     this.#subtasks = newSubtasks;
   }
   set dueDate(newDueDate: string) {

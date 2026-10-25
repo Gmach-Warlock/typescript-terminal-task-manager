@@ -20,7 +20,7 @@ export declare class Task {
     set completed(newCompleted: boolean);
     set category(newCategory: TCategory);
     set tags(newTags: string[]);
-    set subTasks(newSubtasks: string[]);
+    set subtasks(newSubtasks: string[]);
     set dueDate(newDueDate: string);
     addSubtaskToTask(subtask: string): void;
     addTagToTask(tag: string): void;
