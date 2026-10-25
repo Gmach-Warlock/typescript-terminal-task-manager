@@ -5,7 +5,7 @@ export declare class StateNode {
     get data(): object;
     get previous(): StateNode | null;
     get next(): StateNode | null;
-    set currentState(newState: object);
+    set data(newData: object);
     set previous(newPrevious: StateNode);
     set next(newNext: StateNode);
 }

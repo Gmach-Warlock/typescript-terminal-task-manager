@@ -30,9 +30,22 @@ export interface SubTask {
     title: string;
     createdAt: string;
 }
+export interface StatsObj {
+    size: number;
+    total: number;
+    complete: number;
+    incomplete: number;
+    completed: number;
+}
 export interface StateObject {
     timeChanged: string;
-    newState: Task[];
+    newTasksState: Task[];
+    newStatsState: StatsObj;
     typeOfLastChange: Purpose;
+}
+export interface SaveState {
+    tasks: TaskInfo[];
+    stats: StatsObj;
+    savedAt: string;
 }
 //# sourceMappingURL=interfaces.d.ts.map

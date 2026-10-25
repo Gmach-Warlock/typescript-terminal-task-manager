@@ -14,6 +14,7 @@ export function getInfoQuestion(purpose, prop) {
         save: "Are you sure you want to save? ",
         load: "Do you want to load the existing tasks? ",
         exit: "Are you sure you want to quit?",
+        "clear completed": "Are you sure you want to remove the completed tasks? ",
     };
     const question = lookup[purpose];
     return question;

@@ -18,8 +18,8 @@ export class StateNode {
         return this.#next;
     }
     // setters
-    set currentState(newState) {
-        this.#data = newState;
+    set data(newData) {
+        this.#data = newData;
     }
     set previous(newPrevious) {
         this.#previous = newPrevious;

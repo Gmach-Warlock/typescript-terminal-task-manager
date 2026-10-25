@@ -1,5 +1,4 @@
 import readline from "readline";
-import { mainMenu } from "../../view/menu.js";
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -79,7 +78,6 @@ export async function closeApp() {
     const confirmed = await getConfirmation("exit");
     if (!confirmed) {
         console.log("Permission denied. Returning to main menu. ");
-        mainMenu();
     }
     console.log(`
 Thank you for using the task app.

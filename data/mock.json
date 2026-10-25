@@ -1,146 +1,49 @@
-[
-  {
-    "id": "tsk-001",
-    "title": "Refactor state persistence module",
-    "description": "Align loadFile and saveToFile methods with async promises and robust directory resolution.",
-    "priority": "High",
-    "completed": false,
-    "category": "Work",
-    "createdAt": "2026-10-20T08:30:00.000Z",
-    "dueDate": "2026-10-28T17:00:00.000Z",
-    "subtasks": [
-      "Update TypeScript types",
-      "Handle empty file checks",
-      "Write unit tests"
-    ],
-    "tags": ["backend", "typescript", "refactor"]
+{
+  "tasks": [
+    {
+      "id": "393247f7-95d5-4b83-b532-7b3613c903cf",
+      "title": "Fix Bugs",
+      "description": "There are little bugs in this program. I know it",
+      "category": "Work",
+      "priority": "High",
+      "completed": false,
+      "createdAt": "Sunday, October 25, 2026 at 3:17:47 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    },
+    {
+      "id": "b7955e51-4207-40d1-b361-093548487870",
+      "title": "Recording Session",
+      "description": "Get together with friends and record music",
+      "category": "Personal",
+      "priority": "High",
+      "completed": false,
+      "createdAt": "Sunday, October 25, 2026 at 3:18:40 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    },
+    {
+      "id": "a30f1a7e-e917-43c2-a883-1eb16dde6083",
+      "title": "Get Groceries",
+      "description": "Need to get water and groceries",
+      "category": "Home",
+      "priority": "Medium",
+      "completed": true,
+      "createdAt": "Sunday, October 25, 2026 at 3:19:23 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    }
+  ],
+  "stats": {
+    "size": 3,
+    "total": 3,
+    "complete": 1,
+    "incomplete": 2,
+    "completed": 0,
+    "highPriority": 2
   },
-  {
-    "id": "tsk-002",
-    "title": "Grocery shopping for weekly meal prep",
-    "description": "Stock up on fresh vegetables, chicken breast, brown rice, and healthy snacks.",
-    "priority": "Medium",
-    "completed": true,
-    "category": "Home",
-    "createdAt": "2026-10-21T10:15:00.000Z",
-    "dueDate": "2026-10-22T19:00:00.000Z",
-    "subtasks": [
-      "Check pantry inventory",
-      "Build shopping list",
-      "Visit local market"
-    ],
-    "tags": ["food", "errands", "health"]
-  },
-  {
-    "id": "tsk-003",
-    "title": "Morning cardio and core workout",
-    "description": "Complete 45 minutes of steady-state treadmill running followed by a 15-minute core routine.",
-    "priority": "Medium",
-    "completed": false,
-    "category": "Health",
-    "createdAt": "2026-10-22T06:00:00.000Z",
-    "dueDate": "2026-10-25T07:00:00.000Z",
-    "subtasks": [
-      "Stretch dynamic warm-up",
-      "45 min run",
-      "Plank and leg raise circuit"
-    ],
-    "tags": ["fitness", "routine"]
-  },
-  {
-    "id": "tsk-004",
-    "title": "Back up project files and git repository",
-    "description": "Push recent commits to remote branches and verify local workspace archives.",
-    "priority": "Low",
-    "completed": true,
-    "category": "Work",
-    "createdAt": "2026-10-18T14:20:00.000Z",
-    "dueDate": "2026-10-23T18:00:00.000Z",
-    "subtasks": [
-      "Review git status",
-      "Push to GitHub",
-      "Verify external drive backup"
-    ],
-    "tags": ["git", "maintenance"]
-  },
-  {
-    "id": "tsk-005",
-    "title": "Schedule annual dental checkup",
-    "description": "Call the dental clinic to book a routine cleaning and examination appointment.",
-    "priority": "Low",
-    "completed": false,
-    "category": "Health",
-    "createdAt": "2026-10-19T11:00:00.000Z",
-    "dueDate": "2026-10-30T17:00:00.000Z",
-    "subtasks": ["Find insurance card", "Call clinic during lunch break"],
-    "tags": ["appointment", "healthcare"]
-  },
-  {
-    "id": "tsk-006",
-    "title": "Fix CSS Grid layout bug in dashboard",
-    "description": "Resolve overlapping sidebar elements on smaller viewport resolutions.",
-    "priority": "High",
-    "completed": false,
-    "category": "Work",
-    "createdAt": "2026-10-23T13:45:00.000Z",
-    "dueDate": "2026-10-26T12:00:00.000Z",
-    "subtasks": [
-      "Inspect element bounds",
-      "Update media queries",
-      "Test responsive behavior"
-    ],
-    "tags": ["frontend", "css", "bugfix"]
-  },
-  {
-    "id": "tsk-007",
-    "title": "Organize garage workspace and tools",
-    "description": "Sort hand tools, coil extension cords, and clear out storage bins.",
-    "priority": "Low",
-    "completed": false,
-    "category": "Home",
-    "createdAt": "2026-10-15T09:00:00.000Z",
-    "dueDate": "2026-11-01T16:00:00.000Z",
-    "subtasks": ["Wipe down workbench", "Hang up stray cables", "Sweep floor"],
-    "tags": ["organization", "diy"]
-  },
-  {
-    "id": "tsk-008",
-    "title": "Read chapter on advanced data structures",
-    "description": "Review notes on graph traversal algorithms, trees, and hash collision handling.",
-    "priority": "Medium",
-    "completed": true,
-    "category": "Personal",
-    "createdAt": "2026-10-20T20:00:00.000Z",
-    "dueDate": "2026-10-24T22:00:00.000Z",
-    "subtasks": ["Read pages 140-175", "Summarize key takeaways"],
-    "tags": ["study", "cs", "reading"]
-  },
-  {
-    "id": "tsk-009",
-    "title": "Plan weekend acoustic guitar practice session",
-    "description": "Work on fingerstyle pacing, alternate tunings, and new chord melody arrangements.",
-    "priority": "Low",
-    "completed": false,
-    "category": "Personal",
-    "createdAt": "2026-10-24T15:30:00.000Z",
-    "dueDate": "2026-10-27T20:00:00.000Z",
-    "subtasks": ["Tune instruments", "Review tabs", "Record practice audio"],
-    "tags": ["music", "guitar", "hobby"]
-  },
-  {
-    "id": "tsk-010",
-    "title": "Finalize API rate limiter middleware",
-    "description": "Implement token bucket throttling algorithm for incoming Express endpoints.",
-    "priority": "High",
-    "completed": false,
-    "category": "Work",
-    "createdAt": "2026-10-24T17:00:00.000Z",
-    "dueDate": "2026-10-26T18:00:00.000Z",
-    "subtasks": [
-      "Write token bucket logic",
-      "Add IP tracking map",
-      "Test edge cases under load"
-    ],
-    "tags": ["backend", "api", "security"]
-  }
-]
+  "savedAt": "Sunday, October 25, 2026 at 3:19:38 PM"
+}

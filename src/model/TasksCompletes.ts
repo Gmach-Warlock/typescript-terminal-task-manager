@@ -24,7 +24,7 @@ export class TasksCompletes {
     this.#complete = newComplete;
   }
   set incomplete(newIncomplete: number) {
-    this.#complete = newIncomplete;
+    this.#incomplete = newIncomplete;
   }
   set completed(newCompleted: number) {
     this.#completed = newCompleted;

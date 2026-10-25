@@ -8,12 +8,26 @@ export class TasksHistory {
     #createDummies() {
         this.#head = new StateNode({
             timeChanged: "N/A",
-            newState: [],
+            newTasksState: [],
+            newStatsState: {
+                size: 0,
+                total: 0,
+                complete: 0,
+                incomplete: 0,
+                completed: 0,
+            },
             typeOfLastChange: "add",
         });
         this.#tail = new StateNode({
             timeChanged: "N/A",
-            newState: [],
+            newTasksState: [],
+            newStatsState: {
+                size: 0,
+                total: 0,
+                complete: 0,
+                incomplete: 0,
+                completed: 0,
+            },
             typeOfLastChange: "add",
         });
         this.#head.next = this.#tail;

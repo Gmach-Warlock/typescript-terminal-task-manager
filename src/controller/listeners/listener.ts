@@ -5,6 +5,7 @@ import type { Purpose } from "../../types/types.js";
 import type { StateObject } from "../../types/interfaces.js";
 import { timeStamp } from "../../model/Task.js";
 import { tHistory } from "../../model/TasksHistory.js";
+import { stateStats } from "../files/FileHelpers.js";
 
 export function logListener(purpose: Partial<Purpose>) {
   const lookup: Partial<Record<Purpose, string>> = {
@@ -20,6 +21,7 @@ export function logListener(purpose: Partial<Purpose>) {
     undo: "The last action was just reversed",
     save: "Your tasks have been saved successfully.",
     load: "Your tasks have been successfully loaded.",
+    replace: "Your Tasks have been editted.",
   };
   const response = lookup[purpose];
   setTimeout(() => {
@@ -31,10 +33,16 @@ export function logListener(purpose: Partial<Purpose>) {
   }, 500);
 }
 
-export function historyListener(purpose: Partial<Purpose>) {
+export async function historyListener(purpose: Partial<Purpose>) {
+  const newStats = await stateStats();
+  if (!newStats) {
+    console.log("Problem getting newStats in historyListener");
+    return;
+  }
   const newStateObj: StateObject = {
     timeChanged: timeStamp(),
-    newState: tStore.tasks,
+    newTasksState: tStore.tasks,
+    newStatsState: newStats,
     typeOfLastChange: purpose,
   };
   if (!newStateObj) {

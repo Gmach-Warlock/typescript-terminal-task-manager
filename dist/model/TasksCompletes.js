@@ -22,7 +22,7 @@ export class TasksCompletes {
         this.#complete = newComplete;
     }
     set incomplete(newIncomplete) {
-        this.#complete = newIncomplete;
+        this.#incomplete = newIncomplete;
     }
     set completed(newCompleted) {
         this.#completed = newCompleted;

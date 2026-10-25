@@ -1,7 +1,9 @@
+import { timeStamp } from "../../model/Task.js";
 import { tStore } from "../../model/TasksStore.js";
 import { mainMenu } from "../../view/menu.js";
-import { recreateTasks } from "../files/fileFactories.js";
-import { loadFile, saveToFile } from "../files/FileHelpers.js";
+import { makeTaskOjects, recreateTasks } from "../files/fileFactories.js";
+import { fillStats, loadFile, saveToFile, stateStats, } from "../files/FileHelpers.js";
+import { logStats } from "../terminal/taskPrompts.js";
 import { getConfirmation } from "../terminal/terminal.js";
 export async function saveApp() {
     const confirmed = await getConfirmation("save");
@@ -9,9 +11,18 @@ export async function saveApp() {
         console.log(`Permission denied. Returning to main menu.`);
         mainMenu();
     }
-    const arr = tStore.tasks;
-    console.log("Attempting to save app in saveApp");
-    saveToFile(arr);
+    const currentStats = await stateStats();
+    const currentTasks = makeTaskOjects(tStore.tasks);
+    if (!currentTasks) {
+        console.log("Problem getting current tasks in saveApp");
+        return;
+    }
+    const saveState = {
+        tasks: currentTasks,
+        stats: currentStats,
+        savedAt: timeStamp(),
+    };
+    saveToFile(saveState);
     mainMenu();
 }
 export async function loadApp() {
@@ -20,24 +31,23 @@ export async function loadApp() {
         console.log(`Permission denied. Returning to main menu.`);
         mainMenu();
     }
-    const rawArray = await loadFile();
+    const rawState = await loadFile();
     if (!loadFile) {
         console.log("failed");
         mainMenu();
     }
-    recreateTasks(rawArray);
-    tStore.setTasks(rawArray, "load");
-    mainMenu();
+    const tasks = recreateTasks(rawState.tasks);
+    const stats = rawState.stats;
+    console.log("raw stats in loadApp", stats);
+    fillStats(stats);
+    logStats();
+    tStore.setTasks(tasks, "load");
 }
 export function undoState() {
     console.log("coming soon");
     mainMenu();
 }
 export function redoState() {
-    console.log("coming soon");
-    mainMenu();
-}
-export function removeTaskExtras() {
     console.log("coming soon");
     mainMenu();
 }

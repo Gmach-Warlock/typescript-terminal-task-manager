@@ -3,6 +3,7 @@ import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { tStore } from "../../model/TasksStore.js";
 import { timeStamp } from "../../model/Task.js";
 import { tHistory } from "../../model/TasksHistory.js";
+import { stateStats } from "../files/FileHelpers.js";
 export function logListener(purpose) {
     const lookup = {
         add: "A task has been added successfully.",
@@ -27,10 +28,16 @@ export function logListener(purpose) {
         mainMenu();
     }, 500);
 }
-export function historyListener(purpose) {
+export async function historyListener(purpose) {
+    const newStats = await stateStats();
+    if (!newStats) {
+        console.log("Problem getting newStats in historyListener");
+        return;
+    }
     const newStateObj = {
         timeChanged: timeStamp(),
-        newState: tStore.tasks,
+        newTasksState: tStore.tasks,
+        newStatsState: newStats,
         typeOfLastChange: purpose,
     };
     if (!newStateObj) {

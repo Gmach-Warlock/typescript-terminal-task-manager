@@ -1,9 +1,8 @@
 import { tStore } from "../../model/TasksStore.js";
-import { Task } from "../../model/Task.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
-import { getStringInput } from "../terminal/terminal.js";
+import { getConfirmation, getStringInput } from "../terminal/terminal.js";
 import {
   addElementToArray,
   editItemInArray,
@@ -29,6 +28,11 @@ export async function showHighPriority() {
 }
 
 export async function clearCompleted() {
+  const confirmed = await getConfirmation("clear completed");
+  if (!confirmed) {
+    console.log("Permission Denied. Returning to main menu.");
+    mainMenu();
+  }
   const arr = tStore.tasks;
   const completedArray = returnFilterArray(arr, "Complete") ?? [];
   // need to figure out how many high priortity to deduct here
