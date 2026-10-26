@@ -27,5 +27,8 @@ export class StateNode {
     set next(newNext) {
         this.#next = newNext;
     }
+    getData() {
+        return { data: this.#data };
+    }
 }
 //# sourceMappingURL=StateNode.js.map

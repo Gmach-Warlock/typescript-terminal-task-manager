@@ -1,7 +1,7 @@
 import type { StateObject } from "../types/interfaces.js";
 
 export class StateNode {
-  #data: object;
+  #data: StateObject;
   #previous: StateNode | null;
   #next: StateNode | null;
 
@@ -12,7 +12,7 @@ export class StateNode {
   }
 
   // getters
-  get data(): object {
+  get data(): StateObject {
     return this.#data;
   }
 
@@ -25,7 +25,7 @@ export class StateNode {
   }
 
   // setters
-  set data(newData: object) {
+  set data(newData: StateObject) {
     this.#data = newData;
   }
 
@@ -35,5 +35,9 @@ export class StateNode {
 
   set next(newNext: StateNode) {
     this.#next = newNext;
+  }
+
+  getData() {
+    return { data: this.#data };
   }
 }

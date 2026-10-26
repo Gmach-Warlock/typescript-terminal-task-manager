@@ -15,7 +15,8 @@ import {
 } from "./CRUDHelpers.js";
 import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
 import { addDueDate } from "./dateHelpers.js";
-import { loadApp, undoState, redoState, saveApp } from "./saveHelpers.js";
+import { loadApp, saveApp } from "./saveHelpers.js";
+import { undoState, redoState } from "../history/historyHelpers.js";
 
 export function returnAction(val: number): void {
   const lookup: Record<number, () => void> = {

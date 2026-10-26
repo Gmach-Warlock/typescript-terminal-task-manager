@@ -1,8 +1,13 @@
+import { recreateTasks } from "../controller/files/fileFactories.js";
+import { fillStats } from "../controller/files/FileHelpers.js";
+import { denyAndReturn } from "../controller/terminal/terminal.js";
+import { mainMenu } from "../view/menu.js";
 import { StateNode } from "./StateNode.js";
+import { tStore } from "./TasksStore.js";
 export class TasksHistory {
     #head;
     #tail;
-    #currentN;
+    #currentNode;
     #numOfTStates;
     #stateMap;
     #createDummies() {
@@ -36,10 +41,22 @@ export class TasksHistory {
     constructor() {
         this.#head = null;
         this.#tail = null;
-        this.#currentN = null;
+        this.#currentNode = null;
         this.#numOfTStates = 0;
         this.#stateMap = new Map();
         this.#createDummies();
+    }
+    get currentN() {
+        return this.#currentNode;
+    }
+    set currentN(newCurrentN) {
+        this.#currentNode = newCurrentN;
+    }
+    get numOfStates() {
+        return this.#numOfTStates;
+    }
+    set numOfStates(newNum) {
+        this.#numOfTStates = newNum;
     }
     addNewTasksState(state) {
         if (this.#tail === null || this.#head === null) {
@@ -53,7 +70,8 @@ export class TasksHistory {
             this.#tail.previous = newNode;
             this.#numOfTStates++;
             this.#stateMap.set(state.timeChanged, newNode);
-            this.#currentN = newNode;
+            this.#currentNode = newNode;
+            console.log("addNewTasksState", this.#currentNode.data);
             return;
         }
         const temp = this.#tail.previous;
@@ -64,6 +82,8 @@ export class TasksHistory {
             newNode.next = this.#tail;
             this.#numOfTStates++;
             this.#stateMap.set(state.timeChanged, newNode);
+            this.#currentNode = newNode;
+            console.log("addNewTasksState", this.currentN);
         }
     }
     logStates() {
@@ -77,14 +97,43 @@ export class TasksHistory {
         console.log(`-------------------------------------------`);
     }
     redo() {
-        if (this.#currentN?.next)
-            this.#currentN = this.#currentN.next;
-        // need to update tStore.setTasks(arr, "redo") connect these and save to file, and you're good :)
+        if (this.#currentNode?.next) {
+            this.#currentNode = this.#currentNode.next;
+            const taskArray = recreateTasks(this.#currentNode.data.newTasksState);
+            const statsObj = this.#currentNode.data.newStatsState;
+            console.log("Going forward again in redo. ", taskArray, statsObj);
+            fillStats(statsObj);
+            tStore.setTasks(taskArray, "redo");
+            return;
+        }
+        denyAndReturn("You are at the current state. State remains unchanged.");
+        return;
     }
     undo() {
-        if (this.#currentN?.previous)
-            this.#currentN = this.#currentN.previous;
-        // need to update tStore.setTasks(arr, "undo");
+        if (this.#currentNode?.previous === this.#head) {
+            denyAndReturn("There is nothing to undo. State remains unchanged.");
+            return;
+        }
+        if (this.#currentNode?.previous) {
+            this.#currentNode = this.#currentNode.previous;
+            const taskArray = recreateTasks(this.#currentNode.data.newTasksState);
+            const statsObj = this.#currentNode.data.newStatsState;
+            console.log("We are attempting to go back in time here in undo. ", taskArray, statsObj);
+            fillStats(statsObj);
+            tStore.setTasks(taskArray, "undo");
+            return;
+        }
+        denyAndReturn("Nothing to undo. State remains unchanged.");
+        return;
+    }
+    makeObj() {
+        return {
+            head: this.#head,
+            tail: this.#tail,
+            currentN: this.#currentNode,
+            numOfStates: this.#numOfTStates,
+            stateMap: this.#stateMap,
+        };
     }
 }
 export const tHistory = new TasksHistory();

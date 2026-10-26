@@ -2,7 +2,11 @@ import { tStore } from "../../model/TasksStore.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
-import { getConfirmation, getStringInput } from "../terminal/terminal.js";
+import {
+  denyAndReturn,
+  getConfirmation,
+  getStringInput,
+} from "../terminal/terminal.js";
 import {
   addElementToArray,
   editItemInArray,
@@ -30,8 +34,8 @@ export async function showHighPriority() {
 export async function clearCompleted() {
   const confirmed = await getConfirmation("clear completed");
   if (!confirmed) {
-    console.log("Permission Denied. Returning to main menu.");
-    mainMenu();
+    denyAndReturn();
+    return;
   }
   const arr = tStore.tasks;
   const completedArray = returnFilterArray(arr, "Complete") ?? [];

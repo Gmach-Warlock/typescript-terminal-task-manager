@@ -4,6 +4,7 @@ import { tStore } from "../../model/TasksStore.js";
 import { timeStamp } from "../../model/Task.js";
 import { tHistory } from "../../model/TasksHistory.js";
 import { stateStats } from "../files/FileHelpers.js";
+import { makeTaskOjects } from "../files/fileFactories.js";
 export function logListener(purpose) {
     const lookup = {
         add: "A task has been added successfully.",
@@ -18,6 +19,7 @@ export function logListener(purpose) {
         undo: "The last action was just reversed",
         save: "Your tasks have been saved successfully.",
         load: "Your tasks have been successfully loaded.",
+        replace: "Your Tasks have been editted.",
     };
     const response = lookup[purpose];
     setTimeout(() => {
@@ -34,9 +36,10 @@ export async function historyListener(purpose) {
         console.log("Problem getting newStats in historyListener");
         return;
     }
+    const newTasks = makeTaskOjects(tStore.tasks);
     const newStateObj = {
         timeChanged: timeStamp(),
-        newTasksState: tStore.tasks,
+        newTasksState: newTasks ?? [],
         newStatsState: newStats,
         typeOfLastChange: purpose,
     };

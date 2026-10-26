@@ -46,7 +46,7 @@ export interface StatsObj {
 
 export interface StateObject {
   timeChanged: string;
-  newTasksState: Task[];
+  newTasksState: TaskInfo[];
   newStatsState: StatsObj;
   typeOfLastChange: Purpose;
 }
