@@ -19,9 +19,12 @@ export async function addDueDate() {
     return;
   }
   const rawInfo = await getDueDateInfo();
-  const infoObj: DueDate | undefined = rawInfo
-    ? { ...rawInfo, day: Number(rawInfo.day) }
-    : undefined;
+  const infoObj: DueDate | undefined = {
+    taskTitle: title,
+    day: Number(rawInfo?.day),
+    month: Number(rawInfo?.month),
+    year: Number(rawInfo?.year),
+  };
 
   if (!infoObj) {
     console.log("Problem getting due date");

@@ -1,4 +1,4 @@
-import type { Tag } from "./Tag.js";
+import { Tag } from "./Tag.js";
 
 export class TTags {
   #tags: Tag[];

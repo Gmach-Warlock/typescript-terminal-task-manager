@@ -11,8 +11,8 @@ import {
 import { viewStats, showHighPriority } from "../terminal/statPrompts.js";
 import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
 import { addDueDate } from "../bonus/dateHelpers.js";
-import { loadApp, saveApp } from "../files/saveHelpers.js";
-import { undoState, redoState } from "../history/historyHelpers.js";
+import { loadApp, saveApp } from "../state/saveHelpers.js";
+import { undoState, redoState } from "../state/historyHelpers.js";
 
 export function returnAction(val: number): void {
   const lookup: Record<number, () => void> = {

@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { historyListener, logListener, } from "../../controller/listeners/listener.js";
+import { historyListener, logListener, } from "../../controller/state/listener.js";
 export const listenersArray = [
     logListener,
     historyListener,

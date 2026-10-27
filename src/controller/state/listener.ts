@@ -5,8 +5,8 @@ import type { Purpose } from "../../types/types.js";
 import type { StateObject } from "../../types/interfaces.js";
 import { timeStamp } from "../../model/task/Task.js";
 import { tState } from "../../model/state/TState.js";
-import { stateStats } from "../files/fileHelpers.js";
-import { makeTaskOjects } from "../files/fileFactories.js";
+import { stateStats } from "./fileHelpers.js";
+import { makeTaskOjects } from "./fileFactories.js";
 
 export function logListener(purpose: Partial<Purpose>) {
   const lookup: Partial<Record<Purpose, string>> = {

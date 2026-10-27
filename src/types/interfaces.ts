@@ -39,6 +39,7 @@ export interface EditInfo {
 }
 
 export interface DueDate {
+  taskTitle: string;
   day: number;
   month: number;
   year: number;

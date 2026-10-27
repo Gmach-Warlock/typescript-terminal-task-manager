@@ -4,7 +4,7 @@ import type { Task } from "../task/Task.js";
 import {
   historyListener,
   logListener,
-} from "../../controller/listeners/listener.js";
+} from "../../controller/state/listener.js";
 
 export const listenersArray: Listener[] = [
   logListener as Listener,

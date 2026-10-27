@@ -1,10 +1,10 @@
-import { recreateTasks } from "../../controller/files/fileFactories.js";
-import { createINode } from "../../controller/history/historyHelpers.js";
+import { recreateTasks } from "../../controller/state/fileFactories.js";
+import { createINode } from "../../controller/state/historyHelpers.js";
 import { denyAndReturn } from "../../controller/terminal/terminal.js";
 import type { StateObject } from "../../types/interfaces.js";
 import { TNode } from "./TNode.js";
 import { tStore } from "./TStore.js";
-import { fillStats } from "../../controller/files/fileHelpers.js";
+import { fillStats } from "../../controller/state/fileHelpers.js";
 
 export class TState {
   #head: TNode | null;
