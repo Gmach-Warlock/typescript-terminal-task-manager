@@ -2,6 +2,7 @@ import type { Task } from "../../model/Task.js";
 import { tHighPriority } from "../../model/TaskHighPriority.js";
 import { tCompletes } from "../../model/TasksCompletes.js";
 import { tTotals } from "../../model/TasksTotals.js";
+import { tCleared } from "../../model/TCleared.js";
 
 export function addTStats(task: Task) {
   tTotals.incSize();
@@ -23,6 +24,8 @@ export function removeTStats(task: Task) {
   if (task.priority === "High") {
     tHighPriority.decHighPriority();
   }
+  tCleared.incTDeleted();
+  tCleared.addToCompletedTasks(task);
 }
 
 export function markTStats(completed = true) {
@@ -59,6 +62,7 @@ export function editTStats(
 export function clearTCStats(numDeleted: number, highPriorityAmount: number) {
   tTotals.size -= numDeleted;
   tCompletes.complete = 0;
-  tCompletes.completed += numDeleted;
+  // tCompletes.completed += numDeleted;
+  tCleared.completed += numDeleted;
   tHighPriority.highPriority -= highPriorityAmount;
 }

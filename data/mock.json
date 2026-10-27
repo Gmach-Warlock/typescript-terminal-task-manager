@@ -1,49 +1,73 @@
 {
   "tasks": [
     {
-      "id": "393247f7-95d5-4b83-b532-7b3613c903cf",
+      "id": "fcef6942-08d3-4f56-b60a-73f2a2d2adbd",
       "title": "Fix Bugs",
-      "description": "There are little bugs in this program. I know it",
-      "category": "Work",
-      "priority": "High",
-      "completed": false,
-      "createdAt": "Sunday, October 25, 2026 at 3:17:47 PM",
-      "dueDate": "none",
-      "subtasks": [],
-      "tags": []
-    },
-    {
-      "id": "b7955e51-4207-40d1-b361-093548487870",
-      "title": "Recording Session",
-      "description": "Get together with friends and record music",
+      "description": "There are more bugs, I know it",
       "category": "Personal",
       "priority": "High",
       "completed": false,
-      "createdAt": "Sunday, October 25, 2026 at 3:18:40 PM",
+      "createdAt": "Monday, October 26, 2026 at 5:24:38 PM",
       "dueDate": "none",
       "subtasks": [],
       "tags": []
     },
     {
-      "id": "a30f1a7e-e917-43c2-a883-1eb16dde6083",
-      "title": "Get Groceries",
-      "description": "Need to get water and groceries",
-      "category": "Home",
+      "id": "40a45146-5f70-4e59-ba5f-ec6b60d485b1",
+      "title": "Music Session",
+      "description": "Meet with friends and jam",
+      "category": "Personal",
       "priority": "Medium",
-      "completed": true,
-      "createdAt": "Sunday, October 25, 2026 at 3:19:23 PM",
+      "completed": false,
+      "createdAt": "Monday, October 26, 2026 at 5:25:30 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    },
+    {
+      "id": "1fece2f6-5270-4d67-9560-82fd5ca2a996",
+      "title": "Finish Video",
+      "description": "Record a video for tree data structure",
+      "category": "Work",
+      "priority": "High",
+      "completed": false,
+      "createdAt": "Monday, October 26, 2026 at 5:26:21 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    },
+    {
+      "id": "21385a9d-1f41-444d-a612-ec0ae3c1f5b7",
+      "title": "Dinner with Band",
+      "description": "Get together with band members for dinner and discussion",
+      "category": "Personal",
+      "priority": "High",
+      "completed": false,
+      "createdAt": "Monday, October 26, 2026 at 5:27:29 PM",
+      "dueDate": "none",
+      "subtasks": [],
+      "tags": []
+    },
+    {
+      "id": "ce3c62ac-ae29-499b-bb32-dea4767ff691",
+      "title": "Clean House",
+      "description": "Finish the chores around the house",
+      "category": "Home",
+      "priority": "High",
+      "completed": false,
+      "createdAt": "Monday, October 26, 2026 at 5:27:56 PM",
       "dueDate": "none",
       "subtasks": [],
       "tags": []
     }
   ],
   "stats": {
-    "size": 3,
-    "total": 3,
-    "complete": 1,
-    "incomplete": 2,
+    "size": 5,
+    "total": 5,
+    "complete": 0,
+    "incomplete": 5,
     "completed": 0,
-    "highPriority": 2
+    "highPriority": 4
   },
-  "savedAt": "Sunday, October 25, 2026 at 3:19:38 PM"
+  "savedAt": "Monday, October 26, 2026 at 5:28:04 PM"
 }

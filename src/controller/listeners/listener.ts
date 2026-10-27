@@ -4,7 +4,7 @@ import { tStore } from "../../model/TasksStore.js";
 import type { Purpose } from "../../types/types.js";
 import type { StateObject } from "../../types/interfaces.js";
 import { timeStamp } from "../../model/Task.js";
-import { tHistory } from "../../model/TasksHistory.js";
+import { tState } from "../../model/TState.js";
 import { stateStats } from "../files/FileHelpers.js";
 import { makeTaskOjects } from "../files/fileFactories.js";
 
@@ -42,14 +42,15 @@ export async function historyListener(purpose: Partial<Purpose>) {
   }
   const newTasks = makeTaskOjects(tStore.tasks);
   const newStateObj: StateObject = {
+    id: crypto.randomUUID(),
     timeChanged: timeStamp(),
-    newTasksState: newTasks ?? [],
-    newStatsState: newStats,
+    tasksState: newTasks ?? [],
+    statsState: newStats,
     typeOfLastChange: purpose,
   };
   if (!newStateObj) {
     console.log("failed in historyListener");
     return;
   }
-  tHistory.addNewTasksState(newStateObj);
+  tState.addState(newStateObj);
 }

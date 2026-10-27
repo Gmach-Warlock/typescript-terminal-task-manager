@@ -6,6 +6,7 @@ import { addElementToArray, editItemInArray, getInfoQuestion, removeItemInArray,
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { addTStats, editTStats, markTStats, removeTStats, } from "../stats/statHelpers.js";
+import { tCleared } from "../../model/TCleared.js";
 export async function addTask() {
     const addLookup = await getAddInfo();
     const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority, addLookup.category);
@@ -72,6 +73,7 @@ export async function deleteTask() {
         return;
     }
     removeTStats(itemToRemove);
+    tCleared.addToDeletedTasks(itemToRemove);
     tStore.setTasks(newArray, "delete");
 }
 export async function viewTasks(tasks = tStore.tasks) {

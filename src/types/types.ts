@@ -18,6 +18,7 @@ export type Purpose =
   | "edit"
   | "complete"
   | "incomplete"
+  | "initialize"
   | "replace"
   | "subtask"
   | "tag"

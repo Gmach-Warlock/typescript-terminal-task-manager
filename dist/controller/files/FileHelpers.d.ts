@@ -1,5 +1,5 @@
-import type { SaveState, StatsObj } from "../../types/interfaces.js";
-export declare function saveToFile(state: SaveState): Promise<void>;
+import type { StatsObj } from "../../types/interfaces.js";
+export declare function saveToFile(state: object, fileName: string): Promise<void>;
 export declare function loadFile(): Promise<any>;
 export declare function stateStats(): Promise<{
     size: number;

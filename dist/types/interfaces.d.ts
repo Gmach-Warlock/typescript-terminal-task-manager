@@ -35,11 +35,13 @@ export interface StatsObj {
     complete: number;
     incomplete: number;
     completed: number;
+    highPriority: number;
 }
 export interface StateObject {
+    id: string;
     timeChanged: string;
-    newTasksState: TaskInfo[];
-    newStatsState: StatsObj;
+    tasksState: TaskInfo[];
+    statsState: StatsObj;
     typeOfLastChange: Purpose;
 }
 export interface SaveState {

@@ -4,13 +4,8 @@ import { tStore } from "../../model/TasksStore.js";
 import { tTotals } from "../../model/TasksTotals.js";
 import type { SaveState } from "../../types/interfaces.js";
 import { mainMenu } from "../../view/menu.js";
-import { makeTaskOjects, recreateTasks } from "../files/fileFactories.js";
-import {
-  fillStats,
-  loadFile,
-  saveToFile,
-  stateStats,
-} from "../files/FileHelpers.js";
+import { makeTaskOjects, recreateTasks } from "./fileFactories.js";
+import { fillStats, loadFile, saveToFile, stateStats } from "./FileHelpers.js";
 import { logStats } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 
@@ -31,7 +26,9 @@ export async function saveApp() {
     stats: currentStats,
     savedAt: timeStamp(),
   };
-  saveToFile(saveState);
+  saveToFile(saveState, "tasks.json");
+  // need to make object of state in class
+  saveToFile({ title: "Checker Decker in the Pecker" }, "state.json");
   mainMenu();
 }
 

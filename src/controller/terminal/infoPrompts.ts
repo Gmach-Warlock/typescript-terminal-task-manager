@@ -1,9 +1,23 @@
 import { getStringInput, getNumericInput } from "./terminal.js";
 import { getInfoQuestion } from "../tasks/taskHelpers1.js";
 import type { Priority, PropToModify, TCategory } from "../../types/types.js";
+import { tStore } from "../../model/TasksStore.js";
 
 export async function getAddInfo() {
-  const title: string = await getStringInput(getInfoQuestion("add", "title"));
+  const arr = tStore.tasks;
+  let answered = false;
+  let title = "";
+  while (!answered) {
+    title = await getStringInput(getInfoQuestion("add", "title"));
+    if (arr.some((task) => task.title === title)) {
+      console.log(
+        "There is an task with that title already. Pleas choose another title",
+      );
+      continue;
+    }
+    answered = true;
+  }
+
   const description: string = await getStringInput(
     getInfoQuestion("add", "description"),
   );

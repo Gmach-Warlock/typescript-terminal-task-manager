@@ -18,6 +18,7 @@ import {
   removeTStats,
 } from "../stats/statHelpers.js";
 import type { Purpose } from "../../types/types.js";
+import { tCleared } from "../../model/TCleared.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();
@@ -101,6 +102,7 @@ export async function deleteTask() {
     return;
   }
   removeTStats(itemToRemove);
+  tCleared.addToDeletedTasks(itemToRemove);
   tStore.setTasks(newArray, "delete");
 }
 

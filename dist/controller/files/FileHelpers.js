@@ -9,11 +9,11 @@ import { tCompletes } from "../../model/TasksCompletes.js";
 import { tHighPriority } from "../../model/TaskHighPriority.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-export async function saveToFile(state) {
+export async function saveToFile(state, fileName) {
     try {
         const convertedData = JSON.stringify(state);
         const dataDir = path.join(__dirname, "../../../data");
-        const filePath = path.join(dataDir, "tasks.json");
+        const filePath = path.join(dataDir, fileName);
         await fs.promises.mkdir(dataDir, { recursive: true });
         const callBack = (err) => {
             if (err)
@@ -55,11 +55,11 @@ export async function stateStats() {
     return newStatsObj;
 }
 export async function fillStats(statsObj) {
-    console.log("stats object in fill stats", statsObj);
     tTotals.size = statsObj.size;
     tTotals.total = statsObj.total;
     tCompletes.complete = statsObj.complete;
     tCompletes.incomplete = statsObj.incomplete;
     tCompletes.completed = statsObj.completed;
+    tHighPriority.highPriority = statsObj.highPriority;
 }
 //# sourceMappingURL=FileHelpers.js.map

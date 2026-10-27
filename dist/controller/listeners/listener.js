@@ -2,7 +2,7 @@ import { mainMenu } from "../../view/menu.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { tStore } from "../../model/TasksStore.js";
 import { timeStamp } from "../../model/Task.js";
-import { tHistory } from "../../model/TasksHistory.js";
+import { tState } from "../../model/TState.js";
 import { stateStats } from "../files/FileHelpers.js";
 import { makeTaskOjects } from "../files/fileFactories.js";
 export function logListener(purpose) {
@@ -38,15 +38,16 @@ export async function historyListener(purpose) {
     }
     const newTasks = makeTaskOjects(tStore.tasks);
     const newStateObj = {
+        id: crypto.randomUUID(),
         timeChanged: timeStamp(),
-        newTasksState: newTasks ?? [],
-        newStatsState: newStats,
+        tasksState: newTasks ?? [],
+        statsState: newStats,
         typeOfLastChange: purpose,
     };
     if (!newStateObj) {
         console.log("failed in historyListener");
         return;
     }
-    tHistory.addNewTasksState(newStateObj);
+    tState.addState(newStateObj);
 }
 //# sourceMappingURL=listener.js.map

@@ -1,6 +1,8 @@
 import { returnAction2 } from "../controller/tasks/taskActions.js";
 import { getNumericInput } from "../controller/terminal/terminal.js";
+import { tState } from "../model/TState.js";
 export function logMainMenu() {
+  tState.logState();
   console.log(`
 Welcome to the Task Manager
 

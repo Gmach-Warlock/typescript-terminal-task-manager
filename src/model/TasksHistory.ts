@@ -1,8 +1,11 @@
-import { recreateTasks } from "../controller/files/fileFactories.js";
+/* import { recreateTasks } from "../controller/files/fileFactories.js";
 import { fillStats } from "../controller/files/FileHelpers.js";
+import {
+  createINode,
+  createIState,
+} from "../controller/history/historyHelpers.js";
 import { denyAndReturn } from "../controller/terminal/terminal.js";
 import type { StateObject } from "../types/interfaces.js";
-import { mainMenu } from "../view/menu.js";
 import { StateNode } from "./StateNode.js";
 import { tStore } from "./TasksStore.js";
 export class TasksHistory {
@@ -12,32 +15,18 @@ export class TasksHistory {
   #numOfTStates: number;
   #stateMap: Map<string, StateNode>;
   #createDummies() {
-    this.#head = new StateNode({
-      timeChanged: "N/A",
-      newTasksState: [],
-      newStatsState: {
-        size: 0,
-        total: 0,
-        complete: 0,
-        incomplete: 0,
-        completed: 0,
-      },
-      typeOfLastChange: "add",
-    });
-    this.#tail = new StateNode({
-      timeChanged: "N/A",
-      newTasksState: [],
-      newStatsState: {
-        size: 0,
-        total: 0,
-        complete: 0,
-        incomplete: 0,
-        completed: 0,
-      },
-      typeOfLastChange: "add",
-    });
-    this.#head.next = this.#tail;
-    this.#tail.previous = this.#head;
+    const newHead: StateNode = createINode();
+    const newTail: StateNode = createINode();
+    const newNode: StateNode = createINode();
+    const newInitial: StateObject = createIState();
+    this.#head = newHead;
+    this.#tail = newTail;
+    this.#currentNode = newNode;
+    this.#head.next = newNode;
+    this.#tail.previous = newNode;
+    newNode.previous = this.#head;
+    newNode.next = this.#tail;
+    this.addNewTasksState(newInitial);
   }
   constructor() {
     this.#head = null;
@@ -66,34 +55,21 @@ export class TasksHistory {
       return;
     }
     const newNode = new StateNode(state);
-    if (this.#tail.previous === this.#head && this.#head.next === this.#tail) {
-      this.#head.next = newNode;
-      newNode.previous = this.#head;
-      newNode.next = this.#tail;
-      this.#tail.previous = newNode;
-      this.#numOfTStates++;
-      this.#stateMap.set(state.timeChanged, newNode);
-      this.#currentNode = newNode;
 
-      console.log("addNewTasksState", this.#currentNode.data);
-      return;
-    }
-    const temp = this.#tail.previous;
+    const anchor = this.#currentNode || this.#head;
+    newNode.previous = anchor;
+    newNode.next = this.#tail;
+    anchor.next = newNode;
     this.#tail.previous = newNode;
-    if (temp) {
-      newNode.previous = temp;
-      temp.next = newNode;
-      newNode.next = this.#tail;
-      this.#numOfTStates++;
-      this.#stateMap.set(state.timeChanged, newNode);
-      this.#currentNode = newNode;
-      console.log("addNewTasksState", this.currentN);
-    }
+
+    this.#numOfTStates++;
+    this.#stateMap.set(state.timeChanged, newNode);
+    this.#currentNode = newNode;
   }
   logStates() {
     let current = this.#tail?.previous;
     if (!current) return;
-    while (current.previous !== null && current.previous !== undefined) {
+    while (current.previous !== null && current.previous !== this.#head) {
       console.log(current.data);
       current = current.previous;
     }
@@ -103,8 +79,8 @@ export class TasksHistory {
   redo() {
     if (this.#currentNode?.next) {
       this.#currentNode = this.#currentNode.next;
-      const taskArray = recreateTasks(this.#currentNode.data.newTasksState);
-      const statsObj = this.#currentNode.data.newStatsState;
+      const taskArray = recreateTasks(this.#currentNode.data.tasksState);
+      const statsObj = this.#currentNode.data.statsState;
       console.log("Going forward again in redo. ", taskArray, statsObj);
       fillStats(statsObj);
       tStore.setTasks(taskArray, "redo");
@@ -114,25 +90,28 @@ export class TasksHistory {
     return;
   }
   undo() {
-    if (this.#currentNode?.previous === this.#head) {
+    if (this.currentN?.previous && this.#currentNode?.previous === this.#head) {
       denyAndReturn("There is nothing to undo. State remains unchanged.");
+      console.log("in undo in tasksHistory", this.#currentNode.data);
       return;
     }
-    if (this.#currentNode?.previous) {
-      this.#currentNode = this.#currentNode.previous;
-      const taskArray = recreateTasks(this.#currentNode.data.newTasksState);
-      const statsObj = this.#currentNode.data.newStatsState;
-      console.log(
-        "We are attempting to go back in time here in undo. ",
-        taskArray,
-        statsObj,
-      );
-      fillStats(statsObj);
-      tStore.setTasks(taskArray, "undo");
-      return;
-    }
-    denyAndReturn("Nothing to undo. State remains unchanged.");
-    return;
+    console.log("in undo", this.#currentNode?.data ?? null);
+    this.#currentNode = this.#currentNode?.previous ?? null;
+    const currentNode = this.#currentNode;
+    if (!currentNode) return;
+    //console.log("checkout your tasks in undo", currentNode.data.tasksState);
+    const tasksArray = recreateTasks(currentNode.data.tasksState);
+    console.log("Did we get our array?", tasksArray);
+    tasksArray.forEach((task) => console.log(task.id));
+    const statsObj = currentNode.data.statsState;
+    console.log(
+      "Were attempting to go back in time in undo",
+      tasksArray,
+      statsObj,
+    );
+    this.logStates();
+    fillStats(statsObj);
+    tStore.setTasks(tasksArray, "undo");
   }
 
   makeObj() {
@@ -147,3 +126,4 @@ export class TasksHistory {
 }
 
 export const tHistory = new TasksHistory();
+ */

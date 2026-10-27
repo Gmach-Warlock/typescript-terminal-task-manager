@@ -1,4 +1,5 @@
 import { tStore } from "../../model/TasksStore.js";
+import { tCleared } from "../../model/TCleared.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
@@ -42,6 +43,7 @@ export async function clearCompleted() {
     }
     const numDeleted = arr.length - notCompletedArray.length;
     clearTCStats(numDeleted, highPiorityCount);
+    tCleared.completedTasks = completedArray;
     tStore.setTasks(notCompletedArray, "replace");
     mainMenu();
 }

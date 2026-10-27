@@ -15,6 +15,7 @@ export function getInfoQuestion(purpose, prop) {
         load: "Do you want to load the existing tasks? ",
         exit: "Are you sure you want to quit?",
         "clear completed": "Are you sure you want to remove the completed tasks? ",
+        initialize: "State initialized",
     };
     const question = lookup[purpose];
     return question;

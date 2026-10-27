@@ -45,8 +45,7 @@ export class TasksCompletes {
 
   logCompletes() {
     console.log(`Complete: ${this.#complete}
-Incomplete: ${this.incomplete}
-Completed: ${this.#completed}`);
+Incomplete: ${this.incomplete} `);
   }
 }
 
