@@ -1,5 +1,20 @@
+import { Task } from "../model/task/Task.js";
 import type { Priority, PropToModify, Purpose, TCategory } from "./types.js";
 
+export interface SubtaskInfo {
+  id: string;
+  title: string;
+  descripton: string;
+  priority: Priority;
+  completed: boolean;
+  createdAt: string;
+}
+
+export interface TagInfo {
+  id: string;
+  tag: string;
+  createdAt: string;
+}
 export interface TaskInfo {
   id: string;
   title: string;

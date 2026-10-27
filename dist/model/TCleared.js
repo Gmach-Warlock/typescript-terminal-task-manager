@@ -1,5 +1,4 @@
-import { Task } from "./Task.js";
-import { logTask } from "../controller/terminal/taskPrompts.js";
+import { Task } from "./task/Task.js";
 export class TCleared {
     #deleted;
     #completed;

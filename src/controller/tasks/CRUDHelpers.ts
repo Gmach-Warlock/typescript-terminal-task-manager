@@ -1,5 +1,5 @@
-import { tStore } from "../../model/TasksStore.js";
-import { Task } from "../../model/Task.js";
+import { tStore } from "../../model/state/TStore.js";
+import { Task } from "../../model/task/Task.js";
 import { getAddInfo, getEditInfo } from "../terminal/infoPrompts.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import {
@@ -18,7 +18,7 @@ import {
   removeTStats,
 } from "../stats/statHelpers.js";
 import type { Purpose } from "../../types/types.js";
-import { tCleared } from "../../model/TCleared.js";
+import { tCleared } from "../../model/stats/TCleared.js";
 
 export async function addTask() {
   const addLookup = await getAddInfo();

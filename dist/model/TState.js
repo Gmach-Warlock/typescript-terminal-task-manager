@@ -1,8 +1,8 @@
 import { recreateTasks } from "../controller/files/fileFactories.js";
-import { createINode, redoState, } from "../controller/history/historyHelpers.js";
+import { createINode } from "../controller/history/historyHelpers.js";
 import { denyAndReturn } from "../controller/terminal/terminal.js";
 import { TNode } from "./TNode.js";
-import { tStore } from "./TasksStore.js";
+import { tStore } from "./store/TasksStore.js";
 import { fillStats } from "../controller/files/FileHelpers.js";
 export class TState {
     #head;

@@ -1,11 +1,11 @@
 import { mainMenu } from "../../view/menu.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
-import { tStore } from "../../model/TasksStore.js";
+import { tStore } from "../../model/state/TStore.js";
 import type { Purpose } from "../../types/types.js";
 import type { StateObject } from "../../types/interfaces.js";
-import { timeStamp } from "../../model/Task.js";
-import { tState } from "../../model/TState.js";
-import { stateStats } from "../files/FileHelpers.js";
+import { timeStamp } from "../../model/task/Task.js";
+import { tState } from "../../model/state/TState.js";
+import { stateStats } from "../files/fileHelpers.js";
 import { makeTaskOjects } from "../files/fileFactories.js";
 
 export function logListener(purpose: Partial<Purpose>) {

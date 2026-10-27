@@ -1,6 +1,6 @@
 import { returnAction2 } from "../controller/tasks/taskActions.js";
 import { getNumericInput } from "../controller/terminal/terminal.js";
-import { tState } from "../model/TState.js";
+import { tState } from "../model/state/TState.js";
 export function logMainMenu() {
     tState.logState();
     console.log(`

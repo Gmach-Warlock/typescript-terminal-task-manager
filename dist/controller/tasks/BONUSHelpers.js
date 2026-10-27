@@ -1,25 +1,11 @@
-import { tStore } from "../../model/TasksStore.js";
-import { tCleared } from "../../model/TCleared.js";
+import { tStore } from "../../model/state/TStore.js";
+import { tCleared } from "../../model/stats/TCleared.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation, getStringInput, } from "../terminal/terminal.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, returnObjInArray, } from "./taskHelpers1.js";
 import { returnFilterArray } from "./taskHelpers2.js";
-export async function viewStats() {
-    setTimeout(() => {
-        console.clear();
-        console.log("Here are the Current Totals");
-        logStats();
-        mainMenu();
-    }, 300);
-}
-export async function showHighPriority() {
-    const arr = tStore.tasks;
-    const highPriorities = returnFilterArray(arr, "High");
-    logTasks(highPriorities ?? []);
-    mainMenu();
-}
 export async function clearCompleted() {
     const confirmed = await getConfirmation("clear completed");
     if (!confirmed) {
@@ -45,28 +31,6 @@ export async function clearCompleted() {
     clearTCStats(numDeleted, highPiorityCount);
     tCleared.completedTasks = completedArray;
     tStore.setTasks(notCompletedArray, "replace");
-    mainMenu();
-}
-export async function addTag() {
-    const arr = tStore.tasks;
-    const title = await getStringInput(getInfoQuestion("tag", "title"));
-    const itemToEdit = returnObjInArray(arr, "title", title);
-    if (!itemToEdit) {
-        logNotFound();
-        return;
-    }
-    const newTag = await getStringInput(`What is the tag to add to this task? `);
-    if (!newTag) {
-        console.log("Couldn't get tag");
-        mainMenu();
-    }
-    const newTagsArray = addElementToArray(itemToEdit.tags, newTag);
-    const newArray = editItemInArray(arr, itemToEdit, "id", "tags", newTagsArray);
-    if (!newArray) {
-        console.log("Array not obtained in addTagToTask");
-        return;
-    }
-    tStore.setTasks(newArray, "tag");
     mainMenu();
 }
 export async function addSubtask() {

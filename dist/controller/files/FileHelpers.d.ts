@@ -10,4 +10,4 @@ export declare function stateStats(): Promise<{
     highPriority: number;
 }>;
 export declare function fillStats(statsObj: StatsObj): Promise<void>;
-//# sourceMappingURL=FileHelpers.d.ts.map
+//# sourceMappingURL=fileHelpers.d.ts.map

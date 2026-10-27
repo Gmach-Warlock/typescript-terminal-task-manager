@@ -1,6 +1,6 @@
 import { getStringInput, getNumericInput } from "./terminal.js";
 import { getInfoQuestion } from "../tasks/taskHelpers1.js";
-import { tStore } from "../../model/TasksStore.js";
+import { tStore } from "../../model/state/TStore.js";
 export async function getAddInfo() {
     const arr = tStore.tasks;
     let answered = false;

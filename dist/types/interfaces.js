@@ -1,2 +1,2 @@
-import { Task } from "../model/Task.js";
+import { Task } from "../model/task/Task.js";
 //# sourceMappingURL=interfaces.js.map

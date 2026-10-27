@@ -1,10 +1,8 @@
-import { timeStamp } from "../../model/Task.js";
-import { tCompletes } from "../../model/TasksCompletes.js";
-import { tStore } from "../../model/TasksStore.js";
-import { tTotals } from "../../model/TasksTotals.js";
+import { timeStamp } from "../../model/task/Task.js";
+import { tStore } from "../../model/state/TStore.js";
 import { mainMenu } from "../../view/menu.js";
 import { makeTaskOjects, recreateTasks } from "./fileFactories.js";
-import { fillStats, loadFile, saveToFile, stateStats } from "./FileHelpers.js";
+import { fillStats, loadFile, saveToFile, stateStats } from "./fileHelpers.js";
 import { logStats } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 export async function saveApp() {

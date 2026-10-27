@@ -1,4 +1,4 @@
-import { Task } from "../../model/Task.js";
+import { Task } from "../../model/task/Task.js";
 export declare function addTask(): Promise<void>;
 export declare function markTask(completed?: boolean): Promise<void>;
 export declare function editTask(): Promise<void>;

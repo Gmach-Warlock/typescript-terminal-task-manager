@@ -1,5 +1,5 @@
-import type { Task } from "../../model/Task.js";
-import { tStore } from "../../model/TasksStore.js";
+import type { Task } from "../../model/task/Task.js";
+import { tStore } from "../../model/state/TStore.js";
 import type { SearchProp, SortType } from "../../types/types.js";
 import { getFilterTypePrompt } from "../terminal/ssfPrompts.js";
 import { getNumericInput, getStringInput } from "../terminal/terminal.js";

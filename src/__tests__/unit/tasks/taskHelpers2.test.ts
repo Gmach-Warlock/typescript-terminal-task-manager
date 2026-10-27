@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Task } from "../../../model/Task.js";
+import { Task } from "../../../model/task/Task.js";
 import type { TaskInfo } from "../../../types/interfaces.js";
 import {
   returnFilterArray,

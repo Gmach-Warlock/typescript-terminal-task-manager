@@ -1,5 +1,5 @@
 import type { Listener, Purpose } from "../types/types.js";
-import type { Task } from "./Task.js";
+import type { Task } from "./task/Task.js";
 export declare const listenersArray: Listener[];
 export declare class TasksStore {
     #private;

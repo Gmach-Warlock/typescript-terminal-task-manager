@@ -1,7 +1,9 @@
-import { tHighPriority } from "../../model/TaskHighPriority.js";
-import { tCompletes } from "../../model/TasksCompletes.js";
-import { tTotals } from "../../model/TasksTotals.js";
-import { tCleared } from "../../model/TCleared.js";
+import { tHighPriority } from "../../model/stats/THighPriority.js";
+import { tCompletes } from "../../model/stats/TCompletes.js";
+import { tTotals } from "../../model/stats/TTotals.js";
+import { tCleared } from "../../model/stats/TCleared.js";
+import { logStats } from "../terminal/taskPrompts.js";
+import { mainMenu } from "../../view/menu.js";
 export function addTStats(task) {
     tTotals.incSize();
     tTotals.incTotal();

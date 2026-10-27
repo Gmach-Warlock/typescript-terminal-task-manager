@@ -1,4 +1,4 @@
-import { Task } from "./Task.js";
+import { Task } from "./task/Task.js";
 export declare class TCleared {
     #private;
     constructor();

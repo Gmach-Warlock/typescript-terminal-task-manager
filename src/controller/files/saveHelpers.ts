@@ -1,9 +1,9 @@
-import { timeStamp } from "../../model/Task.js";
-import { tStore } from "../../model/TasksStore.js";
+import { timeStamp } from "../../model/task/Task.js";
+import { tStore } from "../../model/state/TStore.js";
 import type { SaveState } from "../../types/interfaces.js";
 import { mainMenu } from "../../view/menu.js";
 import { makeTaskOjects, recreateTasks } from "./fileFactories.js";
-import { fillStats, loadFile, saveToFile, stateStats } from "./FileHelpers.js";
+import { fillStats, loadFile, saveToFile, stateStats } from "./fileHelpers.js";
 import { logStats } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 

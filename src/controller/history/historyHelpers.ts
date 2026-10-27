@@ -1,8 +1,8 @@
-import { tState } from "../../model/TState.js";
+import { tState } from "../../model/state/TState.js";
 import type { StatsObj, StateObject } from "../../types/interfaces.js";
-import { timeStamp } from "../../model/Task.js";
+import { timeStamp } from "../../model/task/Task.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
-import { TNode } from "../../model/TNode.js";
+import { TNode } from "../../model/state/TNode.js";
 
 export function createIStats() {
   const intitialStats: StatsObj = {

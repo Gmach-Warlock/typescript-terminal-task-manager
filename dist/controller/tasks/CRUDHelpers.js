@@ -1,12 +1,12 @@
-import { tStore } from "../../model/TasksStore.js";
-import { Task } from "../../model/Task.js";
+import { tStore } from "../../model/state/TStore.js";
+import { Task } from "../../model/task/Task.js";
 import { getAddInfo, getEditInfo } from "../terminal/infoPrompts.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, removeItemInArray, returnObjInArray, } from "./taskHelpers1.js";
 import { getStringInput } from "../terminal/terminal.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { addTStats, editTStats, markTStats, removeTStats, } from "../stats/statHelpers.js";
-import { tCleared } from "../../model/TCleared.js";
+import { tCleared } from "../../model/stats/TCleared.js";
 export async function addTask() {
     const addLookup = await getAddInfo();
     const newTask = new Task(addLookup.title, addLookup.description, addLookup.priority, addLookup.category);

@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Task } from "../../../model/Task.js";
+import { Task } from "../../../model/task/Task.js";
 import { returnFilterArray, returnSearchArray, returnSortedArray, } from "../../../controller/tasks/taskHelpers2.js";
 describe("returnSearchArray", () => {
     it("should return an empty array if there is not an item with the value provided in the array provided", () => {

@@ -1,12 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { makeStatsObject, makeTaskOjects } from "./fileFactories.js";
+import { makeStatsObject } from "./fileFactories.js";
 import { mainMenu } from "../../view/menu.js";
-import { tStore } from "../../model/TasksStore.js";
-import { tTotals } from "../../model/TasksTotals.js";
-import { tCompletes } from "../../model/TasksCompletes.js";
-import { tHighPriority } from "../../model/TaskHighPriority.js";
+import { tStore } from "../../model/state/TStore.js";
+import { tTotals } from "../../model/stats/TTotals.js";
+import { tCompletes } from "../../model/stats/TCompletes.js";
+import { tHighPriority } from "../../model/stats/THighPriority.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export async function saveToFile(state, fileName) {
@@ -62,4 +62,4 @@ export async function fillStats(statsObj) {
     tCompletes.completed = statsObj.completed;
     tHighPriority.highPriority = statsObj.highPriority;
 }
-//# sourceMappingURL=FileHelpers.js.map
+//# sourceMappingURL=fileHelpers.js.map

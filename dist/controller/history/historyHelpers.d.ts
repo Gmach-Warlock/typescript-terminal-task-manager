@@ -1,5 +1,5 @@
 import type { StatsObj, StateObject } from "../../types/interfaces.js";
-import { TNode } from "../../model/TNode.js";
+import { TNode } from "../../model/state/TNode.js";
 export declare function createIStats(): StatsObj;
 export declare function createIState(): StateObject;
 export declare function createINode(): TNode;

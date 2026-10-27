@@ -1,4 +1,4 @@
-import { Task } from "../../model/Task.js";
+import { Task } from "../../model/task/Task.js";
 export function makeTaskOjects(tasks) {
     // console.log("in makeTaskObjects", tasks);
     const objArray = tasks.map((task) => task.toObject());

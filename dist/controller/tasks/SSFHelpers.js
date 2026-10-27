@@ -1,4 +1,4 @@
-import { tStore } from "../../model/TasksStore.js";
+import { tStore } from "../../model/state/TStore.js";
 import { getFilterTypePrompt } from "../terminal/ssfPrompts.js";
 import { getNumericInput, getStringInput } from "../terminal/terminal.js";
 import { viewTasks } from "./CRUDHelpers.js";

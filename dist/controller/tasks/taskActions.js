@@ -1,8 +1,10 @@
 import { closeApp } from "../terminal/terminal.js";
-import { addTag, addSubtask, clearCompleted, showHighPriority, viewStats, } from "./BONUSHelpers.js";
+import { addTag } from "../bonus/tagsHelpers.js";
+import { addSubtask, clearCompleted } from "../bonus/BONUSHelpers.js";
 import { addTask, editTask, markTask, viewTasks, deleteTask, } from "./CRUDHelpers.js";
+import { viewStats, showHighPriority } from "../terminal/statPrompts.js";
 import { searchTasks, filterTasks, sortTasks } from "./SSFHelpers.js";
-import { addDueDate } from "./dateHelpers.js";
+import { addDueDate } from "../bonus/dateHelpers.js";
 import { loadApp, saveApp } from "../files/saveHelpers.js";
 import { undoState, redoState } from "../history/historyHelpers.js";
 export function returnAction(val) {

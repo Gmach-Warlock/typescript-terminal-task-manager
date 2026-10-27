@@ -1,7 +1,7 @@
-import { tState } from "../../model/TState.js";
-import { timeStamp } from "../../model/Task.js";
+import { tState } from "../../model/state/TState.js";
+import { timeStamp } from "../../model/task/Task.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
-import { TNode } from "../../model/TNode.js";
+import { TNode } from "../../model/state/TNode.js";
 export function createIStats() {
     const intitialStats = {
         size: 0,

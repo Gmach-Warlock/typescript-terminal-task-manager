@@ -1,4 +1,4 @@
-import { Task } from "../model/Task.js";
+import { Task } from "../model/task/Task.js";
 import type { TaskInfo } from "./interfaces.js";
 
 export type Answer = string | number;

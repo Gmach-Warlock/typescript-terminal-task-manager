@@ -1,4 +1,4 @@
-import type { Task } from "../../model/Task.js";
+import type { Task } from "../../model/task/Task.js";
 import type { TaskInfo } from "../../types/interfaces.js";
 import type {
   FilterFunction,
