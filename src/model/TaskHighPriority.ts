@@ -1,5 +1,3 @@
-import type { Priority } from "../types/types.js";
-
 export class TaskHighPriority {
   #highPriority: number;
   constructor() {

@@ -1,8 +1,5 @@
 import { recreateTasks } from "../controller/files/fileFactories.js";
-import {
-  createINode,
-  redoState,
-} from "../controller/history/historyHelpers.js";
+import { createINode } from "../controller/history/historyHelpers.js";
 import { denyAndReturn } from "../controller/terminal/terminal.js";
 import type { StateObject } from "../types/interfaces.js";
 import { TNode } from "./TNode.js";
@@ -20,7 +17,6 @@ export class TState {
     const newHead = createINode();
     const newTail = createINode();
     const newNode = createINode();
-
     this.#head = newHead;
     this.#tail = newTail;
     this.#head.prev = null;

@@ -1,12 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { makeStatsObject, makeTaskOjects } from "./fileFactories.js";
+import { makeStatsObject } from "./fileFactories.js";
 import { mainMenu } from "../../view/menu.js";
 import { tStore } from "../../model/TasksStore.js";
 import { tTotals } from "../../model/TasksTotals.js";
 import { tCompletes } from "../../model/TasksCompletes.js";
-import type { SaveState, StatsObj } from "../../types/interfaces.js";
+import type { StatsObj } from "../../types/interfaces.js";
 import { tHighPriority } from "../../model/TaskHighPriority.js";
 
 const __filename = fileURLToPath(import.meta.url);

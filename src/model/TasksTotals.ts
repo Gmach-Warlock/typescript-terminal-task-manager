@@ -1,5 +1,3 @@
-import type { TasksSizeObj } from "../types/interfaces.js";
-
 export class TasksTotals {
   #size: number;
   #total: number;

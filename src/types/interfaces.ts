@@ -1,4 +1,3 @@
-import { Task } from "../model/Task.js";
 import type { Priority, PropToModify, Purpose, TCategory } from "./types.js";
 
 export interface TaskInfo {

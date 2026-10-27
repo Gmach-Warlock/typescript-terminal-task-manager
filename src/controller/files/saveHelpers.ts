@@ -1,7 +1,5 @@
 import { timeStamp } from "../../model/Task.js";
-import { tCompletes } from "../../model/TasksCompletes.js";
 import { tStore } from "../../model/TasksStore.js";
-import { tTotals } from "../../model/TasksTotals.js";
 import type { SaveState } from "../../types/interfaces.js";
 import { mainMenu } from "../../view/menu.js";
 import { makeTaskOjects, recreateTasks } from "./fileFactories.js";

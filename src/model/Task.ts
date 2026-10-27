@@ -1,5 +1,5 @@
 import type { Priority, TCategory } from "../types/types.js";
-import type { DueDate, TaskInfo } from "../types/interfaces.js";
+import type { TaskInfo } from "../types/interfaces.js";
 
 export function timeStamp() {
   const newDate = new Date();
