@@ -31,6 +31,8 @@ export function logListener(purpose) {
     }, 500);
 }
 export async function historyListener(purpose) {
+    if (purpose === "undo" || purpose === "redo")
+        return;
     const newStats = await stateStats();
     if (!newStats) {
         console.log("Problem getting newStats in historyListener");

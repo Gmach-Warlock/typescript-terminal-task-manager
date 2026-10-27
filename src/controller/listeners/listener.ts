@@ -35,6 +35,7 @@ export function logListener(purpose: Partial<Purpose>) {
 }
 
 export async function historyListener(purpose: Partial<Purpose>) {
+  if (purpose === "undo" || purpose === "redo") return;
   const newStats = await stateStats();
   if (!newStats) {
     console.log("Problem getting newStats in historyListener");

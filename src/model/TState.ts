@@ -85,25 +85,18 @@ export class TState {
     this.#current = this.#current?.next ?? null;
   }
   redo() {
-    redoState();
-  }
-  undo() {
-    console.log(
-      "before we begin in undo ",
-      this.#current?.data,
-      this.#current?.prev?.data,
-    );
-    this.moveLeft();
-    console.log(
-      "in undo. moved left ",
-      this.#current?.data,
-      this.#current?.prev?.data,
-    );
+    this.moveRight();
     if (!this.#current) return;
     const tasksArray = recreateTasks(this.#current.data.tasksState);
     const statsObj = this.#current.data.statsState;
-    console.log("Were attempting to go back in time in undo", statsObj);
-    this.logState();
+    fillStats(statsObj);
+    tStore.setTasks(tasksArray, "redo");
+  }
+  undo() {
+    this.moveLeft();
+    if (!this.#current) return;
+    const tasksArray = recreateTasks(this.#current.data.tasksState);
+    const statsObj = this.#current.data.statsState;
     fillStats(statsObj);
     tStore.setTasks(tasksArray, "undo");
   }
