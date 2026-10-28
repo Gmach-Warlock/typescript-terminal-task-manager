@@ -40,7 +40,6 @@ export class TState {
     const newNode = new TNode(state);
     const anchor = this.#current || this.#tail.prev;
     if (anchor && (anchor.next === this.#tail || anchor === this.#tail.prev)) {
-      console.log("in addState", newNode.data, anchor.data);
       this.#tail.prev = newNode;
     }
     // slip the new node in between
@@ -50,7 +49,6 @@ export class TState {
       if (nextNode) nextNode.prev = anchor;
       anchor.next = newNode;
     }
-
     this.#current = newNode;
     newNode.prev = anchor;
     this.numOfState++;

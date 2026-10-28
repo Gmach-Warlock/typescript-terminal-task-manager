@@ -22,7 +22,7 @@ export function makeStatsObject(size, total, complete, incomplete, completed, hi
 }
 export function recreateTasks(tInfo) {
     const newTasks = tInfo.map((object) => {
-        const nT = new Task(object.title, object.description, object.priority, object.category, object.id, object.completed, object.createdAt, object.dueDate, object.subtasks, object.tags);
+        const nT = new Task(object.title, object.description, object.priority, object.category, object.id, object.completed, object.createdAt, object.subtasks, object.tags);
         return nT;
     });
     return newTasks;

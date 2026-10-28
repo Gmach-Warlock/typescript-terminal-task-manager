@@ -2,7 +2,7 @@ import { tStore } from "../../model/state/TStore.js";
 import { tCleared } from "../../model/stats/TCleared.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
-import { logStats, logTasks } from "../terminal/taskPrompts.js";
+import { logTasks } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation, getStringInput, } from "../terminal/terminal.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, returnObjInArray, } from "../tasks/taskHelpers1.js";
 import { returnFilterArray } from "../tasks/taskHelpers2.js";

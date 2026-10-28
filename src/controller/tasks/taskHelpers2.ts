@@ -23,10 +23,7 @@ export function returnSearchArray<Type extends object, Key extends keyof Type>(
   return newArray;
 }
 
-export function returnFilterArray<Task extends TaskInfo>(
-  arr: Task[],
-  filterType: FilterType,
-) {
+export function returnFilterArray(arr: Task[], filterType: FilterType) {
   const lookup: Record<FilterType, FilterFunction> = {
     Complete: () => arr.filter((item) => item.completed === true),
     Incomplete: () => arr.filter((item) => item.completed === false),

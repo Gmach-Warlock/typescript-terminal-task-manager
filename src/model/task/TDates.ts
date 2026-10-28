@@ -1,4 +1,6 @@
-import type { TDue } from "./TDue.js";
+import type { DueDate } from "../../types/interfaces.js";
+import type { Task } from "./Task.js";
+import { TDue } from "./TDue.js";
 
 export class TDates {
   #dues: TDue[];
@@ -14,13 +16,21 @@ export class TDates {
     this.#dues = newDates;
   }
 
-  addDDate(due: TDue) {
-    this.#dues = [...this.#dues, due];
+  addDDate(due: DueDate) {
+    const dueDate = new TDue(due);
+    this.#dues = [...this.#dues, dueDate];
   }
 
-  logDate(due: TDue) {
-    if (this.#dues.some((date) => date.tTitle === due.tTitle)) {
-      console.log(`Due by ${due.stringDate}`);
+  logDate(task: Task) {
+    if (this.#dues.some((dDate: TDue) => dDate.tTitle === task.title)) {
+      const foundDue = this.#dues.find(
+        (dueDate) => dueDate.tTitle === task.title,
+      );
+
+      if (foundDue) {
+        console.log(`Due by: ${foundDue.stringDate}`);
+        return foundDue.stringDate;
+      }
     }
   }
 }

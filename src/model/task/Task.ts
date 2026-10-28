@@ -1,5 +1,6 @@
 import type { Priority, TCategory } from "../../types/types.js";
 import type { TaskInfo } from "../../types/interfaces.js";
+import { tDates } from "./TDates.js";
 
 export function timeStamp() {
   const newDate = new Date();
@@ -22,7 +23,6 @@ export class Task {
   #completed: boolean;
   #createdAt: string;
   #category: TCategory;
-  #dueDate: string;
   #subtasks: string[];
   #tags: string[];
 
@@ -35,7 +35,6 @@ export class Task {
     id?: string,
     completed?: boolean,
     createdAt?: string,
-    dueDate?: string,
     subtasks?: string[],
     tags?: string[],
   ) {
@@ -46,7 +45,6 @@ export class Task {
     this.#completed = completed ? completed : false;
     this.#category = category;
     this.#createdAt = createdAt ? createdAt : timeStamp();
-    this.#dueDate = dueDate ? dueDate : "none";
     this.#subtasks = subtasks ? subtasks : [];
     this.#tags = tags ? tags : [];
   }
@@ -79,9 +77,6 @@ export class Task {
   get subtasks(): string[] {
     return this.#subtasks;
   }
-  get dueDate(): string {
-    return this.#dueDate;
-  }
 
   // setters
   set title(newTitle: string) {
@@ -105,9 +100,6 @@ export class Task {
   set subtasks(newSubtasks: string[]) {
     this.#subtasks = newSubtasks;
   }
-  set dueDate(newDueDate: string) {
-    this.#dueDate = newDueDate;
-  }
 
   addSubtaskToTask(subtask: string) {
     this.#subtasks.push(subtask);
@@ -129,7 +121,7 @@ export class Task {
       priority: this.priority,
       completed: this.completed,
       createdAt: this.createdAt,
-      dueDate: this.dueDate,
+      dueDate: tDates.logDate(this) ?? "",
       subtasks: this.subtasks,
       tags: this.tags,
     };

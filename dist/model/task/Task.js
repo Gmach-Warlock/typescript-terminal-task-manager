@@ -1,3 +1,4 @@
+import { tDates } from "./TDates.js";
 export function timeStamp() {
     const newDate = new Date();
     const formatted = new Intl.DateTimeFormat("en-us", {
@@ -19,12 +20,11 @@ export class Task {
     #completed;
     #createdAt;
     #category;
-    #dueDate;
     #subtasks;
     #tags;
     constructor(title, description, priority, category, 
     // repopulation
-    id, completed, createdAt, dueDate, subtasks, tags) {
+    id, completed, createdAt, subtasks, tags) {
         this.#id = id ? id : crypto.randomUUID();
         this.#title = title;
         this.#description = description;
@@ -32,7 +32,6 @@ export class Task {
         this.#completed = completed ? completed : false;
         this.#category = category;
         this.#createdAt = createdAt ? createdAt : timeStamp();
-        this.#dueDate = dueDate ? dueDate : "none";
         this.#subtasks = subtasks ? subtasks : [];
         this.#tags = tags ? tags : [];
     }
@@ -64,9 +63,6 @@ export class Task {
     get subtasks() {
         return this.#subtasks;
     }
-    get dueDate() {
-        return this.#dueDate;
-    }
     // setters
     set title(newTitle) {
         this.#title = newTitle;
@@ -89,9 +85,6 @@ export class Task {
     set subtasks(newSubtasks) {
         this.#subtasks = newSubtasks;
     }
-    set dueDate(newDueDate) {
-        this.#dueDate = newDueDate;
-    }
     addSubtaskToTask(subtask) {
         this.#subtasks.push(subtask);
     }
@@ -111,7 +104,7 @@ export class Task {
             priority: this.priority,
             completed: this.completed,
             createdAt: this.createdAt,
-            dueDate: this.dueDate,
+            dueDate: tDates.logDate(this) ?? "",
             subtasks: this.subtasks,
             tags: this.tags,
         };

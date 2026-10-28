@@ -41,7 +41,6 @@ export function recreateTasks(tInfo: TaskInfo[]) {
       object.id,
       object.completed,
       object.createdAt,
-      object.dueDate,
       object.subtasks,
       object.tags,
     );

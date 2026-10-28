@@ -38,42 +38,9 @@ describe("returnSearchArray", () => {
 describe("returnFilterArray", () => {
     it("should return an array filtered by the given filterType", () => {
         // arrange
-        const testItem1 = {
-            id: "idt1",
-            title: "Task 1",
-            description: "Desc 1",
-            priority: "Low",
-            completed: false,
-            category: "Health",
-            createdAt: "July 1st",
-            dueDate: "none",
-            subtasks: [],
-            tags: [],
-        };
-        const testItem2 = {
-            id: "idt2",
-            title: "Task 2",
-            description: "Desc 2",
-            priority: "Medium",
-            completed: true,
-            category: "Other",
-            createdAt: "July 1st",
-            dueDate: "none",
-            subtasks: [],
-            tags: [],
-        };
-        const testItem3 = {
-            id: "idt3",
-            title: "Task 3",
-            description: "Desc 3",
-            priority: "High",
-            completed: false,
-            category: "Work",
-            createdAt: "July 1st",
-            dueDate: "none",
-            subtasks: [],
-            tags: [],
-        };
+        const testItem1 = new Task("Title 1", "Desc 1", "Low", "Health", "idt1", false);
+        const testItem2 = new Task("Title 2", "Desc 2", "Medium", "Health", "idt2", true);
+        const testItem3 = new Task("Title 1", "Desc 1", "High", "Health", "idt3", false);
         const testArr = [testItem1, testItem2, testItem3];
         const filterProp1 = "Complete";
         const filterProp2 = "Incomplete";

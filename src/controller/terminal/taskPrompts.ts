@@ -3,6 +3,7 @@ import { tHighPriority } from "../../model/stats/THighPriority.js";
 import { tCompletes } from "../../model/stats/TCompletes.js";
 import { tTotals } from "../../model/stats/TTotals.js";
 import { tCleared } from "../../model/stats/TCleared.js";
+import { tDates } from "../../model/task/TDates.js";
 
 export function logTask(task: Task) {
   console.log(`
@@ -12,18 +13,20 @@ Description: ${task.description},
 Category: ${task.category}, 
 Priority: ${task.priority},
 Completed: ${task.completed},
-Created: ${task.createdAt},
-Due: ${task.dueDate},
-Tags: ${task.tags}
-Subtasks: ${task.subtasks}  
------------------------------------------`);
+Created: ${task.createdAt},`);
 }
 
 export function logTasks(tasks: Task[]) {
   console.log(`Here are all of your tasks
 
 -----------------------------------------`);
-  tasks.forEach((task) => logTask(task));
+  tasks.forEach((task) => {
+    logTask(task);
+    tDates.logDate(task);
+    console.log(`Tags: ${task.tags}
+Subtasks: ${task.subtasks}`);
+  });
+  console.log(`--------------------------------------`);
 }
 
 export function logStats() {
