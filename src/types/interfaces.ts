@@ -1,4 +1,5 @@
 import { Task } from "../model/task/Task.js";
+import type { Subtask } from "../model/tChildren/Subtask.js";
 import type { Priority, PropToModify, Purpose, TCategory } from "./types.js";
 
 export interface SubtaskInfo {
@@ -24,7 +25,7 @@ export interface TaskInfo {
   category: TCategory;
   createdAt: string;
   dueDate: string;
-  subtasks: string[];
+  subtasks: Subtask[];
   tags: string[];
 }
 
@@ -45,10 +46,13 @@ export interface DueDate {
   year: number;
 }
 
-export interface SubTask {
+export interface SubTaskInfo {
   id: string;
+  parent: string;
   title: string;
+  priority: Priority;
   createdAt: string;
+  completed: boolean;
 }
 
 export interface StatsObj {

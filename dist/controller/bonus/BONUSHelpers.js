@@ -6,6 +6,10 @@ import { logTasks } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation, getStringInput, } from "../terminal/terminal.js";
 import { addElementToArray, editItemInArray, getInfoQuestion, returnObjInArray, } from "../tasks/taskHelpers1.js";
 import { returnFilterArray } from "../tasks/taskHelpers2.js";
+import { Subtask } from "../../model/tChildren/Subtask.js";
+import { getPriority } from "../terminal/infoPrompts.js";
+import { TSubtasks } from "../../model/tChildren/TSubtasks.js";
+import { tBank } from "../../model/tChildren/TSubsBank.js";
 export async function clearCompleted() {
     const confirmed = await getConfirmation("clear completed");
     if (!confirmed) {
@@ -41,14 +45,16 @@ export async function addSubtask() {
         logNotFound();
         return;
     }
-    const subtask = await getStringInput(`What is the subtask? `);
-    const newArray = addElementToArray(itemToEdit.subtasks, subtask);
-    const newTasks = editItemInArray(arr, itemToEdit, "id", "subtasks", newArray);
-    if (!newTasks) {
-        console.log("No new tasks in addSubtask");
+    const subTTitle = await getStringInput(`What is the title of the new subtask? `);
+    const subTDesc = await getStringInput(`Please give your new subtask a description: `);
+    const subTPriority = await getPriority();
+    if (!subTPriority)
         return;
-    }
-    tStore.setTasks(newTasks, "subtask");
+    const newSubTask = new Subtask(title, subTTitle, subTDesc, subTPriority);
+    const newSubTasks = new TSubtasks(title);
+    newSubTasks.addSubtask(newSubTask);
+    tBank.addToBank(newSubTasks);
+    tStore.setTasks(tStore.tasks, "subtask");
     mainMenu();
 }
 //# sourceMappingURL=BONUSHelpers.js.map

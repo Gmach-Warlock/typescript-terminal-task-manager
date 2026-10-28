@@ -52,7 +52,6 @@ export class TState {
     this.#current = newNode;
     newNode.prev = anchor;
     this.numOfState++;
-    this.logState();
   }
 
   logState() {

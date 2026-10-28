@@ -40,7 +40,6 @@ export async function loadApp() {
     }
     const tasks = recreateTasks(rawState.tasks);
     const stats = rawState.stats;
-    console.log("raw stats in loadApp", stats);
     fillStats(stats);
     logStats();
     tStore.setTasks(tasks, "load");

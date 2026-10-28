@@ -1,6 +1,6 @@
 import { Tag } from "./Tag.js";
 
-export class TTags {
+class TTags {
   #tags: Tag[];
 
   constructor() {
@@ -18,3 +18,5 @@ export class TTags {
     this.#tags = [...this.#tags, tag];
   }
 }
+
+export const tTags = new TTags();

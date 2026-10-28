@@ -1,5 +1,5 @@
 import { Tag } from "./Tag.js";
-export class TTags {
+class TTags {
     #tags;
     constructor() {
         this.#tags = [];
@@ -14,4 +14,5 @@ export class TTags {
         this.#tags = [...this.#tags, tag];
     }
 }
+export const tTags = new TTags();
 //# sourceMappingURL=TTags.js.map

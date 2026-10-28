@@ -3,6 +3,7 @@ import { tCompletes } from "../../model/stats/TCompletes.js";
 import { tTotals } from "../../model/stats/TTotals.js";
 import { tCleared } from "../../model/stats/TCleared.js";
 import { tDates } from "../../model/task/TDates.js";
+import { tBank } from "../../model/tChildren/TSubsBank.js";
 export function logTask(task) {
     console.log(`
 Id: ${task.id},
@@ -20,8 +21,8 @@ export function logTasks(tasks) {
     tasks.forEach((task) => {
         logTask(task);
         tDates.logDate(task);
-        console.log(`Tags: ${task.tags}
-Subtasks: ${task.subtasks}`);
+        tBank.logSubtasks(task);
+        console.log(`Tags: ${task.tags}`);
     });
     console.log(`--------------------------------------`);
 }

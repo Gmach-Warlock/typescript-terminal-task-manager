@@ -33,6 +33,8 @@ export class TDates {
       }
     }
   }
+  // need to figure out how to store and hydrate these
+  hydrate(tasksArr: Task[]) {}
 }
 
 export const tDates = new TDates();

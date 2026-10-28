@@ -41,9 +41,9 @@ export function recreateTasks(tInfo: TaskInfo[]) {
       object.id,
       object.completed,
       object.createdAt,
-      object.subtasks,
       object.tags,
     );
+    // need to hydrate tags due date and fix the factory
     return nT;
   });
   return newTasks;
