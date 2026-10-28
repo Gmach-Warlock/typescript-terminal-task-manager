@@ -17,14 +17,14 @@ Created: ${task.createdAt},`);
 export function logTasks(tasks) {
     console.log(`Here are all of your tasks
 
------------------------------------------`);
+--------------------------------------------------`);
     tasks.forEach((task) => {
         logTask(task);
         tDates.logDate(task);
         tBank.logSubtasks(task);
         console.log(`Tags: ${task.tags}`);
     });
-    console.log(`--------------------------------------`);
+    console.log(`--------------------------------------------------`);
 }
 export function logStats() {
     tTotals.logTotals();
@@ -32,6 +32,6 @@ export function logStats() {
     tHighPriority.logHighPriority();
     tCleared.logCleared();
     console.log(`
-----------------------------------------`);
+--------------------------------------------------`);
 }
 //# sourceMappingURL=taskPrompts.js.map

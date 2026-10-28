@@ -13,13 +13,23 @@ export function createIStats() {
     };
     return intitialStats;
 }
+export function createIAdds() {
+    const iAdds = {
+        dues: [],
+        tags: [],
+        subBank: [],
+    };
+    return iAdds;
+}
 export function createIState() {
     const iStats = createIStats();
+    const iAdds = createIAdds();
     const stateObj = {
         id: crypto.randomUUID(),
         timeChanged: timeStamp(),
         tasksState: [],
         statsState: iStats,
+        tAddsState: iAdds,
         typeOfLastChange: "initialize",
     };
     return stateObj;

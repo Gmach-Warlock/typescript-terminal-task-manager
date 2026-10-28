@@ -1,6 +1,7 @@
 import { Task } from "../../model/task/Task.js";
 import type { TaskInfo } from "../../types/interfaces.js";
-
+import type { TAdds } from "../../types/interfaces.js";
+import { tDates } from "../../model/task/TDates.js";
 export function makeTaskOjects(tasks: Task[]) {
   // console.log("in makeTaskObjects", tasks);
   const objArray: TaskInfo[] = tasks.map((task) => task.toObject());
@@ -47,4 +48,13 @@ export function recreateTasks(tInfo: TaskInfo[]) {
     return nT;
   });
   return newTasks;
+}
+
+export function makeOtherStats() {
+  const newObj: TAdds = {
+    dues: tDates.dues,
+    tags: [],
+    subBank: [],
+  };
+  return newObj;
 }

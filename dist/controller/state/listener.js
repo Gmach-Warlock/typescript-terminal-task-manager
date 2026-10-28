@@ -3,7 +3,7 @@ import { logStats, logTasks } from "../terminal/taskPrompts.js";
 import { tStore } from "../../model/state/TStore.js";
 import { timeStamp } from "../../model/task/Task.js";
 import { tState } from "../../model/state/TState.js";
-import { stateStats } from "./fileHelpers.js";
+import { makeTAddObj, stateStats } from "./fileHelpers.js";
 import { makeTaskOjects } from "./fileFactories.js";
 export function logListener(purpose) {
     const lookup = {
@@ -38,12 +38,14 @@ export async function historyListener(purpose) {
         console.log("Problem getting newStats in historyListener");
         return;
     }
+    const newIAdds = makeTAddObj();
     const newTasks = makeTaskOjects(tStore.tasks);
     const newStateObj = {
         id: crypto.randomUUID(),
         timeChanged: timeStamp(),
         tasksState: newTasks ?? [],
         statsState: newStats,
+        tAddsState: newIAdds,
         typeOfLastChange: purpose,
     };
     if (!newStateObj) {

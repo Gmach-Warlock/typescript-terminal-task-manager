@@ -5,9 +5,10 @@ export declare class TDates {
     #private;
     constructor();
     get dues(): TDue[];
-    set dates(newDates: TDue[]);
+    set dues(newDues: TDue[]);
     addDDate(due: DueDate): void;
     logDate(task: Task): string | undefined;
+    hydrate(tasksArr: Task[]): void;
 }
 export declare const tDates: TDates;
 //# sourceMappingURL=TDates.d.ts.map

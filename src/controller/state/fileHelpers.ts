@@ -6,8 +6,12 @@ import { mainMenu } from "../../view/menu.js";
 import { tStore } from "../../model/state/TStore.js";
 import { tTotals } from "../../model/stats/TTotals.js";
 import { tCompletes } from "../../model/stats/TCompletes.js";
-import type { StatsObj } from "../../types/interfaces.js";
+import type { StatsObj, TAdds } from "../../types/interfaces.js";
 import { tHighPriority } from "../../model/stats/THighPriority.js";
+import { TDue } from "../../model/task/TDue.js";
+import { tDates } from "../../model/task/TDates.js";
+import { tTags } from "../../model/tChildren/TTags.js";
+import { tBank } from "../../model/tChildren/TSubsBank.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -71,4 +75,19 @@ export async function fillStats(statsObj: StatsObj) {
   tCompletes.incomplete = statsObj.incomplete;
   tCompletes.completed = statsObj.completed;
   tHighPriority.highPriority = statsObj.highPriority;
+}
+
+export async function fillTAdds(tAddObj: TAdds) {
+  tDates.dues = tAddObj.dues;
+  tTags.tags = tAddObj.tags;
+  tBank.subBank = tAddObj.subBank;
+}
+
+export function makeTAddObj() {
+  const obj: TAdds = {
+    dues: tDates.dues,
+    tags: tTags.tags,
+    subBank: tBank.subBank,
+  };
+  return obj;
 }

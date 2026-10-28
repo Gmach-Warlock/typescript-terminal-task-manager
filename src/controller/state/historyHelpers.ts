@@ -1,5 +1,5 @@
 import { tState } from "../../model/state/TState.js";
-import type { StatsObj, StateObject } from "../../types/interfaces.js";
+import type { StatsObj, StateObject, TAdds } from "../../types/interfaces.js";
 import { timeStamp } from "../../model/task/Task.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 import { TNode } from "../../model/state/TNode.js";
@@ -15,13 +15,23 @@ export function createIStats() {
   };
   return intitialStats;
 }
+export function createIAdds() {
+  const iAdds: TAdds = {
+    dues: [],
+    tags: [],
+    subBank: [],
+  };
+  return iAdds;
+}
 export function createIState() {
   const iStats = createIStats();
+  const iAdds = createIAdds();
   const stateObj: StateObject = {
     id: crypto.randomUUID(),
     timeChanged: timeStamp(),
     tasksState: [],
     statsState: iStats,
+    tAddsState: iAdds,
     typeOfLastChange: "initialize",
   };
   return stateObj;

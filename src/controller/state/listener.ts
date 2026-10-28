@@ -5,7 +5,7 @@ import type { Purpose } from "../../types/types.js";
 import type { StateObject } from "../../types/interfaces.js";
 import { timeStamp } from "../../model/task/Task.js";
 import { tState } from "../../model/state/TState.js";
-import { stateStats } from "./fileHelpers.js";
+import { makeTAddObj, stateStats } from "./fileHelpers.js";
 import { makeTaskOjects } from "./fileFactories.js";
 
 export function logListener(purpose: Partial<Purpose>) {
@@ -41,12 +41,14 @@ export async function historyListener(purpose: Partial<Purpose>) {
     console.log("Problem getting newStats in historyListener");
     return;
   }
+  const newIAdds = makeTAddObj();
   const newTasks = makeTaskOjects(tStore.tasks);
   const newStateObj: StateObject = {
     id: crypto.randomUUID(),
     timeChanged: timeStamp(),
     tasksState: newTasks ?? [],
     statsState: newStats,
+    tAddsState: newIAdds,
     typeOfLastChange: purpose,
   };
   if (!newStateObj) {

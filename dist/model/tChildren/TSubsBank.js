@@ -7,7 +7,7 @@ class TSubsBank {
     get subBank() {
         return this.#subBank;
     }
-    set subBand(newBank) {
+    set subBank(newBank) {
         this.#subBank = newBank;
     }
     addToBank(subtasks) {
@@ -16,17 +16,18 @@ class TSubsBank {
     logSubtasks(task) {
         const foundSubTasks = this.#subBank.find((subTasks) => subTasks.parent === task.title);
         if (foundSubTasks) {
-            console.log("Subtasks: ");
+            console.log(`Subtasks: 
+    - - - - - - - - - - - - - - - - - - - - - - - - - -`);
             foundSubTasks.subtasks.forEach((subtask) => {
-                console.log(`Title: ${subtask.title}
-Description: ${subtask.description}
-Priority: ${subtask.priority}
-Completed: ${subtask.completed}
-Created At: ${subtask.createdAt}`);
+                console.log(`    Title: ${subtask.title}
+    Description: ${subtask.description}
+    Priority: ${subtask.priority}
+    Completed: ${subtask.completed}
+    Created At: ${subtask.createdAt}
+    - - - - - - - - - - - - - - - - - - - - - - - - - -`);
             });
             return foundSubTasks;
         }
-        console.log("we didn't go in ", foundSubTasks);
     }
     returnSubTasks(task) {
         const foundSTasks = this.#subBank.find((subtasks) => subtasks.parent === task.id);

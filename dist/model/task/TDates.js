@@ -7,8 +7,8 @@ export class TDates {
     get dues() {
         return this.#dues;
     }
-    set dates(newDates) {
-        this.#dues = newDates;
+    set dues(newDues) {
+        this.#dues = newDues;
     }
     addDDate(due) {
         const dueDate = new TDue(due);
@@ -23,6 +23,8 @@ export class TDates {
             }
         }
     }
+    // need to figure out how to store and hydrate these
+    hydrate(tasksArr) { }
 }
 export const tDates = new TDates();
 //# sourceMappingURL=TDates.js.map

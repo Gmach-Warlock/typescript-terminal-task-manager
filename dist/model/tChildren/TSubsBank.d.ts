@@ -4,7 +4,7 @@ declare class TSubsBank {
     #private;
     constructor();
     get subBank(): TSubtasks[];
-    set subBand(newBank: TSubtasks[]);
+    set subBank(newBank: TSubtasks[]);
     addToBank(subtasks: TSubtasks): void;
     logSubtasks(task: Task): TSubtasks | undefined;
     returnSubTasks(task: Task): TSubtasks | undefined;

@@ -3,13 +3,12 @@ import { tCleared } from "../../model/stats/TCleared.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logTasks } from "../terminal/taskPrompts.js";
-import { denyAndReturn, getConfirmation, getStringInput, } from "../terminal/terminal.js";
-import { addElementToArray, editItemInArray, getInfoQuestion, returnObjInArray, } from "../tasks/taskHelpers1.js";
+import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 import { returnFilterArray } from "../tasks/taskHelpers2.js";
 import { Subtask } from "../../model/tChildren/Subtask.js";
-import { getPriority } from "../terminal/infoPrompts.js";
 import { TSubtasks } from "../../model/tChildren/TSubtasks.js";
 import { tBank } from "../../model/tChildren/TSubsBank.js";
+import { getSubTaskInfo } from "../terminal/otherPrompts.js";
 export async function clearCompleted() {
     const confirmed = await getConfirmation("clear completed");
     if (!confirmed) {
@@ -38,22 +37,15 @@ export async function clearCompleted() {
     mainMenu();
 }
 export async function addSubtask() {
-    const arr = tStore.tasks;
-    const title = await getStringInput(getInfoQuestion("subtask", "title"));
-    const itemToEdit = returnObjInArray(arr, "title", title);
-    if (!itemToEdit) {
-        logNotFound();
+    const infoObj = await getSubTaskInfo();
+    if (!infoObj)
         return;
-    }
-    const subTTitle = await getStringInput(`What is the title of the new subtask? `);
-    const subTDesc = await getStringInput(`Please give your new subtask a description: `);
-    const subTPriority = await getPriority();
-    if (!subTPriority)
-        return;
-    const newSubTask = new Subtask(title, subTTitle, subTDesc, subTPriority);
-    const newSubTasks = new TSubtasks(title);
-    newSubTasks.addSubtask(newSubTask);
-    tBank.addToBank(newSubTasks);
+    const newSubTask = new Subtask(infoObj.title, infoObj.STTitle, infoObj.STDescription, infoObj.STPriority);
+    const subTasks = tBank.subBank.find((subtasks) => subtasks.parent === infoObj.title);
+    const newSubTasks = new TSubtasks(infoObj.title);
+    const arrToUse = subTasks ?? newSubTasks;
+    arrToUse.addSubtask(newSubTask);
+    tBank.addToBank(arrToUse);
     tStore.setTasks(tStore.tasks, "subtask");
     mainMenu();
 }

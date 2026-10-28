@@ -12,8 +12,8 @@ export class TDates {
   get dues() {
     return this.#dues;
   }
-  set dates(newDates: TDue[]) {
-    this.#dues = newDates;
+  set dues(newDues: TDue[]) {
+    this.#dues = newDues;
   }
 
   addDDate(due: DueDate) {

@@ -1,4 +1,4 @@
-import type { StatsObj } from "../../types/interfaces.js";
+import type { StatsObj, TAdds } from "../../types/interfaces.js";
 export declare function saveToFile(state: object, fileName: string): Promise<void>;
 export declare function loadFile(): Promise<any>;
 export declare function stateStats(): Promise<{
@@ -10,4 +10,6 @@ export declare function stateStats(): Promise<{
     highPriority: number;
 }>;
 export declare function fillStats(statsObj: StatsObj): Promise<void>;
+export declare function fillTAdds(tAddObj: TAdds): Promise<void>;
+export declare function makeTAddObj(): TAdds;
 //# sourceMappingURL=fileHelpers.d.ts.map

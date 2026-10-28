@@ -1,6 +1,7 @@
-import type { StatsObj, StateObject } from "../../types/interfaces.js";
+import type { StatsObj, StateObject, TAdds } from "../../types/interfaces.js";
 import { TNode } from "../../model/state/TNode.js";
 export declare function createIStats(): StatsObj;
+export declare function createIAdds(): TAdds;
 export declare function createIState(): StateObject;
 export declare function createINode(): TNode;
 export declare function redoState(): Promise<void>;
