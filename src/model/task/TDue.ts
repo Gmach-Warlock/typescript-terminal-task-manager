@@ -1,4 +1,4 @@
-import type { DueDate } from "../../types/interfaces.js";
+import type { DueDate } from "../../types/taskInterfaces.js";
 import type { Month } from "../../types/types.js";
 export class TDue {
   #tTitle: string;

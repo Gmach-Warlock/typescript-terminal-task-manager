@@ -4,6 +4,7 @@ import { tTotals } from "../../model/stats/TTotals.js";
 import { tCleared } from "../../model/stats/TCleared.js";
 import { tDates } from "../../model/task/TDates.js";
 import { tBank } from "../../model/tChildren/TSubsBank.js";
+import { tTags } from "../../model/tChildren/TTags.js";
 export function logTask(task) {
     console.log(`
 Id: ${task.id},
@@ -22,15 +23,15 @@ export function logTasks(tasks) {
         logTask(task);
         tDates.logDate(task);
         tBank.logSubtasks(task);
-        console.log(`Tags: ${task.tags}`);
+        tTags.logTags(task);
     });
     console.log(`--------------------------------------------------`);
 }
-export function logStats() {
+export function logStats(extra = false) {
     tTotals.logTotals();
     tCompletes.logCompletes();
     tHighPriority.logHighPriority();
-    tCleared.logCleared();
+    tCleared.logCleared(extra);
     console.log(`
 --------------------------------------------------`);
 }

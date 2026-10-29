@@ -1,1 +1,1 @@
-{"version":3,"file":"statPrompts.d.ts","sourceRoot":"","sources":["../../../src/controller/terminal/statPrompts.ts"],"names":[],"mappings":"AAKA,wBAAsB,SAAS,kBAO9B;AAED,wBAAsB,gBAAgB,kBAKrC"}
+{"version":3,"file":"statPrompts.d.ts","sourceRoot":"","sources":["../../../src/controller/terminal/statPrompts.ts"],"names":[],"mappings":"AAKA,wBAAsB,SAAS,CAAC,KAAK,UAAQ,iBAQ5C;AAED,wBAAsB,gBAAgB,kBAKrC"}

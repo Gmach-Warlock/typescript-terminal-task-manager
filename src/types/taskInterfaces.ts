@@ -28,7 +28,7 @@ export interface TaskInfo {
   createdAt: string;
   dueDate: string;
   subtasks: Subtask[];
-  tags: string[];
+  tags: Tag[];
 }
 
 export interface TasksSizeObj {
@@ -55,42 +55,4 @@ export interface SubTaskInfo {
   priority: Priority;
   createdAt: string;
   completed: boolean;
-}
-
-export interface StatsObj {
-  size: number;
-  total: number;
-  complete: number;
-  incomplete: number;
-  completed: number;
-  highPriority: number;
-}
-
-export interface StateObject {
-  id: string;
-  timeChanged: string;
-  tasksState: TaskInfo[];
-  statsState: StatsObj;
-  tAddsState: TAdds;
-  typeOfLastChange: Purpose;
-}
-
-export interface SaveState {
-  tasks: TaskInfo[];
-  stats: StatsObj;
-  tAdds: TAdds;
-  savedAt: string;
-}
-
-export interface TAdds {
-  dues: TDue[];
-  tags: Tag[];
-  subBank: TSubtasks[];
-}
-
-export interface STInstanceInfo {
-  title: string;
-  STTitle: string;
-  STDescription: string;
-  STPriority: Priority;
 }

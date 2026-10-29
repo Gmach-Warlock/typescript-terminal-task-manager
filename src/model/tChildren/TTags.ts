@@ -1,5 +1,5 @@
 import { Tag } from "./Tag.js";
-
+import { Task } from "../task/Task.js";
 class TTags {
   #tags: Tag[];
 
@@ -15,7 +15,18 @@ class TTags {
   }
 
   addTag(tag: Tag) {
-    this.#tags = [...this.#tags, tag];
+    if (!this.#tags.some((tag) => tag.id === tag.id))
+      this.#tags = [...this.#tags, tag];
+  }
+
+  logTags(task: Task) {
+    const tags: string[] = [];
+    this.#tags.forEach((tag: Tag) => {
+      if (tag.taskTitles.find((title) => title === task.title)) {
+        tags.push(`#${tag.name} `);
+      }
+    });
+    if (tags.length > 0) console.log(`Tags: ${tags}`);
   }
 }
 

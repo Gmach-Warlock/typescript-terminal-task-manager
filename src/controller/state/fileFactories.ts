@@ -1,6 +1,6 @@
 import { Task } from "../../model/task/Task.js";
-import type { TaskInfo } from "../../types/interfaces.js";
-import type { TAdds } from "../../types/interfaces.js";
+import type { TaskInfo } from "../../types/taskInterfaces.js";
+import type { TAdds } from "../../types/stateInterfaces.js";
 import { tDates } from "../../model/task/TDates.js";
 export function makeTaskOjects(tasks: Task[]) {
   // console.log("in makeTaskObjects", tasks);
@@ -42,7 +42,6 @@ export function recreateTasks(tInfo: TaskInfo[]) {
       object.id,
       object.completed,
       object.createdAt,
-      object.tags,
     );
     // need to hydrate tags due date and fix the factory
     return nT;

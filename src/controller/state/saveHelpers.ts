@@ -1,6 +1,6 @@
 import { timeStamp } from "../../model/task/Task.js";
 import { tStore } from "../../model/state/TStore.js";
-import type { SaveState } from "../../types/interfaces.js";
+import type { SaveState } from "../../types/stateInterfaces.js";
 import { mainMenu } from "../../view/menu.js";
 import {
   makeOtherStats,

@@ -44,7 +44,7 @@ export function returnAction2(val) {
         12: () => addDueDate(),
         13: () => clearCompleted(),
         14: () => showHighPriority(),
-        15: () => viewStats(),
+        15: () => viewStats(true),
         16: () => undoState(),
         17: () => redoState(),
         18: () => saveApp(),

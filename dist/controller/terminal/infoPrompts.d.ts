@@ -1,4 +1,5 @@
 import type { Priority, PropToModify, TCategory } from "../../types/types.js";
+export declare function titleExistsSomewhere(title: string): boolean;
 export declare function getAddInfo(): Promise<{
     title: string;
     description: string;

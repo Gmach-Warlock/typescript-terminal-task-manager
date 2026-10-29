@@ -8,7 +8,7 @@ export declare class TStore {
     get listeners(): Listener[];
     set tasks(newTasks: Task[]);
     set listeners(newListerners: Listener[]);
-    getTaskObjects(): import("../../types/interfaces.js").TaskInfo[];
+    getTaskObjects(): import("../../types/taskInterfaces.js").TaskInfo[];
     loadTasks(): any;
     saveTasks(): void;
     setTasks(newTasks: Task[], purpose: Partial<Purpose>): void;

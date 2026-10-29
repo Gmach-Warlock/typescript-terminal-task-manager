@@ -3,11 +3,17 @@ export declare class Tag {
     #private;
     constructor(tag: string);
     get id(): string;
-    get tag(): string;
+    get name(): string;
     get createdAt(): string;
-    get tasksUsing(): Task[];
-    set tag(newTag: string);
-    set users(newUsers: Task[]);
-    addTagUser(task: Task): void;
+    get taskTitles(): string[];
+    set name(newTag: string);
+    set taskTitles(newIds: string[]);
+    addTagUserId(task: Task): void;
+    toObject(): {
+        id: string;
+        name: string;
+        createdAt: string;
+        taskTitles: string[];
+    };
 }
 //# sourceMappingURL=Tag.d.ts.map

@@ -1,4 +1,4 @@
-import type { StateObject } from "../../types/interfaces.js";
+import type { StateObject } from "../../types/stateInterfaces.js";
 
 export class TNode {
   #data: StateObject;

@@ -1,14 +1,24 @@
 import { getStringInput, getNumericInput } from "./terminal.js";
 import { getInfoQuestion } from "../tasks/taskHelpers1.js";
 import { tStore } from "../../model/state/TStore.js";
+import { tCleared } from "../../model/stats/TCleared.js";
+export function titleExistsSomewhere(title) {
+    if (tStore.tasks.some((task) => task.title === title))
+        return true;
+    if (tCleared.completedTasks.some((task) => task.title === title))
+        return true;
+    if (tCleared.deletedTasks.some((task) => task.title === title))
+        return true;
+    return false;
+}
 export async function getAddInfo() {
     const arr = tStore.tasks;
     let answered = false;
     let title = "";
     while (!answered) {
         title = await getStringInput(getInfoQuestion("add", "title"));
-        if (arr.some((task) => task.title === title)) {
-            console.log("There is an task with that title already. Pleas choose another title");
+        if (titleExistsSomewhere(title)) {
+            console.log("A task with that Title already exists. Please choose another title");
             continue;
         }
         answered = true;

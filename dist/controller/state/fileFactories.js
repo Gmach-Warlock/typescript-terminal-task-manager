@@ -23,7 +23,7 @@ export function makeStatsObject(size, total, complete, incomplete, completed, hi
 }
 export function recreateTasks(tInfo) {
     const newTasks = tInfo.map((object) => {
-        const nT = new Task(object.title, object.description, object.priority, object.category, object.id, object.completed, object.createdAt, object.tags);
+        const nT = new Task(object.title, object.description, object.priority, object.category, object.id, object.completed, object.createdAt);
         // need to hydrate tags due date and fix the factory
         return nT;
     });

@@ -1,4 +1,4 @@
-import type { DueDate } from "../../types/interfaces.js";
+import type { DueDate } from "../../types/taskInterfaces.js";
 import type { Task } from "./Task.js";
 import { TDue } from "./TDue.js";
 

@@ -1,1 +1,1 @@
-{"version":3,"file":"otherPrompts.d.ts","sourceRoot":"","sources":["../../../src/controller/terminal/otherPrompts.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,2BAA2B,CAAC;AAGhE,wBAAsB,cAAc,wCAkBnC"}
+{"version":3,"file":"otherPrompts.d.ts","sourceRoot":"","sources":["../../../src/controller/terminal/otherPrompts.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,gCAAgC,CAAC;AAGrE,wBAAsB,cAAc,wCAkBnC"}

@@ -1,9 +1,9 @@
-import { getStringInput } from "./terminal.js";
+import { getNumericInput, getStringInput } from "./terminal.js";
 import { getInfoQuestion, returnObjInArray } from "../tasks/taskHelpers1.js";
 import { logNotFound } from "../../view/menu.js";
 import { getPriority } from "./infoPrompts.js";
 import { tStore } from "../../model/state/TStore.js";
-import type { STInstanceInfo } from "../../types/interfaces.js";
+import type { STInstanceInfo } from "../../types/stateInterfaces.js";
 import type { Priority } from "../../types/types.js";
 
 export async function getSubTaskInfo() {

@@ -1,4 +1,4 @@
-import { getStringInput } from "./terminal.js";
+import { getNumericInput, getStringInput } from "./terminal.js";
 import { getInfoQuestion, returnObjInArray } from "../tasks/taskHelpers1.js";
 import { logNotFound } from "../../view/menu.js";
 import { getPriority } from "./infoPrompts.js";

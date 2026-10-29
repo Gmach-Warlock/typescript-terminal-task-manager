@@ -1,6 +1,6 @@
 import { tStore } from "../../model/state/TStore.js";
 import { tCleared } from "../../model/stats/TCleared.js";
-import { logNotFound, mainMenu } from "../../view/menu.js";
+import { mainMenu } from "../../view/menu.js";
 import { clearTCStats } from "../stats/statHelpers.js";
 import { logTasks } from "../terminal/taskPrompts.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";

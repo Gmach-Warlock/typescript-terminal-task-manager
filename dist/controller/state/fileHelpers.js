@@ -7,7 +7,6 @@ import { tStore } from "../../model/state/TStore.js";
 import { tTotals } from "../../model/stats/TTotals.js";
 import { tCompletes } from "../../model/stats/TCompletes.js";
 import { tHighPriority } from "../../model/stats/THighPriority.js";
-import { TDue } from "../../model/task/TDue.js";
 import { tDates } from "../../model/task/TDates.js";
 import { tTags } from "../../model/tChildren/TTags.js";
 import { tBank } from "../../model/tChildren/TSubsBank.js";

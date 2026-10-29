@@ -3,37 +3,47 @@ import { Task } from "../task/Task.js";
 
 export class Tag {
   #id: string;
-  #tag: string;
+  #name: string;
   #createdAt: string;
-  #tasksUsing: Task[];
+  #taskTitles: string[];
 
   constructor(tag: string) {
     this.#id = crypto.randomUUID();
-    this.#tag = tag;
+    this.#name = tag;
     this.#createdAt = timeStamp();
-    this.#tasksUsing = [];
+    this.#taskTitles = [];
   }
 
   get id() {
     return this.#id;
   }
-  get tag() {
-    return this.#tag;
+  get name() {
+    return this.#name;
   }
   get createdAt() {
     return this.#createdAt;
   }
-  get tasksUsing() {
-    return this.#tasksUsing;
+  get taskTitles() {
+    return this.#taskTitles;
   }
-  set tag(newTag: string) {
-    this.#tag = newTag;
+  set name(newTag: string) {
+    this.#name = newTag;
   }
-  set users(newUsers: Task[]) {
-    this.#tasksUsing = newUsers;
+  set taskTitles(newIds: string[]) {
+    this.#taskTitles = newIds;
   }
 
-  addTagUser(task: Task) {
-    this.#tasksUsing = [...this.#tasksUsing, task];
+  addTagUserId(task: Task) {
+    this.#taskTitles = [...this.#taskTitles, task.title];
+  }
+
+  toObject() {
+    const obj = {
+      id: this.id,
+      name: this.name,
+      createdAt: this.createdAt,
+      taskTitles: this.taskTitles,
+    };
+    return obj;
   }
 }

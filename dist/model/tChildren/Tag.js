@@ -2,35 +2,44 @@ import { timeStamp } from "../task/Task.js";
 import { Task } from "../task/Task.js";
 export class Tag {
     #id;
-    #tag;
+    #name;
     #createdAt;
-    #tasksUsing;
+    #taskTitles;
     constructor(tag) {
         this.#id = crypto.randomUUID();
-        this.#tag = tag;
+        this.#name = tag;
         this.#createdAt = timeStamp();
-        this.#tasksUsing = [];
+        this.#taskTitles = [];
     }
     get id() {
         return this.#id;
     }
-    get tag() {
-        return this.#tag;
+    get name() {
+        return this.#name;
     }
     get createdAt() {
         return this.#createdAt;
     }
-    get tasksUsing() {
-        return this.#tasksUsing;
+    get taskTitles() {
+        return this.#taskTitles;
     }
-    set tag(newTag) {
-        this.#tag = newTag;
+    set name(newTag) {
+        this.#name = newTag;
     }
-    set users(newUsers) {
-        this.#tasksUsing = newUsers;
+    set taskTitles(newIds) {
+        this.#taskTitles = newIds;
     }
-    addTagUser(task) {
-        this.#tasksUsing = [...this.#tasksUsing, task];
+    addTagUserId(task) {
+        this.#taskTitles = [...this.#taskTitles, task.title];
+    }
+    toObject() {
+        const obj = {
+            id: this.id,
+            name: this.name,
+            createdAt: this.createdAt,
+            taskTitles: this.taskTitles,
+        };
+        return obj;
     }
 }
 //# sourceMappingURL=Tag.js.map

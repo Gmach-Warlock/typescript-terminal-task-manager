@@ -1,6 +1,6 @@
 import { Task } from "../../model/task/Task.js";
 import { tStore } from "../../model/state/TStore.js";
-import type { DueDate } from "../../types/interfaces.js";
+import type { DueDate } from "../../types/taskInterfaces.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { getDueDateInfo } from "../terminal/datePrompts.js";
 import { getStringInput } from "../terminal/terminal.js";

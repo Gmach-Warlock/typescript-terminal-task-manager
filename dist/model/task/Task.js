@@ -1,5 +1,6 @@
 import { tDates } from "./TDates.js";
 import { tBank } from "../tChildren/TSubsBank.js";
+import { tTags } from "../tChildren/TTags.js";
 export function timeStamp() {
     const newDate = new Date();
     const formatted = new Intl.DateTimeFormat("en-us", {
@@ -21,10 +22,9 @@ export class Task {
     #completed;
     #createdAt;
     #category;
-    #tags;
     constructor(title, description, priority, category, 
     // repopulation
-    id, completed, createdAt, tags) {
+    id, completed, createdAt) {
         this.#id = id ? id : crypto.randomUUID();
         this.#title = title;
         this.#description = description;
@@ -32,7 +32,6 @@ export class Task {
         this.#completed = completed ? completed : false;
         this.#category = category;
         this.#createdAt = createdAt ? createdAt : timeStamp();
-        this.#tags = tags ? tags : [];
     }
     // getters
     get id() {
@@ -56,9 +55,6 @@ export class Task {
     get category() {
         return this.#category;
     }
-    get tags() {
-        return this.#tags;
-    }
     // setters
     set title(newTitle) {
         this.#title = newTitle;
@@ -75,15 +71,6 @@ export class Task {
     set category(newCategory) {
         this.#category = newCategory;
     }
-    set tags(newTags) {
-        this.#tags = newTags;
-    }
-    addTagToTask(tag) {
-        this.#tags.push(tag);
-    }
-    logTags() {
-        this.#tags.forEach((tag) => console.log(`Tag: ${tag}`));
-    }
     // return the options
     toObject() {
         return {
@@ -96,7 +83,7 @@ export class Task {
             createdAt: this.createdAt,
             dueDate: tDates.logDate(this) ?? "",
             subtasks: Object.values(tBank.returnSubTasks(this) ?? []),
-            tags: this.tags,
+            tags: tTags.tags,
         };
     }
 }

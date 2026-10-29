@@ -1,3 +1,4 @@
+import { logTask, logTasks } from "../../controller/terminal/taskPrompts.js";
 import { Task } from "../task/Task.js";
 export class TCleared {
     #deleted;
@@ -54,9 +55,20 @@ export class TCleared {
     addToDeletedTasks(task) {
         this.#deletedTasks.push(task);
     }
-    logCleared() {
+    logCleared(extra = false) {
         console.log(`Completed: ${this.#completed}`);
         console.log(`Deleted: ${this.#deleted}`);
+        if (extra && this.#completedTasks.length > 0) {
+            console.log(`- - - - - - - - - - - - - - - - - -`);
+            console.log(`Completed Tasks: `);
+            this.#completedTasks.forEach((task) => logTask(task));
+            console.log(`- - - - - - - - - - - - - - - - - -`);
+        }
+        if (extra && this.#deletedTasks.length > 0) {
+            console.log(`Deleted Tasks: `);
+            this.#deletedTasks.forEach((task) => logTask(task));
+            console.log(`- - - - - - - - - - - - - - - - - -`);
+        }
     }
 }
 export const tCleared = new TCleared();

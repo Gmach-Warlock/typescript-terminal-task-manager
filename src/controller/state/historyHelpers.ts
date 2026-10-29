@@ -1,5 +1,6 @@
 import { tState } from "../../model/state/TState.js";
-import type { StatsObj, StateObject, TAdds } from "../../types/interfaces.js";
+import type { TAdds } from "../../types/stateInterfaces.js";
+import type { StatsObj, StateObject } from "../../types/stateInterfaces.js";
 import { timeStamp } from "../../model/task/Task.js";
 import { denyAndReturn, getConfirmation } from "../terminal/terminal.js";
 import { TNode } from "../../model/state/TNode.js";

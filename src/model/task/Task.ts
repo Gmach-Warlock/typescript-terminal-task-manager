@@ -1,8 +1,9 @@
 import type { Priority, TCategory } from "../../types/types.js";
-import type { TaskInfo } from "../../types/interfaces.js";
+import type { TaskInfo } from "../../types/taskInterfaces.js";
 import { tDates } from "./TDates.js";
 import { tBank } from "../tChildren/TSubsBank.js";
 import type { Subtask } from "../tChildren/Subtask.js";
+import { tTags } from "../tChildren/TTags.js";
 
 export function timeStamp() {
   const newDate = new Date();
@@ -25,7 +26,6 @@ export class Task {
   #completed: boolean;
   #createdAt: string;
   #category: TCategory;
-  #tags: string[];
 
   constructor(
     title: string,
@@ -36,7 +36,6 @@ export class Task {
     id?: string,
     completed?: boolean,
     createdAt?: string,
-    tags?: string[],
   ) {
     this.#id = id ? id : crypto.randomUUID();
     this.#title = title;
@@ -45,7 +44,6 @@ export class Task {
     this.#completed = completed ? completed : false;
     this.#category = category;
     this.#createdAt = createdAt ? createdAt : timeStamp();
-    this.#tags = tags ? tags : [];
   }
 
   // getters
@@ -70,9 +68,6 @@ export class Task {
   get category(): TCategory {
     return this.#category;
   }
-  get tags(): string[] {
-    return this.#tags;
-  }
 
   // setters
   set title(newTitle: string) {
@@ -90,16 +85,6 @@ export class Task {
   set category(newCategory: TCategory) {
     this.#category = newCategory;
   }
-  set tags(newTags: string[]) {
-    this.#tags = newTags;
-  }
-
-  addTagToTask(tag: string) {
-    this.#tags.push(tag);
-  }
-  logTags() {
-    this.#tags.forEach((tag) => console.log(`Tag: ${tag}`));
-  }
   // return the options
   toObject(): TaskInfo {
     return {
@@ -112,7 +97,7 @@ export class Task {
       createdAt: this.createdAt,
       dueDate: tDates.logDate(this) ?? "",
       subtasks: Object.values(tBank.returnSubTasks(this) ?? []) as Subtask[],
-      tags: this.tags,
+      tags: tTags.tags,
     };
   }
 }

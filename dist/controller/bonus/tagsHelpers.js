@@ -1,8 +1,10 @@
 import { tStore } from "../../model/state/TStore.js";
-import { getStringInput } from "../terminal/terminal.js";
+import { denyAndReturn, getStringInput } from "../terminal/terminal.js";
 import { returnObjInArray, getInfoQuestion } from "../tasks/taskHelpers1.js";
 import { logNotFound, mainMenu } from "../../view/menu.js";
 import { editItemInArray, addElementToArray } from "../tasks/taskHelpers1.js";
+import { Tag } from "../../model/tChildren/Tag.js";
+import { tTags } from "../../model/tChildren/TTags.js";
 export async function addTag() {
     const arr = tStore.tasks;
     const title = await getStringInput(getInfoQuestion("tag", "title"));
@@ -11,18 +13,19 @@ export async function addTag() {
         logNotFound();
         return;
     }
-    const newTag = await getStringInput(`What is the tag to add to this task? `);
-    if (!newTag) {
-        console.log("Couldn't get tag");
-        mainMenu();
-    }
-    const newTagsArray = addElementToArray(itemToEdit.tags, newTag);
-    const newArray = editItemInArray(arr, itemToEdit, "id", "tags", newTagsArray);
-    if (!newArray) {
-        console.log("Array not obtained in addTagToTask");
+    let newTagName = await getStringInput(`What is the tag to add to this task? `);
+    if (!newTagName) {
+        denyAndReturn("couldn't get tag");
         return;
     }
-    tStore.setTasks(newArray, "tag");
+    const existingTag = tTags.tags.find((tag) => tag.name === newTagName);
+    if (existingTag) {
+        existingTag.addTagUserId(itemToEdit);
+    }
+    const newTag = new Tag(newTagName);
+    newTag.addTagUserId(itemToEdit);
+    tTags.addTag(newTag);
+    tStore.setTasks(tStore.tasks, "tag");
     mainMenu();
 }
 //# sourceMappingURL=tagsHelpers.js.map

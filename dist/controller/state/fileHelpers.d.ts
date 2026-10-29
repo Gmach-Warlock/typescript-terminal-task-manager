@@ -1,4 +1,5 @@
-import type { StatsObj, TAdds } from "../../types/interfaces.js";
+import type { TAdds } from "../../types/stateInterfaces.js";
+import type { StatsObj } from "../../types/stateInterfaces.js";
 export declare function saveToFile(state: object, fileName: string): Promise<void>;
 export declare function loadFile(): Promise<any>;
 export declare function stateStats(): Promise<{

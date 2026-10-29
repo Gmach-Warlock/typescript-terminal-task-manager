@@ -1,4 +1,4 @@
-import type { DueDate } from "../../types/interfaces.js";
+import type { DueDate } from "../../types/taskInterfaces.js";
 export declare class TDue {
     #private;
     constructor(dueObj: DueDate);

@@ -16,7 +16,7 @@ export declare class TCleared {
     decTDeleted(): void;
     addToCompletedTasks(task: Task): void;
     addToDeletedTasks(task: Task): void;
-    logCleared(): void;
+    logCleared(extra?: boolean): void;
 }
 export declare const tCleared: TCleared;
 //# sourceMappingURL=TCleared.d.ts.map
